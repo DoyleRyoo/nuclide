@@ -1,6 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const basePath = process.env.VITE_BASE ?? '/';
+// Vite처럼 앞뒤 슬래시를 보정한다. 배포 입력 '/nuclide'도 빌드는 '/nuclide/'가 되므로
+// 테스트가 서비스 워커 범위 밖('/')에서 페이지를 열지 않게 같은 경로를 쓴다.
+const trimmedBase = (process.env.VITE_BASE ?? '/').replace(/^\/+|\/+$/g, '');
+const basePath = trimmedBase ? `/${trimmedBase}/` : '/';
 const baseURL = `http://127.0.0.1:4173${basePath}`;
 
 export default defineConfig({

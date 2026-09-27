@@ -10,7 +10,7 @@ on:
         required: true
         default: false
       base_path:
-        description: '사용자 도메인은 /, 기본값은 저장소 이름을 이용합니다.'
+        description: '보통은 비워 두세요(기본값 /<저장소 이름>/). 사용자 도메인이면 / 를 입력합니다.'
         type: string
         required: false
 
