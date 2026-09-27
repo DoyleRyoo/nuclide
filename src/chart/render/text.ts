@@ -5,6 +5,12 @@ import { FONT_FAMILY } from '../../theme/tokens';
  * 크기는 0.5px 단위로 반올림해 캐시 적중률을 높인다.
  */
 export class TextCache {
+  drawCount = 0;
+
+  fill(ctx: CanvasRenderingContext2D, text: string, x: number, y: number): void {
+    this.drawCount++;
+    ctx.fillText(text, x, y);
+  }
   private fonts = new Map<number, string>();
   /** 글꼴 → 문자열 → 폭. 키를 이어 붙이지 않아 프레임 안에서 문자열을 만들지 않는다. */
   private widths = new Map<string, Map<string, number>>();
@@ -89,6 +95,6 @@ export class TextCache {
       if (!shown) return;
     }
     this.use(ctx, font);
-    ctx.fillText(shown, x, y);
+    this.fill(ctx, shown, x, y);
   }
 }

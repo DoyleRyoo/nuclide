@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import { useT } from '../i18n';
+import { version } from '../../package.json';
 export default function HelpDialog({ close }: { close: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const t = useT();
@@ -48,7 +49,9 @@ export default function HelpDialog({ close }: { close: () => void }) {
         </p>
         <p>AMDC · NUBASE2020 / AME2020</p>
       </section>
-      <footer>{t('version')} 0.1.0</footer>
+      <footer>
+        {t('version')} {version}
+      </footer>
     </dialog>
   );
 }

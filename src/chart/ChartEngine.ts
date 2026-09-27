@@ -20,6 +20,7 @@ import {
   zoomAt,
 } from './camera';
 import { computeColors, type ColorTable } from './colorModes';
+import { ChartDiagnostics } from './diagnostics';
 import { atCell } from './hitTest';
 import { inertiaDelta } from './input/inertia';
 import { keyAction } from './input/keyboard';
@@ -88,6 +89,7 @@ export class ChartEngine {
   private readonly guides: GuideLayer;
   private readonly text = new TextCache();
   private readonly animator = new Animator();
+  private readonly diagnostics: ChartDiagnostics | null;
   private readonly listeners: Listeners = {
     select: new Set(),
     navigate: new Set(),
@@ -121,6 +123,9 @@ export class ChartEngine {
   private overlayDirty = true;
   private cameraChanged = false;
   private destroyed = false;
+  private requestedAt = 0;
+  private lastFrameEnd = -Infinity;
+  private firstFrame = true;
 
   constructor(options: ChartEngineOptions) {
     this.container = options.container;
@@ -143,6 +148,10 @@ export class ChartEngine {
     this.baseCtx = this.base.getContext('2d', { alpha: false })!;
     this.overlayCtx = this.overlay.getContext('2d')!;
     this.container.append(this.base, this.overlay);
+    this.diagnostics =
+      new URLSearchParams(location.search).get('debug') === '1'
+        ? new ChartDiagnostics(this.container)
+        : null;
 
     this.resize();
     const observer = new ResizeObserver(() => this.resize());
@@ -251,6 +260,10 @@ export class ChartEngine {
     return { ...this.camera };
   }
 
+  getViewport(): Viewport {
+    return { ...this.viewport };
+  }
+
   setCamera(camera: Camera): void {
     this.stopMotion();
     this.applyCamera(camera);
@@ -294,6 +307,7 @@ export class ChartEngine {
     this.destroyed = true;
     cancelAnimationFrame(this.frameId);
     this.animator.cancel();
+    this.diagnostics?.destroy();
     for (const cleanup of this.cleanups) cleanup();
     for (const set of Object.values(this.listeners)) set.clear();
     this.base.remove();
@@ -359,6 +373,8 @@ export class ChartEngine {
     }
     this.text.reset(this.baseCtx);
     this.text.reset(this.overlayCtx);
+    // 카메라 좌표가 같아도 미니맵의 현재 영역은 새 크기로 갱신해야 한다.
+    this.cameraChanged = true;
     if (!width || !height) return;
     if (!this.fitted) {
       // 첫 화면: 전체 보기 (02 §2.5)
@@ -378,6 +394,7 @@ export class ChartEngine {
 
   private schedule(): void {
     if (this.frameId || this.destroyed || this.inFrame) return;
+    if (this.diagnostics) this.requestedAt = performance.now();
     this.frameId = requestAnimationFrame(this.tick);
   }
 
@@ -399,6 +416,9 @@ export class ChartEngine {
   private readonly tick = (now: number): void => {
     this.frameId = 0;
     if (this.destroyed) return;
+    const started = this.diagnostics ? performance.now() : 0;
+    const continuous = this.requestedAt - this.lastFrameEnd < 100;
+    this.text.drawCount = 0;
     this.inFrame = true;
     const animated = this.animator.update(now);
     if (animated) this.applyCamera(animated);
@@ -409,9 +429,14 @@ export class ChartEngine {
       now - this.highlightStart < HIGHLIGHT_BLINK_MS;
     if (blinking) this.overlayDirty = true;
 
+    const drewBase = this.baseDirty && this.viewport.width > 0 && this.viewport.height > 0;
     if (this.viewport.width && this.viewport.height) {
       if (this.baseDirty) this.drawBase();
       if (this.overlayDirty) this.drawOverlay(now);
+      if (this.firstFrame) {
+        this.firstFrame = false;
+        performance.measure('chart:first-frame', { start: 0, end: performance.now() });
+      }
     }
     this.baseDirty = false;
     this.overlayDirty = false;
@@ -419,6 +444,21 @@ export class ChartEngine {
     if (this.cameraChanged) {
       this.cameraChanged = false;
       this.emit('camera', this.getCamera(), getLod(this.camera.s));
+    }
+    if (this.diagnostics) {
+      const ended = performance.now();
+      this.diagnostics.record(
+        {
+          time: now,
+          renderMs: ended - started,
+          cells: drewBase ? this.cells.visibleCount + this.cells.predictedCount : 0,
+          texts: this.text.drawCount,
+          lod: getLod(this.camera.s),
+          camera: this.getCamera(),
+        },
+        continuous,
+      );
+      this.lastFrameEnd = ended;
     }
     if (this.animator.active || this.inertia || blinking) this.schedule();
   };

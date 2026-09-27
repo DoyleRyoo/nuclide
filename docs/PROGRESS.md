@@ -4,20 +4,20 @@
 
 ## 1. 요약
 
-- **P0 기능은 모두, P1 기능은 대부분 구현했다.** 로컬에서 타입 검사, 린트, 단위 테스트 66개, 데이터 검증, 빌드, 번들 예산, E2E 31개가 통과한다(§2).
-- **구현 전체가 아직 커밋되지 않았다.** 저장소에는 설계 문서만 담은 커밋(`922bb0a first commit`) 하나뿐이고, 코드·데이터·설정은 모두 추적되지 않은 파일이다(`develop` 브랜치). push와 공개 배포도 하지 않았다.
-- 공개(v0.1) 전에 남은 큰 일은 프레임 성능 측정, 오프라인·배포 경로 확인, Lighthouse, 실기기·스크린리더 확인, 데이터 이용 조건 검토다(§8).
+- **P0 기능은 모두, P1 기능은 대부분 구현했다.** 성능 진단, 미니맵 캐시, 오프라인 E2E를 추가했다. 타입 검사, 린트, 단위 테스트 69개, E2E 40개, 데이터 검증, 빌드, 번들 예산, 서식 검사가 통과한다(§2).
+- **기존 구현은 `241b4ec`로 커밋·push되었다.** `develop`과 `origin/develop`이 같은 커밋이며 [해당 GitHub CI](https://github.com/DoyleRyoo/nuclide/actions/runs/36295945701)의 성공을 API로 확인했다. 이번 성능 진단·미니맵·테스트·문서 변경은 아직 커밋하지 않았다. 공개 배포도 하지 않았다.
+- 공개(v0.1) 전에 남은 큰 일은 **LOD 1 성능 개선·재측정**, 시각 회귀 테스트, Lighthouse, 실기기·스크린리더 확인, 데이터 이용 조건 검토다(§8). `/nuclide/` 경로와 Chromium 오프라인 재방문은 로컬에서 검증했다.
 
 ### 마일스톤 ([06 §2](06-roadmap.md#2-마일스톤-상세) 완료 기준 대비)
 
 | 마일스톤 | 상태 | 완료 기준 중 남은 것 |
 |---|---|---|
-| M0 프로젝트 준비 | 로컬 완료 | CI 녹색 확인. push하지 않아 GitHub Actions에서 돌린 적이 없다 |
+| M0 프로젝트 준비 | **완료** | `241b4ec` CI 성공. 이번 변경은 커밋·push 후 CI 확인 필요 |
 | M1 데이터 파이프라인 | **완료** | — |
-| M2 차트 엔진 코어 | 기능 완료 | `?debug=1` 오버레이, 데스크톱 60fps 측정 |
+| M2 차트 엔진 코어 | 기능·계측 구현 | 1920×1080 headless 측정에서 LOD 1 이동 약 55.9 FPS. 모든 LOD의 60fps 충족은 아직 아님 |
 | M3 정보 패널·UI | **완료** | `aria-live` 선택 알림은 구현했지만 스크린리더로 확인하지 않았다 |
 | M4 MVP 배포 | 준비만 됨 | 실제 배포, Lighthouse 90 이상, 데이터 이용 조건 확인 |
-| M5 정식판 | 기능 대부분 구현 | 오프라인 동작 확인, 시각 회귀 테스트(없음), 실기기 입력 테스트 |
+| M5 정식판 | 기능 대부분 구현 | Chromium 오프라인 확인 완료. 시각 회귀 테스트(없음), 설치 UI·실기기 입력 테스트가 남음 |
 | M6 P2 백로그 | 미착수 | — |
 
 ## 2. 검증 결과 (2026-09-27 재실행)
@@ -26,16 +26,28 @@
 |---|---|
 | `npm run typecheck` | 통과 |
 | `npm run lint` | 통과 |
-| `npm test` | 6개 파일, **66개 통과** |
+| `npm test` | 7개 파일, **69개 통과** |
 | `npm run data:check` | 통과. 기저 3,558 / 관측 3,340 / 들뜬 상태 2,099 / 제외한 IAS 186. 주 모드: 안정 253, β− 1,405, β+ 1,131, α 555, SF 60, p 122, n 32 (04 §3 표와 일치) |
 | `npm run build` | 통과. PWA 사전 캐시 15개 |
-| `npm run check:bundle` | 앱 **108.5** / 150 KiB, 시작 데이터 **168.9** / 250 KiB, AME 상세 **254.6** / 300 KiB (gzip) |
-| `npm run test:e2e` | **31개 통과**, 5개 건너뜀(데스크톱·모바일 전용 시나리오). Chromium·Firefox·WebKit 데스크톱 + Pixel 7(Chromium) |
-| `npm run format:check` | **실패.** `src/components/InfoPanel.tsx`, `src/theme/applyTheme.ts`, `src/theme/tokens.ts`, `index.html`, `data/SOURCES.md`가 Prettier 서식이 아니다(기능과 무관). CI에는 이 검사가 없다 |
+| `npm run check:bundle` | 앱 **109.4** / 150 KiB, 시작 데이터 **168.9** / 250 KiB, AME 상세 **254.6** / 300 KiB (gzip) |
+| `npm run test:e2e -- --workers=2` | **40개 통과**, 8개 건너뜀(데스크톱·모바일·서비스 워커 지원 범위에 따른 제외), 34.7 s. `/nuclide/`에서 Chromium·Firefox·WebKit + Pixel 7 검사 |
+| `npm run test:perf` | **1개 통과**, 5개 경로 × 180프레임. [측정 원본](performance-2026-09-27.json). 성능 예산을 통과 조건으로 쓰는 테스트는 아님 |
+| `npm run format:check` | 통과. 기존 5개 파일과 새 파일 서식 정리, CI·배포 워크플로에 검사 추가 |
 
-- E2E 시나리오 9개(`e2e/nuclide-map.spec.ts`): 첫 화면·전체 보기, 검색 후보 키보드 선택 + 새로고침 복원, 클릭·탭 선택과 빈 곳 해제, 잘못된 URL 처리, 패널 닫기 후 Enter로 다시 열기, 방향키 이웃 이동 + 뒤로 가기 복원, 휠·드래그 카메라 이동(데스크톱), Ctrl+휠 포인터 고정 줌(데스크톱), 모바일 시트와 가로 스크롤 없음(모바일).
+- 기존 E2E 시나리오 9개(`e2e/nuclide-map.spec.ts`): 첫 화면·전체 보기, 검색 후보 키보드 선택 + 새로고침 복원, 클릭·탭 선택과 빈 곳 해제, 잘못된 URL 처리, 패널 닫기 후 Enter로 다시 열기, 방향키 이웃 이동 + 뒤로 가기 복원, 휠·드래그 카메라 이동(데스크톱), Ctrl+휠 포인터 고정 줌(데스크톱), 모바일 시트와 가로 스크롤 없음(모바일).
+- 추가 E2E 3개: `diagnostics.spec.ts`의 debug 명시적 활성화·정지 중 무렌더링·첫 프레임 측정·키보드 줌, 미니맵 클릭·색상 모드 변경, `offline.spec.ts`의 manifest scope/start URL·아이콘 확인 및 Chromium 오프라인 새 탭의 AME 상세·이성질체 검색·새로고침 복원. 설치 완료 후 재방문하여 서비스 워커가 탐색을 제어하는 시나리오다.
 - 데이터 로딩 측정(Chrome, 09-27): 파싱 10–17 ms + 색인 22–28 ms = **33–45 ms**(예산 50 ms). `performance.measure`의 `data:load`, `data:parse`, `data:index` 항목으로 잰다.
-- 프레임 시간(NFR-01)과 첫 차트 표시 시간은 아직 재지 않았다.
+- 성능 측정(09-27): Windows 11 / Ryzen 7 8845HS / Chromium 153 headless / 1920×1080 / DPR 1. 경로별 180프레임, `debug=1`, 글꼴 로딩·초기 이동 완료 후 합성 wheel 이벤트를 rAF마다 전달했다. 최초 Canvas 그리기 명령 완료는 **115–335 ms**(로컬 서버, 실제 페인트·LCP 아님). 아래 값은 단일 로컬 실행 결과이며 실기기 성능을 보증하지 않는다.
+
+| 경로 | 렌더 작업 p95 | rAF 간격 p95 | 평균 FPS |
+|---|---:|---:|---:|
+| LOD 0 이동 | 3.4 ms | 16.7 ms | 60.0 |
+| LOD 1 이동 | 8.7 ms | **33.3 ms** | **55.9** |
+| LOD 2 이동 | 4.6 ms | 16.8 ms | 60.0 |
+| LOD 3 이동 | 3.2 ms | 16.7 ms | 60.0 |
+| LOD 0–3 왕복 줌 | 10.3 ms | 16.8 ms | 59.0 |
+
+- `renderMs`는 엔진 tick과 동기 카메라 구독자 비용(미니맵 포함)이다. React commit·브라우저 합성 비용은 제외하므로 이 값만 보고 NFR-01 충족으로 판단하지 않는다. **LOD 1의 60 FPS 미달을 확인했으며 원인은 아직 분리하지 않았다.** 재현 경로는 `e2e/performance.spec.ts`에 있고, 프로파일링 후 필요한 최적화를 결정한다.
 - 스크린샷으로 확인한 화면(09-26–27): 첫 방문 전체 보기, 1280×720, 태블릿 1024×768, 모바일, LOD 2(²³⁵U)·LOD 3(⁹⁹Tc), 다크 테마, 반감기·결합에너지 모드, ²³⁵U·⁷⁶Cu 패널. 콘솔 오류 없음.
 
 ## 3. 기능 요구사항 현황 ([01 §5](01-requirements.md#5-기능-요구사항))
@@ -54,7 +66,7 @@
 | 07 | 이동 범위 제한 | P0 | ✅ | |
 | 08 | 관성 스크롤 | P1 | ✅ | 동작 줄이기 설정이면 끔 |
 | 09 | 휠 동작 설정 | P1 | ✅ | 설정 팝오버 |
-| 10 | 미니맵 | P1 | ✅ | 클릭·드래그 이동, 태블릿·모바일에서 숨김. 다시 그리기 비용 문제(§7) |
+| 10 | 미니맵 | P1 | ✅ | 비트맵 캐시 + 현재 영역 12% 채움. 색상 모드·테마·예측 표시와 동기화, 차트 크기 변경 반영. 클릭·드래그 이동, 태블릿·모바일에서 숨김 |
 
 ### 핵종 정보
 
@@ -105,7 +117,7 @@
 | 72 | 데이터 출처·버전 | P0 | ✅ | 도움말에 논문 인용·DOI, 앱 버전 |
 | 73 | 단축키 도움말 | P1 | ✅ | `?` 키, 버튼 |
 | 74 | 첫 방문 안내 | P1 | ✅ | 첫 조작 뒤 사라지고 다시 표시 안 함 |
-| 75 | 오프라인·설치 | P1 | △ | `vite-plugin-pwa`로 manifest·서비스 워커 사전 캐시 설정. 오프라인 재방문과 설치는 확인 안 함 |
+| 75 | 오프라인·설치 | P1 | △ | `/nuclide/`에서 Chromium 데스크톱·모바일 오프라인 재방문 E2E 통과. 홈 화면 설치 UI·실기기는 미확인 |
 | 76 | 색각 친화 팔레트 | P2 | — | |
 | 77 | 설정 저장 | P1 | ✅ | localStorage `nuclide-map:settings:v1`. 저장이 막혀도 동작 |
 
@@ -113,12 +125,12 @@
 
 | NFR | 항목 | 상태 | 비고 |
 |---|---|---|---|
-| 01 | 렌더링 성능 | 미측정 | `?debug=1` 오버레이와 프레임 시간 측정이 없다 |
+| 01 | 렌더링 성능 | 계측 완료, 일부 미달 | `?debug=1`, 로컬 headless 측정. LOD 1 이동 약 55.9 FPS(§2). 실기기 미확인 |
 | 02 | 반응 속도 | 미측정 | |
-| 03 | 로딩 | 번들 예산 충족 | 첫 차트 1.5 s, LCP 2.5 s는 미측정(Lighthouse 안 돌림) |
+| 03 | 로딩 | 번들 예산 충족 | 로컬 첫 Canvas 그리기 명령 완료 115–335 ms. 실제 첫 페인트·LCP와 Lighthouse는 미측정 |
 | 04 | 호환성 | 일부 확인 | Playwright의 3개 엔진과 모바일 에뮬레이션만. 실제 Safari·iPhone·Android 미확인 |
 | 05 | 접근성 | 일부 확인 | 키보드 조작, `aria-live` 선택 알림, reduced-motion 반영. WCAG 점검·스크린리더 미확인 |
-| 06 | 오프라인 | 미확인 | FR-75와 같다 |
+| 06 | 오프라인 | Chromium 확인 | 데스크톱·모바일 E2E에서 새 탭·검색·재탐색 확인. 실기기는 미확인 |
 | 07 | 개인정보 | 충족 | 서버·쿠키·분석 도구 없음. localStorage에는 화면 설정만 |
 | 08 | 데이터 정확성 | 충족 | 원문 문자열 보존, 골든 레코드·표시 규칙 테스트 |
 | 09 | 유지보수성 | 충족 | 원본 교체 + `data:build` 한 번, TypeScript strict, 단위 테스트 |
@@ -131,12 +143,12 @@
 | `data/raw/`, `data/SOURCES.md` | NUBASE2020·AME2020 원본 4개(수정 금지), 받은 URL·SHA-256·인용 |
 | `scripts/build-data/` | 파서(`parseNubase`, `parseAme`, `decayModes`), 변환(`build`), 검증(`validate`), CLI(`index`) → `data:build`, `data:check` |
 | `src/data/` | 빌드와 앱이 같이 쓰는 `decay.ts`(토큰·단위 표, 주 모드 판정)·`hydrate.ts`(저장 형식 → 앱 모델)·`elements.ts`, 앱 쪽 `load.ts`·`search.ts`·`format.ts`, 생성물 `generated/nuclides.json`·`ame.json` |
-| `src/chart/` | React와 분리한 Canvas 엔진. `ChartEngine.ts`, `camera`·`animation`·`lod`·`hitTest`·`colorModes`, `input/`(pointer, wheel, inertia, keyboard, safariGesture), `render/`(frame, cells, labels, guides, overlay, rulers, text) |
+| `src/chart/` | React와 분리한 Canvas 엔진. `ChartEngine.ts`, `diagnostics`(최근 240프레임·debug DOM), `camera`·`animation`·`lod`·`hitTest`·`colorModes`, `input/`(pointer, wheel, inertia, keyboard, safariGesture), `render/`(frame, cells, labels, guides, overlay, rulers, text) |
 | `src/app/` | `App.tsx`(화면 조립, 엔진 연결), `store.ts`(Zustand + 설정 저장), `urlState.ts` |
 | `src/components/` | `InfoPanel`, `SearchBox`, `Minimap`, `HelpDialog` |
 | `src/theme/`, `src/i18n/`, `src/styles/` | 디자인 토큰·색 지도, 한/영 사전, 전역 CSS |
-| `e2e/`, `playwright.config.ts` | 시나리오 9개 × 프로젝트 4개 |
-| `.github/workflows/` | `ci.yml`(push·PR마다, 하위 경로 `VITE_BASE=/nuclide-map/`로 검사), `deploy.yml`(수동 실행, 공개 전 확인 체크 필수) |
+| `e2e/`, `playwright.config.ts` | 기능 시나리오 12개 × 프로젝트 4개. `playwright.perf.config.ts`는 성능 경로 5개를 별도 직렬 실행 |
+| `.github/workflows/` | `ci.yml`(push·PR마다, 실제 하위 경로 `VITE_BASE=/nuclide/`로 검사), `deploy.yml`(수동 실행, 공개 전 확인 체크 필수) |
 | `scripts/check-bundle.mjs`, `scripts/create-icons.mjs` | gzip 예산 검사, PWA 아이콘 생성 |
 
 ## 6. 설계에서 바뀐 점 (설계 문서에 반영 완료)
@@ -158,24 +170,18 @@
 
 ## 7. 알려진 문제·기술 부채
 
-- **미니맵**이 카메라가 바뀔 때마다 3,558칸을 다시 그린다. 03 §7.5의 설계(미리 그린 비트맵 + 12% 채움 사각형)대로 바꿔야 한다.
-- **Prettier 서식**이 아닌 파일 5개(§2).
-- 패널의 방향 버튼은 이웃을 `index.nuclides.find`로 한 칸씩 최대 179번 선형 탐색한다. 딸핵 찾기처럼 격자 조회로 바꿀 수 있다.
-- 도움말의 앱 버전이 `0.1.0`으로 코드에 직접 적혀 있어 `package.json`과 따로 관리된다.
-- 설계 문서는 최초 요구사항 메모를 `d.md`로 가리키지만 실제 파일은 `my_thought.md`다(`docs/README.md` 링크가 깨지고, 01·04·05·06 본문에도 `d.md`로 나온다). 첫 커밋부터 있던 불일치라 어느 이름으로 맞출지 정해야 한다.
+- **LOD 1 프레임 간격**: 1920×1080 headless에서 평균 55.9 FPS, p95 33.3 ms. 약 973칸·2,037회 텍스트 그리기가 발생하는 경로다. 렌더 작업 시간과 합성 비용을 분리한 프로파일링 필요.
+- 이번에 해결: 미니맵 비트맵 캐시·12% 채움·색상 모드 반영, Prettier 5개 파일, 패널 이웃 탐색의 격자 조회, 도움말 버전의 `package.json` 연결, `my_thought.md`로 메모 링크·참조 통일.
 - 원소 한글 이름·별칭(`src/data/elements.ts`)을 대한화학회 원소 이름표와 대조하지 않았다(06 리스크 R5).
 
 ## 8. 남은 작업 (권장 순서)
 
-1. 지금까지의 구현을 커밋한다. `.gitattributes`가 원본 바이트(rct1의 CRLF 포함)와 생성 JSON 줄 끝(LF)을 고정하므로 함께 커밋한다.
-2. push해서 CI가 녹색인지 확인한다(M0 완료 기준). CI는 하위 경로 `/nuclide-map/`로 빌드·E2E를 돌린다.
-3. M2 잔여: `?debug=1` 오버레이(FPS·프레임 시간), 데스크톱 60fps 측정(NFR-01). 적응형 단순화는 측정 결과 필요할 때만.
-4. 오프라인 재방문(PWA)과 실제 배포 경로 확인. 저장소 이름이 `nuclide`이므로 기본 배포 경로는 `/nuclide/`다.
-5. 미니맵 비트맵 캐시, Prettier 적용.
-6. 시각 회귀 테스트 추가(M5 항목, 아직 없음).
-7. [공개 전 확인 목록](06-roadmap.md#5-공개-전-확인-목록): 데이터 표시·재배포 조건, 원소 이름 대조, 연(y) 환산 상수 대조, 실기기 입력(Windows 마우스, macOS 트랙패드, iPhone, Android, 태블릿), Lighthouse 90 이상, 스크린리더, 앱 이름 확정.
-8. `Deploy GitHub Pages` 워크플로를 수동 실행해 v0.1을 공개한다.
-9. P2 백로그([06 §2 M6](06-roadmap.md#m6-이후-p2-백로그)).
+1. 이번 변경을 검토·커밋·push하고 `/nuclide/` 경로와 새 서식·오프라인 검사까지 CI가 통과하는지 확인한다. 기존 `241b4ec`의 CI 성공은 확인했다.
+2. **M2 잔여: LOD 1 성능 프로파일링·개선.** `npm run test:perf`로 재현하고 실제 브라우저에서도 모든 LOD의 60fps를 확인한다. 원인에 따라 캐시·그리기 비용·상호작용 중 단순화 여부를 결정한다.
+3. 시각 회귀 테스트 추가(M5 항목, 아직 없음). OS별 글꼴·래스터 차이를 고려해 기준 실행 환경을 고정한다.
+4. [공개 전 확인 목록](06-roadmap.md#5-공개-전-확인-목록): 데이터 표시·재배포 조건, 원소 이름 대조, 연(y) 환산 상수 대조, 실기기 입력(Windows 마우스, macOS 트랙패드, iPhone, Android, 태블릿), Lighthouse 90 이상, 스크린리더, 앱 이름 확정, 홈 화면 설치 UI 확인.
+5. 검토 완료 뒤 `Deploy GitHub Pages`를 수동 실행해 v0.1을 공개하고 실제 호스팅에서 딥링크·오프라인을 재확인한다. 기본 경로는 `/nuclide/`다.
+6. P2 백로그([06 §2 M6](06-roadmap.md#m6-이후-p2-백로그)).
 
 ## 9. 실행 방법
 
@@ -190,6 +196,7 @@
 - 샌드박스에서 npm 네트워크 접근이 EACCES로 막혀 도구의 승인 절차로 의존성을 설치했다. 원본 데이터는 curl로 IAEA 미러에서 받았다.
 - Git Bash의 `python`은 Windows Store 스텁이라 입력을 기다리며 멈춘다. 쓰지 않는다.
 - Playwright 브라우저(Chromium·Firefox·WebKit)는 설치되어 있다. Browser 스킬은 브라우저 목록이 비어 있어 쓰지 못했고, 화면 확인은 Playwright 스크린샷으로 했다.
+- 이번 세션에서는 Windows 샌드박스의 Firefox 페이지 생성이 `_page` 오류로 실패하고 Chromium도 테스트 후 종료가 지연됐다. 승인 후 샌드박스 밖에서 전체 E2E 40개가 통과했다. 앱 결함과 실행 환경 문제를 구분해야 한다.
 
 ## 11. 작업 이력
 
@@ -198,3 +205,5 @@
 - **2026-09-26**: 설계 문서 첫 커밋. M0 설정(React 19 + Vite + TypeScript strict, ESLint, Prettier, Vitest, Playwright). M1 데이터 파이프라인 완료(테스트 56개). M2 엔진 구현·통합(테스트 65개, 설치된 Chrome 채널로 E2E 15개 통과). M4 준비(CI, 수동 배포 워크플로, README, CSP, 파비콘). M5 일부(URL 복원·공유, 설정 저장, 수동 테마·언어, PWA, 미니맵).
 - **2026-09-27**: M3 배치·패널 보완(위 §6), 데이터 로딩을 `?raw`로 전환, 딸핵 찾기를 격자 조회로 변경. Playwright 3개 엔진을 설치하고 CI 설정 그대로 E2E 31개 통과(테스트 66개). 범례가 왼쪽 위로 가면서 "빈 곳 클릭" E2E의 빈 칸 좌표를 (N 10, Z 110) → (N 90, Z 8)로 옮겼다.
 - **2026-09-27**: 이 문서를 현황 중심으로 다시 정리하고 전체 검증을 재실행했다. 문서 불일치 3건을 고쳤다(§6).
+- **2026-09-27 후속**: 기존 구현 커밋(`241b4ec`)·원격 CI 성공 확인. `debug=1` 계측·첫 Canvas 그리기 측정·별도 성능 명령, 미니맵 캐시·색상 동기화, 오프라인·진단 E2E 추가. 패널 이웃 조회·버전·서식·메모 링크 정리. CI 경로를 `/nuclide/`로 맞추고 서식 검사를 추가했다. 1920×1080에서 LOD 1의 60 FPS 미달을 기록했으며, 이를 완료로 표시하지 않았다.
+- **2026-09-27 최종 검증**: 타입·린트·서식·데이터·빌드·번들 검사 통과, 단위 69개·E2E 40개·성능 시나리오 1개 통과. 측정 JSON을 `docs/performance-2026-09-27.json`으로 보존했다. 실제 서비스 배포·설치 UI·Lighthouse·스크린리더·시각 회귀 검증은 미실시다.

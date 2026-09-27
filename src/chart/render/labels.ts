@@ -150,8 +150,8 @@ export class LabelLayer {
     const x = cx - (sw + mw) / 2;
     ctx.textAlign = 'left';
     text.use(ctx, massFont);
-    ctx.fillText(t.mass, x, baseline - symbolSize * 0.38);
+    text.fill(ctx, t.mass, x, baseline - symbolSize * 0.38);
     text.use(ctx, symbolFont);
-    ctx.fillText(t.symbol, x + mw, baseline);
+    text.fill(ctx, t.symbol, x + mw, baseline);
   }
 }

@@ -192,7 +192,7 @@ function drawArrows(f: Frame, n: Nuclide, text: TextCache) {
       ctx.fillStyle = theme.text;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(label, mx, my);
+      text.fill(ctx, label, mx, my);
       ctx.textBaseline = 'alphabetic';
     }
   }

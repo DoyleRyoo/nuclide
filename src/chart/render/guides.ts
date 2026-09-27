@@ -135,7 +135,7 @@ export class GuideLayer {
       const y = row ? screenY(f, span.at + 0.5) : screenY(f, span.to) - 4 - LABEL_HEIGHT / 2;
       if (!this.place(count, x, y - LABEL_HEIGHT / 2, w, LABEL_HEIGHT)) continue;
       count++;
-      ctx.fillText(span.label, x, y);
+      text.fill(ctx, span.label, x, y);
     }
     ctx.textBaseline = 'alphabetic';
   }

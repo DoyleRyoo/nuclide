@@ -70,7 +70,7 @@ export function drawRulers(f: Frame, text: TextCache, marks: RulerMarks): void {
     const magic = MAGIC_Z_SET.has(z);
     text.use(ctx, magic ? bold : normal);
     ctx.fillStyle = selected ? selectedText : magic ? theme.accent : theme.textMuted;
-    ctx.fillText(Z_LABELS[z] ?? String(z), rw - 6, y);
+    text.fill(ctx, Z_LABELS[z] ?? String(z), rw - 6, y);
   }
   ctx.restore();
 
@@ -98,7 +98,7 @@ export function drawRulers(f: Frame, text: TextCache, marks: RulerMarks): void {
     }
     text.use(ctx, font);
     ctx.fillStyle = selected ? selectedText : magic ? theme.accent : theme.textMuted;
-    ctx.fillText(label, x, yLabel);
+    text.fill(ctx, label, x, yLabel);
   }
   ctx.restore();
 
@@ -110,6 +110,6 @@ export function drawRulers(f: Frame, text: TextCache, marks: RulerMarks): void {
   ctx.fillStyle = theme.textSubtle;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('Z / N', rw / 2, H - rh / 2);
+  text.fill(ctx, 'Z / N', rw / 2, H - rh / 2);
   ctx.textBaseline = 'alphabetic';
 }

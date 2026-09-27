@@ -37,6 +37,7 @@ jobs:
       - run: npm ci
       - run: npm run data:check
       - run: npm run lint
+      - run: npm run format:check
       - run: npm run test -- --run
       - run: npm run build
       - run: npm run check:bundle

@@ -50,7 +50,7 @@ generated/ame.json      --(첫 차트 뒤)------/
 
 ```
 010_table_of_nuclide/
-├─ d.md                          # 최초 요구사항 메모 (보존)
+├─ my_thought.md                          # 최초 요구사항 메모 (보존)
 ├─ docs/                         # 설계 문서
 ├─ data/
 │  ├─ raw/                       # 원본 평가 데이터 (수정 금지)
@@ -289,6 +289,9 @@ await loadAmeDetails(index);
 | 클릭 → 패널 | ≤ 100 ms | E2E 측정 |
 
 - `?debug=1` 오버레이: FPS, 프레임 시간, 그린 칸·글자 수, LOD, 카메라 값.
+- 구현은 `chart/diagnostics.ts`. 최근 240개의 렌더 작업 시간·rAF 간격을 별도로 집계한다. 이전 프레임 종료 후 100 ms 안에 다음 그리기를 요청한 경우만 연속 프레임으로 계산하므로, 정지 시간은 FPS에서 제외하되 이미 예약된 프레임의 지연은 포함한다. DOM 표시는 최대 초당 4회, 250 ms 무입력 뒤에는 `idle`이며 별도 rAF를 만들지 않는다. 글자 수는 실제 `fillText` 호출 수다.
+- debug 모드에서 차트 요소가 `chart:frame` 이벤트를 내보낸다. `renderMs`는 엔진 tick과 동기 `camera` 구독자(미니맵 포함) 실행 비용이며, React commit·브라우저 합성 시간은 제외된다. `intervalMs`와 함께 읽어야 한다. `chart:first-frame` PerformanceMeasure는 탐색 시작부터 첫 Canvas 그리기 명령이 끝날 때까지이며 실제 페인트 시점은 아니다.
+- `npm run test:perf`는 별도 Playwright 설정으로 1920×1080 Chromium, 단일 worker, LOD 0–3 이동·왕복 줌을 측정한다. JSON과 스크린샷은 `test-results/`에 남긴다. CI 게이트로 쓰지 않는다.
 - 렌더 루프 안에서는 객체·배열을 새로 만들지 않는다(미리 할당한 typed array 재사용).
 
 ## 9. PWA·오프라인 (P1)
