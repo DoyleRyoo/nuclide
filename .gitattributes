@@ -1,0 +1,4 @@
+# 원본 평가 데이터는 바이트 그대로 보존한다 (SHA-256을 data/SOURCES.md에 기록, rct1은 원래 CRLF).
+data/raw/** -text
+# 생성 JSON은 data:check가 비교하므로 줄 끝을 고정한다.
+src/data/generated/*.json text eol=lf

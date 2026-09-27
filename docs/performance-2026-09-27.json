@@ -1,0 +1,95 @@
+{
+  "measuredAt": "2026-09-27T06:05:50.659Z",
+  "environment": {
+    "browser": "153.0.8010.12",
+    "os": "win32 10.0.26200",
+    "cpu": "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "dpr": 1,
+    "headless": true
+  },
+  "note": "로컬 headless 관찰값. renderMs는 엔진과 동기 camera 구독자 비용이며 브라우저 합성·React commit을 포함하지 않는다. intervalMs와 FPS를 함께 확인. CI 성능 게이트 아님.",
+  "results": [
+    {
+      "scenario": "LOD 0 pan",
+      "samples": 180,
+      "lods": [
+        0
+      ],
+      "renderMedianMs": 1.699999999254942,
+      "renderP95Ms": 3.400000000372529,
+      "intervalMedianMs": 16.699999999999818,
+      "intervalP95Ms": 16.700000000000273,
+      "fps": 60.000670398552046,
+      "maxCells": 3558,
+      "maxTextDraws": 110,
+      "firstChartMs": 334.59999999962747
+    },
+    {
+      "scenario": "LOD 1 pan",
+      "samples": 180,
+      "lods": [
+        1
+      ],
+      "renderMedianMs": 6.5,
+      "renderP95Ms": 8.700000001117587,
+      "intervalMedianMs": 16.699999999999818,
+      "intervalP95Ms": 33.299999999999955,
+      "fps": 55.93924810150324,
+      "maxCells": 973,
+      "maxTextDraws": 2037,
+      "firstChartMs": 146.69999999925494
+    },
+    {
+      "scenario": "LOD 2 pan",
+      "samples": 180,
+      "lods": [
+        2
+      ],
+      "renderMedianMs": 3.099999999627471,
+      "renderP95Ms": 4.599999999627471,
+      "intervalMedianMs": 16.699999999999818,
+      "intervalP95Ms": 16.799999999999955,
+      "fps": 60.00268168409771,
+      "maxCells": 270,
+      "maxTextDraws": 845,
+      "firstChartMs": 133
+    },
+    {
+      "scenario": "LOD 3 pan",
+      "samples": 180,
+      "lods": [
+        3
+      ],
+      "renderMedianMs": 2.199999999254942,
+      "renderP95Ms": 3.200000001117587,
+      "intervalMedianMs": 16.699999999999818,
+      "intervalP95Ms": 16.700000000000273,
+      "fps": 60.00067039855206,
+      "maxCells": 104,
+      "maxTextDraws": 559,
+      "firstChartMs": 130.69999999925494
+    },
+    {
+      "scenario": "LOD 0–3 zoom",
+      "samples": 180,
+      "lods": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "renderMedianMs": 2.900000000372529,
+      "renderP95Ms": 10.299999998882413,
+      "intervalMedianMs": 16.699999999999818,
+      "intervalP95Ms": 16.800000000000182,
+      "fps": 59.01358301463808,
+      "maxCells": 3558,
+      "maxTextDraws": 2612,
+      "firstChartMs": 115.09999999962747
+    }
+  ]
+}

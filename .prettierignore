@@ -1,0 +1,9 @@
+node_modules
+dist
+data/raw
+src/data/generated
+package-lock.json
+playwright-report
+test-results
+docs
+my_thought.md

@@ -26,6 +26,7 @@
 
 ```
 generated/nuclides.json --(dynamic import)--> data/load.ts --> NuclideIndex
+generated/ame.json      --(첫 차트 뒤)------/
                                                                (grid, byId, rows, search index)
                                                                     |
                   +-------------------------------------------------+
@@ -49,7 +50,7 @@ generated/nuclides.json --(dynamic import)--> data/load.ts --> NuclideIndex
 
 ```
 010_table_of_nuclide/
-├─ d.md                          # 최초 요구사항 메모 (보존)
+├─ my_thought.md                          # 최초 요구사항 메모 (보존)
 ├─ docs/                         # 설계 문서
 ├─ data/
 │  ├─ raw/                       # 원본 평가 데이터 (수정 금지)
@@ -141,7 +142,9 @@ export class ChartEngine {
   flyTo(t: { n: number; z: number; s?: number }): Promise<void>;
 
   // 엔진 → 스토어
-  on(type: 'select', fn: (id: string | null) => void): () => void;
+  on(type: 'select', fn: (id: string | null) => void): () => void;   // 클릭·탭, 빈 곳 = null
+  on(type: 'navigate', fn: (id: string) => void): () => void;        // 방향키로 이웃 선택
+  on(type: 'activate', fn: (id: string | null) => void): () => void; // Enter / Space
   on(type: 'hover', fn: (h: { id: string; x: number; y: number } | null) => void): () => void;
   on(type: 'camera', fn: (c: Camera, lod: Lod) => void): () => void;  // 프레임당 최대 1회
 
@@ -256,12 +259,15 @@ interface AppState {
 ## 6. 데이터 로딩
 
 ```ts
-const { default: raw } = await import('./generated/nuclides.json'); // 별도 청크
-const index = buildIndex(raw); // grid, byId, rows, 범주별 개수, 검색 색인, 칸 문자열
+const { default: text } = await import('./generated/nuclides.json?raw'); // 핵심 청크 (문자열)
+const index = buildIndex(hydrate(JSON.parse(text))); // grid, byId, rows, 범주별 개수, 검색 색인, 칸 문자열
+// 첫 차트 뒤: AME 상세 청크를 받아 핵종의 ame에 채우고 store.ameReady = true
+await loadAmeDetails(index);
 ```
 
-- Vite의 `json.stringify: true` 옵션으로 JSON을 `JSON.parse("...")` 형태로 내보내 큰 JSON의 파싱을 빠르게 한다.
-- 파싱 + 색인 예산: 데스크톱 50 ms 이내(`performance.mark`로 측정).
+- 저장 형식과 hydrate는 [04 §7](04-data.md#7-출력-스키마), 청크를 나눈 이유는 [04 §10](04-data.md#10-빌드-파이프라인)과 ADR-14.
+- JSON은 `?raw` 문자열로 받아 직접 `JSON.parse`한다. 그냥 `import`하면 Vite 8(Rolldown)이 `json.stringify` 설정과 달리 1 MB가 넘는 JS 객체 리터럴로 내보내, Chrome에서 모듈 평가에만 약 105 ms가 걸렸다. `?raw` + `JSON.parse`로 바꾼 뒤 파싱은 10–17 ms다. TypeScript가 큰 JSON의 타입을 추론하지 않는 부수 효과도 있다.
+- 파싱 + 색인 예산: 데스크톱 50 ms 이내. `performance.measure` 항목 `data:load`(청크 받기), `data:parse`, `data:index`로 잰다. 2026-09-27 Chrome 측정: 파싱 10–17 ms + 색인 22–28 ms = 33–45 ms.
 - 실패하면 `status: 'error'`와 [다시 시도] 버튼.
 
 ## 7. 테마와 다국어
@@ -278,10 +284,14 @@ const index = buildIndex(raw); // grid, byId, rows, 범주별 개수, 검색 색
 | 프레임 — 중급 모바일 | ≤ 33 ms (p95) | 실기기 |
 | 데이터 파싱 + 색인 | ≤ 50 ms (데스크톱) | `performance.mark` |
 | 앱 JS | ≤ 150 KB gzip | CI 번들 크기 검사 |
-| 데이터 청크 | ≤ 250 KB gzip | CI 번들 크기 검사 |
+| 데이터 청크 (nuclides, 시작 시) | ≤ 250 KB gzip | CI 번들 크기 검사 |
+| AME 상세 청크 (ame, 첫 차트 뒤) | ≤ 300 KB gzip | CI 번들 크기 검사 |
 | 클릭 → 패널 | ≤ 100 ms | E2E 측정 |
 
 - `?debug=1` 오버레이: FPS, 프레임 시간, 그린 칸·글자 수, LOD, 카메라 값.
+- 구현은 `chart/diagnostics.ts`. 최근 240개의 렌더 작업 시간·rAF 간격을 별도로 집계한다. 이전 프레임 종료 후 100 ms 안에 다음 그리기를 요청한 경우만 연속 프레임으로 계산하므로, 정지 시간은 FPS에서 제외하되 이미 예약된 프레임의 지연은 포함한다. DOM 표시는 최대 초당 4회, 250 ms 무입력 뒤에는 `idle`이며 별도 rAF를 만들지 않는다. 글자 수는 실제 `fillText` 호출 수다.
+- debug 모드에서 차트 요소가 `chart:frame` 이벤트를 내보낸다. `renderMs`는 엔진 tick과 동기 `camera` 구독자(미니맵 포함) 실행 비용이며, React commit·브라우저 합성 시간은 제외된다. `intervalMs`와 함께 읽어야 한다. `chart:first-frame` PerformanceMeasure는 탐색 시작부터 첫 Canvas 그리기 명령이 끝날 때까지이며 실제 페인트 시점은 아니다.
+- `npm run test:perf`는 별도 Playwright 설정으로 1920×1080 Chromium, 단일 worker, LOD 0–3 이동·왕복 줌을 측정한다. JSON과 스크린샷은 `test-results/`에 남긴다. CI 게이트로 쓰지 않는다.
 - 렌더 루프 안에서는 객체·배열을 새로 만들지 않는다(미리 할당한 typed array 재사용).
 
 ## 9. PWA·오프라인 (P1)
