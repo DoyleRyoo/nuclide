@@ -154,7 +154,11 @@ export default function InfoPanel({
           }}
           onPointerUp={(e) => {
             const dy = e.clientY - (swipeStart.current ?? e.clientY);
-            setSheet(Math.max(0, Math.min(2, sheet + (dy < -30 ? 1 : dy > 30 ? -1 : 1))) % 3);
+            setSheet(
+              Math.abs(dy) <= 30
+                ? (sheet + 1) % 3
+                : Math.max(0, Math.min(2, sheet + (dy < 0 ? 1 : -1))),
+            );
             swipeStart.current = null;
           }}
         >
@@ -172,7 +176,10 @@ export default function InfoPanel({
           {fullName}
         </h2>
         <p className="muted">
-          {element?.nameEn}-{nuclide.a} <span className="source-small">NUBASE2020</span>
+          <span>
+            {element?.nameEn}-{nuclide.a}
+          </span>
+          <span className="source-small">NUBASE2020</span>
         </p>
         <div className="chips">
           <span>

@@ -33,7 +33,7 @@ import type { Frame } from './render/frame';
 import { GuideLayer } from './render/guides';
 import { LabelLayer } from './render/labels';
 import { drawOverlay } from './render/overlay';
-import { rulerSize } from './render/rulers';
+import { measureRulers, type RulerLayout } from './render/rulers';
 import { TextCache } from './render/text';
 import type {
   Camera,
@@ -67,6 +67,7 @@ export interface ChartEvents {
   hover: (hover: Hover) => void;
   /** 카메라 변경, 프레임당 최대 1회 */
   camera: (camera: Camera, lod: Lod) => void;
+  layout: () => void;
 }
 
 /** 02 §2.4 데스크톱 기본 여백. 앱이 setSafeInsets로 바꾼다. */
@@ -96,6 +97,7 @@ export class ChartEngine {
     activate: new Set(),
     hover: new Set(),
     camera: new Set(),
+    layout: new Set(),
   };
   private readonly cleanups: (() => void)[] = [];
 
@@ -109,6 +111,8 @@ export class ChartEngine {
   private camera: Camera = { cx: 0, cy: 0, s: 1 };
   private viewport: Viewport = { width: 0, height: 0 };
   private dpr = 1;
+  private rulers!: RulerLayout;
+  private textScale = 1;
   private fitted = false;
 
   private selected: Nuclide | null = null;
@@ -159,11 +163,19 @@ export class ChartEngine {
     this.cleanups.push(() => observer.disconnect());
     this.bindInput();
 
-    // 웹 글꼴이 로드되면 한 번 다시 그린다 (03 §2.2).
-    document.fonts?.ready.then(() => {
+    // 초기 로드뿐 아니라 뒤늦게 로드된 글꼴도 폭과 앱 여백을 함께 갱신한다.
+    const fontsChanged = () => {
       if (this.destroyed) return;
       this.text.clear();
+      this.updateRulers();
       this.invalidate();
+    };
+    document.fonts?.ready.then(fontsChanged);
+    document.fonts?.addEventListener('loadingdone', fontsChanged);
+    window.addEventListener('resize', this.refreshLayout);
+    this.cleanups.push(() => {
+      document.fonts?.removeEventListener('loadingdone', fontsChanged);
+      window.removeEventListener('resize', this.refreshLayout);
     });
   }
 
@@ -262,6 +274,39 @@ export class ChartEngine {
 
   getViewport(): Viewport {
     return { ...this.viewport };
+  }
+
+  getRulerSize(): Readonly<RulerLayout> {
+    return this.rulers;
+  }
+
+  private readonly refreshLayout = () => {
+    this.updateRulers();
+    this.invalidate();
+  };
+
+  private updateRulers(): void {
+    const style = getComputedStyle(document.documentElement);
+    this.textScale = Math.max(1, parseFloat(style.fontSize) / 16 || 1);
+    this.rulers = measureRulers(
+      this.overlayCtx,
+      this.text,
+      this.viewport.width < COMPACT_WIDTH,
+      this.world.maxZ,
+      this.world.maxN,
+      parseFloat(style.getPropertyValue('--safe-left')) || 0,
+      parseFloat(style.getPropertyValue('--safe-bottom')) || 0,
+      this.textScale,
+    );
+    const host = this.container.parentElement!;
+    host.style.setProperty('--ruler-w', `${this.rulers.width}px`);
+    host.style.setProperty('--ruler-h', `${this.rulers.height}px`);
+    this.setSafeInsets({
+      ...this.insets,
+      left: this.rulers.width,
+      bottom: Math.max(this.insets.bottom, this.rulers.height),
+    });
+    this.emit('layout');
   }
 
   setCamera(camera: Camera): void {
@@ -373,6 +418,7 @@ export class ChartEngine {
     }
     this.text.reset(this.baseCtx);
     this.text.reset(this.overlayCtx);
+    this.updateRulers();
     // 카메라 좌표가 같아도 미니맵의 현재 영역은 새 크기로 갱신해야 한다.
     this.cameraChanged = true;
     if (!width || !height) return;
@@ -409,6 +455,8 @@ export class ChartEngine {
       showPredicted: this.showPredicted,
       highlight: this.highlight,
       compact: this.viewport.width < COMPACT_WIDTH,
+      rulers: this.rulers,
+      textScale: this.textScale,
     };
   }
 
@@ -489,7 +537,7 @@ export class ChartEngine {
 
   /** 눈금자 위는 지도 칸으로 치지 않는다. */
   private inRuler(p: ScreenPoint): boolean {
-    const { width, height } = rulerSize(this.viewport.width < COMPACT_WIDTH);
+    const { width, height } = this.rulers;
     return p.x < width || p.y > this.viewport.height - height;
   }
 

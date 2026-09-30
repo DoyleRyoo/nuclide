@@ -1,6 +1,7 @@
 import type { NuclideIndex } from '../../data/types';
 import type { ThemeTokens } from '../../theme/tokens';
 import type { ColorTable } from '../colorModes';
+import type { RulerLayout } from './rulers';
 import type { Camera, Highlight, Viewport } from '../types';
 
 /** 한 프레임을 그리는 데 필요한 상태. 렌더 함수는 이 값만 읽는다. */
@@ -15,6 +16,8 @@ export interface Frame {
   highlight: Highlight | null;
   /** 좁은 화면 (눈금자 크기) */
   compact: boolean;
+  rulers: RulerLayout;
+  textScale: number;
 }
 
 /** 월드 x(= N) → 화면 x */

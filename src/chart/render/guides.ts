@@ -15,8 +15,6 @@ interface Span {
   label: string;
 }
 
-const LABEL_HEIGHT = 12;
-
 /** 마법수 선 (03 §6.1)과 N = Z 기준선 (03 §6.2). 선의 길이는 데이터에서 한 번 계산한다. */
 export class GuideLayer {
   private readonly rows: Span[];
@@ -123,7 +121,8 @@ export class GuideLayer {
     if (lod > 1) return;
     // Z 라벨은 행 오른쪽 끝, N 라벨은 열 위쪽 끝. 겹치면 작은 마법수 라벨을 생략한다.
     text.reset(ctx);
-    const font = text.font(11, 500);
+    const font = text.font(12 * f.textScale, 500);
+    const labelHeight = 12 * f.textScale + 2;
     text.use(ctx, font);
     ctx.fillStyle = theme.textMuted;
     ctx.textBaseline = 'middle';
@@ -132,8 +131,8 @@ export class GuideLayer {
     for (const { span, row } of this.labelOrder) {
       const w = text.measure(ctx, font, span.label);
       const x = row ? screenX(f, span.to) + 4 : screenX(f, span.at + 0.5) - w / 2;
-      const y = row ? screenY(f, span.at + 0.5) : screenY(f, span.to) - 4 - LABEL_HEIGHT / 2;
-      if (!this.place(count, x, y - LABEL_HEIGHT / 2, w, LABEL_HEIGHT)) continue;
+      const y = row ? screenY(f, span.at + 0.5) : screenY(f, span.to) - 4 - labelHeight / 2;
+      if (!this.place(count, x, y - labelHeight / 2, w, labelHeight)) continue;
       count++;
       text.fill(ctx, span.label, x, y);
     }

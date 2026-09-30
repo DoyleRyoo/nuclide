@@ -4,14 +4,74 @@ import { screenX, screenY, visibleCells, type Frame } from './frame';
 import { MAGIC_N_SET, MAGIC_Z_SET } from './guides';
 import type { TextCache } from './text';
 
-/** 눈금자 크기 (03 §6.4). 앱의 가용 영역 여백(왼쪽·아래)과 같다. */
-export function rulerSize(compact: boolean): { width: number; height: number } {
-  return compact ? { width: 36, height: 24 } : { width: 48, height: 28 };
+const Z_NUMBERS = elements.map((e) => String(e.z));
+const Z_SYMBOLS = elements.map((e) => e.symbol);
+const N_LABELS = Array.from({ length: 400 }, (_, n) => String(n));
+
+export interface RulerLayout {
+  width: number;
+  height: number;
+  safeLeft: number;
+  safeBottom: number;
+  fontSize: number;
+  padding: number;
+  pillX: number;
+  pillWidth: number;
+  pillHeight: number;
+  numberRight: number;
+  symbolRight: number;
+  nMinSpacing: number;
 }
 
-// 라벨 문자열은 한 번만 만든다: Z 눈금자 "92 U", N 눈금자 "143"
-const Z_LABELS = elements.map((e) => `${e.z} ${e.symbol}`);
-const N_LABELS = Array.from({ length: 400 }, (_, n) => String(n));
+/** 실제 그리는 컨텍스트에서 측정한다. 안전 영역만 바뀌면 TextCache의 폭을 재사용한다. */
+export function measureRulers(
+  ctx: CanvasRenderingContext2D,
+  text: TextCache,
+  compact: boolean,
+  maxZ: number,
+  maxN: number,
+  safeLeft = 0,
+  safeBottom = 0,
+  textScale = 1,
+): RulerLayout {
+  const fontSize = (compact ? 12 : 13) * textScale;
+  const padding = Math.max(6, fontSize * 0.5);
+  const gap = fontSize * 0.3;
+  let a = 0;
+  let b = 0;
+  let nWidth = 0;
+  text.reset(ctx);
+  for (const weight of [500, 700] as const) {
+    const font = text.font(fontSize, weight);
+    for (let z = 0; z <= Math.max(118, maxZ); z++) {
+      a = Math.max(a, text.measure(ctx, font, Z_NUMBERS[z] ?? String(z)));
+      b = Math.max(b, text.measure(ctx, font, Z_SYMBOLS[z] ?? ''));
+    }
+    for (let n = 0; n <= maxN; n++) {
+      nWidth = Math.max(nWidth, text.measure(ctx, font, N_LABELS[n] ?? String(n)));
+    }
+  }
+  a = Math.ceil(a);
+  b = Math.ceil(b);
+  const pillX = Math.max(0, safeLeft) + 2;
+  const pillWidth = a + gap + b + 2 * padding;
+  const pillHeight = fontSize + 8;
+  const symbolRight = pillX + pillWidth - padding;
+  return {
+    width: Math.ceil(pillX + pillWidth + 2),
+    height: Math.max(compact ? 24 : 28, pillHeight + 4) + Math.max(0, safeBottom),
+    safeLeft: Math.max(0, safeLeft),
+    safeBottom: Math.max(0, safeBottom),
+    fontSize,
+    padding,
+    pillX,
+    pillWidth,
+    pillHeight,
+    symbolRight,
+    numberRight: symbolRight - b - gap,
+    nMinSpacing: Math.ceil(nWidth) + 2 * padding + 2,
+  };
+}
 
 export interface RulerMarks {
   hoverZ: number;
@@ -20,19 +80,47 @@ export interface RulerMarks {
   selectedN: number;
 }
 
+/** 선택 → 호버 → 배수 눈금 순으로, 경계와 2px 간격을 만족하는 라벨만 예약한다. */
+export function rulerLabels(
+  from: number,
+  to: number,
+  step: number,
+  selected: number,
+  hovered: number,
+  center: (value: number) => number,
+  extent: (value: number) => number,
+  min: number,
+  max: number,
+): number[] {
+  const shown: number[] = [];
+  const occupied: [number, number][] = [];
+  const reserve = (value: number) => {
+    if (value < from || value > to || shown.includes(value)) return;
+    const half = extent(value) / 2;
+    const start = center(value) - half;
+    const end = start + 2 * half;
+    if (start < min + 2 || end > max - 2) return;
+    if (occupied.some(([a, b]) => start < b + 2 && end > a - 2)) return;
+    shown.push(value);
+    occupied.push([start, end]);
+  };
+  reserve(selected);
+  reserve(hovered);
+  for (let value = Math.ceil(from / step) * step; value <= to; value += step) reserve(value);
+  return shown;
+}
+
 export function drawRulers(f: Frame, text: TextCache, marks: RulerMarks): void {
-  const { ctx, theme, camera, viewport } = f;
-  const { width: rw, height: rh } = rulerSize(f.compact);
+  const { ctx, theme, camera, viewport, rulers: r } = f;
+  const { width: rw, height: rh } = r;
   const W = viewport.width;
   const H = viewport.height;
   const { n0, n1, z0, z1 } = visibleCells(f);
-  const fontSize = f.compact ? 10 : 12;
-  const normal = text.font(fontSize, 500);
-  const bold = text.font(fontSize, 700);
+  const normal = text.font(r.fontSize, 500);
+  const bold = text.font(r.fontSize, 700);
   const selectedText = theme.name === 'dark' ? '#0B0E13' : '#FFFFFF';
   text.reset(ctx);
 
-  // 배경과 지도 쪽 경계선
   ctx.fillStyle = theme.surface;
   ctx.fillRect(0, 0, rw, H);
   ctx.fillRect(rw, H - rh, W - rw, rh);
@@ -47,12 +135,9 @@ export function drawRulers(f: Frame, text: TextCache, marks: RulerMarks): void {
   const pill = (x: number, y: number, w: number, fill: string) => {
     ctx.fillStyle = fill;
     ctx.beginPath();
-    ctx.roundRect(x, y - 8, w, 16, 8);
+    ctx.roundRect(x, y - r.pillHeight / 2, w, r.pillHeight, r.pillHeight / 2);
     ctx.fill();
   };
-
-  // Z 눈금자 (왼쪽): 라벨은 칸 중심에, 오른쪽 정렬
-  const zStep = rulerStep(camera.s, 'z');
   ctx.save();
   ctx.beginPath();
   ctx.rect(0, 0, rw, H - rh);
@@ -60,22 +145,29 @@ export function drawRulers(f: Frame, text: TextCache, marks: RulerMarks): void {
   ctx.textAlign = 'right';
   ctx.textBaseline = 'middle';
   text.reset(ctx);
-  for (let z = z0; z <= z1; z++) {
+  const zLabels = rulerLabels(
+    z0,
+    z1,
+    rulerStep(camera.s, 'z', r.pillHeight + 2),
+    marks.selectedZ,
+    marks.hoverZ,
+    (z) => screenY(f, z + 0.5),
+    () => r.pillHeight,
+    0,
+    H - rh,
+  );
+  for (const z of zLabels) {
     const selected = z === marks.selectedZ;
-    const hovered = z === marks.hoverZ;
-    if (z % zStep !== 0 && !selected && !hovered) continue;
     const y = screenY(f, z + 0.5);
-    if (selected) pill(3, y, rw - 6, theme.accent);
-    else if (hovered) pill(3, y, rw - 6, theme.accentWeak);
-    const magic = MAGIC_Z_SET.has(z);
-    text.use(ctx, magic ? bold : normal);
-    ctx.fillStyle = selected ? selectedText : magic ? theme.accent : theme.textMuted;
-    text.fill(ctx, Z_LABELS[z] ?? String(z), rw - 6, y);
+    if (selected) pill(r.pillX, y, r.pillWidth, theme.accent);
+    else if (z === marks.hoverZ) pill(r.pillX, y, r.pillWidth, theme.accentWeak);
+    text.use(ctx, MAGIC_Z_SET.has(z) ? bold : normal);
+    ctx.fillStyle = selected ? selectedText : theme.textMuted;
+    text.fill(ctx, Z_NUMBERS[z] ?? String(z), r.numberRight, y);
+    text.fill(ctx, Z_SYMBOLS[z] ?? '', r.symbolRight, y);
   }
   ctx.restore();
 
-  // N 눈금자 (아래): 라벨은 칸 중심에, 가운데 정렬
-  const nStep = rulerStep(camera.s, 'n');
   ctx.save();
   ctx.beginPath();
   ctx.rect(rw, H - rh, W - rw, rh);
@@ -83,33 +175,40 @@ export function drawRulers(f: Frame, text: TextCache, marks: RulerMarks): void {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   text.reset(ctx);
-  const yLabel = H - rh / 2;
-  for (let n = n0; n <= n1; n++) {
+  const yLabel = H - rh + (rh - r.safeBottom) / 2;
+  const nWidth = (n: number) =>
+    text.measure(ctx, MAGIC_N_SET.has(n) ? bold : normal, N_LABELS[n] ?? String(n)) + 2 * r.padding;
+  const nLabels = rulerLabels(
+    n0,
+    n1,
+    rulerStep(camera.s, 'n', r.nMinSpacing),
+    marks.selectedN,
+    marks.hoverN,
+    (n) => screenX(f, n + 0.5),
+    nWidth,
+    rw,
+    W,
+  );
+  for (const n of nLabels) {
     const selected = n === marks.selectedN;
-    const hovered = n === marks.hoverN;
-    if (n % nStep !== 0 && !selected && !hovered) continue;
     const x = screenX(f, n + 0.5);
-    const label = N_LABELS[n] ?? String(n);
-    const magic = MAGIC_N_SET.has(n);
-    const font = magic ? bold : normal;
-    if (selected || hovered) {
-      const w = text.measure(ctx, font, label) + 12;
+    if (selected || n === marks.hoverN) {
+      const w = nWidth(n);
       pill(x - w / 2, yLabel, w, selected ? theme.accent : theme.accentWeak);
     }
-    text.use(ctx, font);
-    ctx.fillStyle = selected ? selectedText : magic ? theme.accent : theme.textMuted;
-    text.fill(ctx, label, x, yLabel);
+    text.use(ctx, MAGIC_N_SET.has(n) ? bold : normal);
+    ctx.fillStyle = selected ? selectedText : theme.textMuted;
+    text.fill(ctx, N_LABELS[n] ?? String(n), x, yLabel);
   }
   ctx.restore();
 
-  // 왼쪽 아래 모서리
   text.reset(ctx);
   ctx.fillStyle = theme.surface;
   ctx.fillRect(0, H - rh, rw, rh);
-  text.use(ctx, text.font(fontSize - 1, 600));
+  text.use(ctx, text.font(Math.max(12, r.fontSize - 1), 600));
   ctx.fillStyle = theme.textSubtle;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  text.fill(ctx, 'Z / N', rw / 2, H - rh / 2);
+  text.fill(ctx, 'Z / N', r.safeLeft + (rw - r.safeLeft) / 2, yLabel);
   ctx.textBaseline = 'alphabetic';
 }

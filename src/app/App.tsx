@@ -230,20 +230,49 @@ export default function App() {
     if (!engine) return;
     const update = () => {
       const w = window.innerWidth;
-      const h = window.innerHeight;
-      const bottom =
-        mobile && panelOpen ? (sheet === 0 ? 144 : sheet === 1 ? h * 0.5 : h * 0.92) : 0;
+      const panel = document.querySelector<HTMLElement>('.info-panel');
+      const host = chart.current?.parentElement;
+      const heading = panel?.querySelector('h2');
+      if (mobile && panel && heading && host) {
+        const safeBottom = parseFloat(getComputedStyle(panel).paddingBottom) || 0;
+        const peek = Math.ceil(
+          heading.getBoundingClientRect().bottom -
+            panel.getBoundingClientRect().top +
+            panel.scrollTop +
+            safeBottom +
+            16,
+        );
+        host.style.setProperty('--sheet-peek-h', `${peek}px`);
+      }
+      const panelRect = panel?.getBoundingClientRect();
+      const bottom = mobile && panelOpen ? (panelRect?.height ?? 0) : 0;
+      host?.style.setProperty('--sheet-height', `${bottom}px`);
+      const rulers = engine.getRulerSize();
+      const header = document.querySelector('.app-header')?.getBoundingClientRect();
+      host?.style.setProperty('--header-bottom', `${header?.bottom ?? 56}px`);
+      const meta = document.querySelector('.map-meta')?.getBoundingClientRect();
+      host?.style.setProperty('--meta-bottom', `${meta?.bottom ?? 96}px`);
       engine.setSafeInsets({
-        top: mobile ? 76 : 84,
-        left: mobile ? 36 : 48,
-        right: !mobile && panelOpen ? (w >= 1200 ? 412 : 372) : 16,
-        bottom: (mobile ? 24 : 28) + bottom,
+        top: Math.max(header?.bottom ?? 0, meta?.bottom ?? 0) + 8,
+        left: rulers.width,
+        right: !mobile && panelOpen && panelRect ? w - panelRect.left + 16 : 16,
+        bottom: Math.max(rulers.height, bottom),
       });
     };
     update();
+    const observer = new ResizeObserver(update);
+    for (const element of document.querySelectorAll(
+      '.info-panel, .panel-header, .app-header, .map-meta',
+    ))
+      observer.observe(element);
+    const off = engine.on('layout', update);
     window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, [engine, panelOpen, mobile, sheet]);
+    return () => {
+      observer.disconnect();
+      off();
+      window.removeEventListener('resize', update);
+    };
+  }, [engine, panelOpen, mobile, sheet, selectedId, locale]);
   const closePanel = useCallback(() => {
     useAppStore.setState({ panelOpen: false });
     chart.current?.focus();

@@ -177,15 +177,16 @@ function drawArrows(f: Frame, n: Nuclide, text: TextCache) {
     // LOD 2 이상: 화살표 가운데에 분기비 알약
     if (lod >= 2) {
       const label = formatBranchShort(branch);
-      const font = text.font(12, 600);
+      const font = text.font(12 * f.textScale, 600);
       const w = text.measure(ctx, font, label) + 12;
+      const h = 12 * f.textScale + 8;
       const mx = (x0 + x1) / 2;
       const my = (y0 + y1) / 2;
       ctx.fillStyle = theme.surfaceSolid;
       ctx.strokeStyle = color;
       ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.roundRect(mx - w / 2, my - 10, w, 20, 10);
+      ctx.roundRect(mx - w / 2, my - h / 2, w, h, h / 2);
       ctx.fill();
       ctx.stroke();
       text.use(ctx, font);
