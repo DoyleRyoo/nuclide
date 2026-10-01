@@ -7,3 +7,9 @@ test-results/
 *.local
 *.tsbuildinfo
 .DS_Store
+
+# LiveChart 비교 도구가 받거나 만드는 파일 (다시 받기·다시 만들기 가능)
+tools/livechart-diff/livechart_ground_states.csv*
+tools/livechart-diff/livechart_live/
+tools/livechart-diff/diff_out/
+tools/livechart-diff/nuclides_export.json
