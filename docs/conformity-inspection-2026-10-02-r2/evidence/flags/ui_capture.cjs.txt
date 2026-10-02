@@ -1,0 +1,35 @@
+// 원문 오기 판단 항목의 실제 앱 패널을 저장한다 (읽기 전용 관찰, 저장소 코드는 바꾸지 않음).
+// 실행: PLAYWRIGHT_BROWSERS_PATH=.playwright node ui_capture.cjs <출력 폴더>
+const { chromium } = require('D:/000_rd_workspace/998_nuclide/node_modules/@playwright/test');
+const fs = require('fs');
+const path = require('path');
+
+const out = process.argv[2];
+// 셋째 인자로 쉼표 구분 목록을 주면 그 핵종만 저장한다 (예: Sr-84)
+const ids = process.argv[3]
+  ? process.argv[3].split(',')
+  : ['Ho-164', 'Pt-182', 'Ho-151', 'Cs-138', 'Pa-217', 'S-32', 'Pb-206', 'Ar-40', 'Si-28'];
+
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, locale: 'ko-KR', colorScheme: 'light' });
+  const result = { capturedAt: new Date().toISOString(), base: 'http://127.0.0.1:4173/', browser: browser.version(), panels: {} };
+  for (const id of ids) {
+    await page.goto(`http://127.0.0.1:4173/?nuclide=${id}`);
+    const panel = page.locator('.info-panel');
+    await panel.waitFor();
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(400);
+    const text = await panel.innerText();
+    const links = await panel.locator('button, a').evaluateAll((els) =>
+      els.map((e) => e.textContent.trim()).filter((t) => /→|\d+[A-Z][a-z]?/.test(t)),
+    );
+    result.panels[id] = { text, daughterLikeControls: links };
+    await panel.screenshot({ path: path.join(out, `ui-${id}.png`) });
+    fs.writeFileSync(path.join(out, `ui-${id}.txt`), text);
+  }
+  const name = process.argv[3] ? `ui-panels-${ids.join('_')}.json` : 'ui-panels.json';
+  fs.writeFileSync(path.join(out, name), JSON.stringify(result, null, 2));
+  await browser.close();
+  console.log(Object.keys(result.panels).join(', '));
+})();

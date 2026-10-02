@@ -1,0 +1,125 @@
+[
+  {
+    "query": "¹³⁷Cs",
+    "lines": [
+      "    - option \"¹³⁷Cs 세슘-137 · 30.04 y · β−\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "137Cs",
+    "lines": [
+      "    - option \"¹³⁷Cs 세슘-137 · 30.04 y · β−\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "Cs137",
+    "lines": [
+      "    - option \"¹³⁷Cs 세슘-137 · 30.04 y · β−\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "cs-137",
+    "lines": [
+      "    - option \"¹³⁷Cs 세슘-137 · 30.04 y · β−\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "세슘-137",
+    "lines": [
+      "    - option \"¹³⁷Cs 세슘-137 · 30.04 y · β−\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "99mTc",
+    "lines": [
+      "    - option \"⁹⁹ᵐTc 테크네튬-99m · 6.0066 h · IT\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "178m2Hf",
+    "lines": [
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "¹⁷⁸ᵐ²Hf",
+    "lines": [
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "Tc-99m2",
+    "lines": [
+      "    - option \"⁹⁹Tc 테크네튬-99 · 211.1 ky · β−\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "A=87",
+    "lines": [
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "K",
+    "lines": [
+      "    - option \"K · Z = 19 포타슘 · 핵종 29개\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "Te",
+    "lines": [
+      "    - option \"Te · Z = 52 텔루륨 · 핵종 42개\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "Sn",
+    "lines": [
+      "    - option \"Sn · Z = 50 주석 · 핵종 42개\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  },
+  {
+    "query": "N=82",
+    "lines": [
+      "    - option \"N = 82 동중성자핵 · 핵종 29개\" [selected]:",
+      "      - option \"붕괴 모드\" [selected]",
+      "      - option \"반감기\"",
+      "      - option \"핵자당 결합에너지\""
+    ]
+  }
+]

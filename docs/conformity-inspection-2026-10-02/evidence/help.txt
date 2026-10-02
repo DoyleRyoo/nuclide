@@ -1,0 +1,142 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도"
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "137"
+    - text: Cs
+    - heading "세슘-137" [level=2]
+    - paragraph:
+      - generic: Caesium-137
+      - generic: NUBASE2020
+    - generic: Z 55
+    - generic: N 82
+    - generic: A 137
+    - generic: β− 붕괴
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 30.04 ± 0.04 y ≈ 30년
+    - term: 자연 존재비
+    - definition: —
+    - term: 스핀·패리티
+    - definition:
+      - text: 7/2+
+      - generic: 측정
+    - term: 발견 연도
+    - definition: "1951"
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: β−
+      - generic: 100 %
+      - button "→ 137Ba":
+        - text: →
+        - superscript: "137"
+        - text: Ba
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: −86,545.8 ± 0.3
+    - term: 원자 질량 (u)
+    - definition: 136.907 089 30 ± 0.000 000 32
+    - term: 핵자당 결합에너지
+    - definition: 8,388.9581 ± 0.0022
+    - term: Qα
+    - definition: −3,113.4 ± 5.9
+    - term: Qβ−
+    - definition: 1,175.63 ± 0.17
+    - term: QEC
+    - definition: −4,162.36 ± 0.32
+    - term: Sn
+    - definition: 8,278.2 ± 1.9
+    - term: Sp
+    - definition: 7,405.57 ± 0.30
+    - term: S2n
+    - definition: 15,106.45 ± 0.34
+    - term: S2p
+    - definition: 17,344.5 ± 2.1
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - dialog "Nuclide Map · 도움말":
+    - heading "Nuclide Map · 도움말" [level=2]:
+      - text: Nuclide Map
+      - generic: · 도움말
+    - button "닫기" [active]:
+    - heading "조작 방법" [level=3]
+    - paragraph: "휠: 세로 이동 · Shift+휠: 가로 이동 Ctrl/⌘+휠 또는 핀치: 확대·축소 드래그: 이동 · 더블클릭: 확대 방향키: 이웃 선택 · Shift+방향키: 화면 이동 Enter: 정보 열기 · Esc: 닫기 + / −: 확대·축소 · 0: 전체 보기 / 또는 Ctrl/⌘+K: 검색 · C: 색상 변경 · ?: 도움말"
+    - heading "표기법" [level=3]
+    - paragraph: "N = 중성자 수 · Z = 양성자 수 · A = N + Z # = 계통성 추정값 · < / > = 한계값 · ~ = 근삿값 괄호 불확도는 마지막 자릿수 기준입니다. 삼각형: 들뜬 상태 보유 · 위쪽 띠: 자연 존재 방사성 핵종 점선 칸: 미관측 예측 핵종"
+    - heading "데이터 출처" [level=3]
+    - paragraph: 관측 기저 상태 3,340개 · 예측 기저 상태 218개. IAS 상태는 제외합니다. 표기 값은 원본의 유효숫자와 불확도를 보존합니다.
+    - paragraph:
+      - text: F. G. Kondev et al.,
+      - emphasis: The NUBASE2020 evaluation of nuclear physics properties
+      - text: ", Chinese Physics C 45, 030001 (2021). DOI: 10.1088/1674-1137/abddae"
+    - paragraph:
+      - text: M. Wang et al.,
+      - emphasis: The AME 2020 atomic mass evaluation (II)
+      - text: ", Chinese Physics C 45, 030003 (2021). DOI: 10.1088/1674-1137/abddaf"
+    - paragraph: AMDC · NUBASE2020 / AME2020
+    - generic: 앱 버전 0.1.0
+  - generic: Cs-137 · Z 55, N 82 · 선택됨

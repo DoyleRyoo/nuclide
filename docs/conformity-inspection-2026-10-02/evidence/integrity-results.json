@@ -1,0 +1,793 @@
+{
+  "checkedAt": "2026-10-02T02:02:34.308Z",
+  "baselineHead": "7280849527dbc5819b1eb8700f7f1738137ec78d",
+  "currentHead": "7280849527dbc5819b1eb8700f7f1738137ec78d",
+  "trackedFiles": 107,
+  "unchanged": 107,
+  "changed": [],
+  "headUnchanged": true,
+  "newFilesOnlyInAuditDocs": true,
+  "unexpectedChanges": [],
+  "gitStatus": [
+    "?? docs/conformity-inspection-2026-10-02/01-data-science.md",
+    "?? docs/conformity-inspection-2026-10-02/02-usability.md",
+    "?? docs/conformity-inspection-2026-10-02/03-verdict.md",
+    "?? docs/conformity-inspection-2026-10-02/CONTINUE.md",
+    "?? docs/conformity-inspection-2026-10-02/METHODS.md",
+    "?? docs/conformity-inspection-2026-10-02/README.md",
+    "?? docs/conformity-inspection-2026-10-02/evidence/Cs137-detail.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/F-18-detail.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/Hf178m2-detail.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/Li-11-detail.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/Pb-208-detail.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/Sn-row-final.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/baseline-hashes.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/browser-install.log",
+    "?? docs/conformity-inspection-2026-10-02/evidence/build.log",
+    "?? docs/conformity-inspection-2026-10-02/evidence/bundle.log",
+    "?? docs/conformity-inspection-2026-10-02/evidence/cell-zoom-large.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/cell-zoom-large.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/cell-zoom.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/cell-zoom.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/chain-Pb206-end.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/data-check.log",
+    "?? docs/conformity-inspection-2026-10-02/evidence/data-profile.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/document-check.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-chromium/error-context.md",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-chromium/test-failed-1.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-chromium/trace.zip",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-firefox/error-context.md",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-firefox/test-failed-1.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-firefox/trace.zip",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-mobile-chromium/error-context.md",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-mobile-chromium/test-failed-1.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-mobile-chromium/trace.zip",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-mobile-webkit/error-context.md",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-mobile-webkit/test-failed-1.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-mobile-webkit/trace.zip",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-webkit/error-context.md",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-webkit/test-failed-1.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-failures/rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-webkit/trace.zip",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-final.log",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-font-network.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-hover-desktop.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-hover-mobile.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e-installed.log",
+    "?? docs/conformity-inspection-2026-10-02/evidence/e2e.log",
+    "?? docs/conformity-inspection-2026-10-02/evidence/golden-comparison.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/help.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/integrity-results.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/lint.log",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-diff/diff_details.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-diff/diff_report.md",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/102zr_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/11li_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/130te_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/131cd_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/137ba_levels.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/137cs_decay_bm.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/137cs_decay_g.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/137cs_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/140i_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/178hf_levels.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/180ta_levels.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/18f_decay_bp.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/18f_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/204pb_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/206pb_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/207pb_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/208pb_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/209bi_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/212bi_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/242am_levels.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/252cf_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/294og_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/40k_decay_bp.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/40k_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/5he_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/64cu_decay_bp.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/64cu_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/6li_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/7li_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/8be_ground_states.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/99tc_levels.csv",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/manifest.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/livechart-fresh/radiation-manifest.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/main.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/nuclides-export.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/reference-integrity.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/row-K.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/row-K.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/row-Sn.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/row-Sn.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/row-Te.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/row-Te.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/scenario-A-path.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/scenario-D-chain.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/scenario-I-copied-url.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/scenario-I-copy.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/scenario-panels.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/search-Cs137.png",
+    "?? docs/conformity-inspection-2026-10-02/evidence/search-forms.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Am-242m.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Ba-137-from-Cs.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Ba-137m.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Be-8.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Bi-209.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Bi-212.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Ca-48.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Cf-252.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Co-59.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Co-60.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Cs-137.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Cu-64.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-F-18.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-He-5.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Hf-178m2.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-K-40.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Li-11.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Li-6.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Li-7.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Na-18.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Og-294.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Pb-204.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Pb-206.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Pb-207.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Pb-208.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Rb-87.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Sn-100.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Sn-132.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Sn-138.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Sr-87.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Ta-180m.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Tc-99m.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Te-128.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-Te-130.txt",
+    "?? docs/conformity-inspection-2026-10-02/evidence/ui-golden-panels.json",
+    "?? docs/conformity-inspection-2026-10-02/evidence/unit-tests.log"
+  ],
+  "files": [
+    {
+      "file": ".gitattributes",
+      "unchanged": true,
+      "baselineSha256": "6514ccc201d3f8e7ea8523ec45ac97fe20c682bce63172109af62121c0e87ff4",
+      "currentSha256": "6514ccc201d3f8e7ea8523ec45ac97fe20c682bce63172109af62121c0e87ff4"
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "unchanged": true,
+      "baselineSha256": "098a6bde9d9ad393aa07404d69fde47e789c5105d1cfaf42d6eae449840f9cd4",
+      "currentSha256": "098a6bde9d9ad393aa07404d69fde47e789c5105d1cfaf42d6eae449840f9cd4"
+    },
+    {
+      "file": ".github/workflows/deploy.yml",
+      "unchanged": true,
+      "baselineSha256": "043e1889792eca618f521a8e06fc9c7502cf253b2fa04543f299916a2df939b5",
+      "currentSha256": "043e1889792eca618f521a8e06fc9c7502cf253b2fa04543f299916a2df939b5"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "baselineSha256": "89f562d6314bfdeb6b858eb1b69572f32f4e13c33ee3d2699dffbe6d0edf0299",
+      "currentSha256": "89f562d6314bfdeb6b858eb1b69572f32f4e13c33ee3d2699dffbe6d0edf0299"
+    },
+    {
+      "file": ".prettierignore",
+      "unchanged": true,
+      "baselineSha256": "a32e6b14af0aa6d4aae6a9f25310605cbcd0f0bf3d6438742e9e3232d924bea9",
+      "currentSha256": "a32e6b14af0aa6d4aae6a9f25310605cbcd0f0bf3d6438742e9e3232d924bea9"
+    },
+    {
+      "file": ".prettierrc.json",
+      "unchanged": true,
+      "baselineSha256": "a6e08a054d99e969943357f5817c54a35619234cf86b468b66c680995ef6ccef",
+      "currentSha256": "a6e08a054d99e969943357f5817c54a35619234cf86b468b66c680995ef6ccef"
+    },
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "baselineSha256": "3e985120a72d152e651f87aaea40bb9c4a9bf82797ca1fa255fa5f21ab42c33d",
+      "currentSha256": "3e985120a72d152e651f87aaea40bb9c4a9bf82797ca1fa255fa5f21ab42c33d"
+    },
+    {
+      "file": "data/SOURCES.md",
+      "unchanged": true,
+      "baselineSha256": "9baa4ecbf102884c64085180562b5815de573cf871406c98af3867c98d0b4cd2",
+      "currentSha256": "9baa4ecbf102884c64085180562b5815de573cf871406c98af3867c98d0b4cd2"
+    },
+    {
+      "file": "data/raw/mass_1.mas20.txt",
+      "unchanged": true,
+      "baselineSha256": "e8599c6d7f724fac91934e59f1b9de8fb8f63e820f4b39456b790665ed2a3307",
+      "currentSha256": "e8599c6d7f724fac91934e59f1b9de8fb8f63e820f4b39456b790665ed2a3307"
+    },
+    {
+      "file": "data/raw/nubase_4.mas20.txt",
+      "unchanged": true,
+      "baselineSha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859",
+      "currentSha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+    },
+    {
+      "file": "data/raw/rct1.mas20.txt",
+      "unchanged": true,
+      "baselineSha256": "e6ba1d2256f90053464c48e24d44691828dc49820ce64054aa418d834cc18e90",
+      "currentSha256": "e6ba1d2256f90053464c48e24d44691828dc49820ce64054aa418d834cc18e90"
+    },
+    {
+      "file": "data/raw/rct2_1.mas20.txt",
+      "unchanged": true,
+      "baselineSha256": "78765c7b3f3c991ce2b6ff3b5c086a135aad1807d07819f806ab9a9150a4c2c7",
+      "currentSha256": "78765c7b3f3c991ce2b6ff3b5c086a135aad1807d07819f806ab9a9150a4c2c7"
+    },
+    {
+      "file": "docs/01-requirements.md",
+      "unchanged": true,
+      "baselineSha256": "3ea5d4edd2427a5cb38ed3fb1fcea6cc25dfd4994f0a724fbc65f78b94c7bccc",
+      "currentSha256": "3ea5d4edd2427a5cb38ed3fb1fcea6cc25dfd4994f0a724fbc65f78b94c7bccc"
+    },
+    {
+      "file": "docs/02-ux-interaction.md",
+      "unchanged": true,
+      "baselineSha256": "7479bb4ebb0bcef781aec0019de442955c6e9ed5a0835c97ba38d8acdea29332",
+      "currentSha256": "7479bb4ebb0bcef781aec0019de442955c6e9ed5a0835c97ba38d8acdea29332"
+    },
+    {
+      "file": "docs/03-visual-design.md",
+      "unchanged": true,
+      "baselineSha256": "717089dfc5bef6b3364852ecde49993c06999f1f2ad7216dbaaf9f52d41153fa",
+      "currentSha256": "717089dfc5bef6b3364852ecde49993c06999f1f2ad7216dbaaf9f52d41153fa"
+    },
+    {
+      "file": "docs/04-data.md",
+      "unchanged": true,
+      "baselineSha256": "0b713a10a777028a5184445a879611c9a8ea10bfe89f028ecc48acbf9b6a6c22",
+      "currentSha256": "0b713a10a777028a5184445a879611c9a8ea10bfe89f028ecc48acbf9b6a6c22"
+    },
+    {
+      "file": "docs/05-architecture.md",
+      "unchanged": true,
+      "baselineSha256": "42bd4875b98dfbaa2a2e798a5912e86a96fb4febfc289dbfd8472895e9b9cf47",
+      "currentSha256": "42bd4875b98dfbaa2a2e798a5912e86a96fb4febfc289dbfd8472895e9b9cf47"
+    },
+    {
+      "file": "docs/06-roadmap.md",
+      "unchanged": true,
+      "baselineSha256": "084233565f1be2ea345feae90cc6644c3544135466a2c66f72a329cb8d5d1ce3",
+      "currentSha256": "084233565f1be2ea345feae90cc6644c3544135466a2c66f72a329cb8d5d1ce3"
+    },
+    {
+      "file": "docs/PROGRESS.md",
+      "unchanged": true,
+      "baselineSha256": "be24042c33d110096de6dbd05a4482bedf231c82c6722a42c61cdccbe16c0cc9",
+      "currentSha256": "be24042c33d110096de6dbd05a4482bedf231c82c6722a42c61cdccbe16c0cc9"
+    },
+    {
+      "file": "docs/README.md",
+      "unchanged": true,
+      "baselineSha256": "f84faa72f60f15d16b2024a23ffe19fc262f11d20663c5a5cdfcd17addd0f536",
+      "currentSha256": "f84faa72f60f15d16b2024a23ffe19fc262f11d20663c5a5cdfcd17addd0f536"
+    },
+    {
+      "file": "docs/bugs.md",
+      "unchanged": true,
+      "baselineSha256": "a2db6d004404419f8d666c393be85b743967283a68ab68404aa53e3f7dc4c047",
+      "currentSha256": "a2db6d004404419f8d666c393be85b743967283a68ab68404aa53e3f7dc4c047"
+    },
+    {
+      "file": "docs/conformity_inspection.md",
+      "unchanged": true,
+      "baselineSha256": "0414c86b4ec1e3d7089198857c81fc08450ae4af09f87a3f7cbff200f64d3206",
+      "currentSha256": "0414c86b4ec1e3d7089198857c81fc08450ae4af09f87a3f7cbff200f64d3206"
+    },
+    {
+      "file": "docs/optimization.md",
+      "unchanged": true,
+      "baselineSha256": "97e7a4f71b2847a56ddfbf33537bf5fc461211520700ca0189a9491d56a067e2",
+      "currentSha256": "97e7a4f71b2847a56ddfbf33537bf5fc461211520700ca0189a9491d56a067e2"
+    },
+    {
+      "file": "docs/performance-2026-09-27.json",
+      "unchanged": true,
+      "baselineSha256": "746f13e11066e2b7755c016fc6f64c7ae6fba2e1712b204ed4f5c75e25eaa286",
+      "currentSha256": "746f13e11066e2b7755c016fc6f64c7ae6fba2e1712b204ed4f5c75e25eaa286"
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "unchanged": true,
+      "baselineSha256": "6704a7e5400e54986d550ca44f8d93d0d3e6e5017bbab1fc7de50110b43e75d5",
+      "currentSha256": "6704a7e5400e54986d550ca44f8d93d0d3e6e5017bbab1fc7de50110b43e75d5"
+    },
+    {
+      "file": "e2e/nuclide-map.spec.ts",
+      "unchanged": true,
+      "baselineSha256": "074c7b815bd1a9dc8ade489c2bbff07f9f6863224792acb8d2f2dedae38f78ff",
+      "currentSha256": "074c7b815bd1a9dc8ade489c2bbff07f9f6863224792acb8d2f2dedae38f78ff"
+    },
+    {
+      "file": "e2e/offline.spec.ts",
+      "unchanged": true,
+      "baselineSha256": "788dff07db00c92f124b7610273c4c30e6fc2caabca5396a246c696a0e823232",
+      "currentSha256": "788dff07db00c92f124b7610273c4c30e6fc2caabca5396a246c696a0e823232"
+    },
+    {
+      "file": "e2e/performance.spec.ts",
+      "unchanged": true,
+      "baselineSha256": "35dfae372ade6d115b9fa4be335a089b88d0feea8bcb063f10eba497e8a6673b",
+      "currentSha256": "35dfae372ade6d115b9fa4be335a089b88d0feea8bcb063f10eba497e8a6673b"
+    },
+    {
+      "file": "e2e/readability.spec.ts",
+      "unchanged": true,
+      "baselineSha256": "a8009a1e7dc61cdfefe951d5cfd53cf52d8650bf2ef77969d93b0fcffdd82ee8",
+      "currentSha256": "a8009a1e7dc61cdfefe951d5cfd53cf52d8650bf2ef77969d93b0fcffdd82ee8"
+    },
+    {
+      "file": "e2e/rulers.spec.ts",
+      "unchanged": true,
+      "baselineSha256": "0aa71f1884e3df6e172824580d2c28937a32968ac1c6c9e64778f153ed789aa1",
+      "currentSha256": "0aa71f1884e3df6e172824580d2c28937a32968ac1c6c9e64778f153ed789aa1"
+    },
+    {
+      "file": "eslint.config.js",
+      "unchanged": true,
+      "baselineSha256": "55574175612f927c449d7b2a56a43fe43565b7c15dfa8e3776a6fc9ce1a538ca",
+      "currentSha256": "55574175612f927c449d7b2a56a43fe43565b7c15dfa8e3776a6fc9ce1a538ca"
+    },
+    {
+      "file": "index.html",
+      "unchanged": true,
+      "baselineSha256": "8f812f312c05d038f63aad544f75b3baf3338d9f04375c66fe1a072dd327eda8",
+      "currentSha256": "8f812f312c05d038f63aad544f75b3baf3338d9f04375c66fe1a072dd327eda8"
+    },
+    {
+      "file": "my_thought.md",
+      "unchanged": true,
+      "baselineSha256": "caf4387d551f25335f72f84361605ccb83b569dd35de7f1a6f4a1f474bd79998",
+      "currentSha256": "caf4387d551f25335f72f84361605ccb83b569dd35de7f1a6f4a1f474bd79998"
+    },
+    {
+      "file": "package-lock.json",
+      "unchanged": true,
+      "baselineSha256": "cf3a97317adda9217e32338f225aa2a88c940b78043557bfa86ebf0c23922aa7",
+      "currentSha256": "cf3a97317adda9217e32338f225aa2a88c940b78043557bfa86ebf0c23922aa7"
+    },
+    {
+      "file": "package.json",
+      "unchanged": true,
+      "baselineSha256": "27a1e611be8474f9d80d8a6ef3294883fdd628a0c2567f5139fad16552147172",
+      "currentSha256": "27a1e611be8474f9d80d8a6ef3294883fdd628a0c2567f5139fad16552147172"
+    },
+    {
+      "file": "playwright.config.ts",
+      "unchanged": true,
+      "baselineSha256": "ce91515cd50f13fd04dc400b080ccec997b8027703c0437f8527c2cc73a1c2e1",
+      "currentSha256": "ce91515cd50f13fd04dc400b080ccec997b8027703c0437f8527c2cc73a1c2e1"
+    },
+    {
+      "file": "playwright.perf.config.ts",
+      "unchanged": true,
+      "baselineSha256": "4b97b9420291ed2d5e2e12305d6bb43de6ff4e6603319b49d3f6bbf167af9be0",
+      "currentSha256": "4b97b9420291ed2d5e2e12305d6bb43de6ff4e6603319b49d3f6bbf167af9be0"
+    },
+    {
+      "file": "public/favicon.svg",
+      "unchanged": true,
+      "baselineSha256": "cc4be88344922d2fbf8a50bbedbd2710f0ee186ed74642feb9ae5b888bf7d326",
+      "currentSha256": "cc4be88344922d2fbf8a50bbedbd2710f0ee186ed74642feb9ae5b888bf7d326"
+    },
+    {
+      "file": "public/icons/icon-192.png",
+      "unchanged": true,
+      "baselineSha256": "fcae68f31f17285e64e3de91c678c6cd50869c4d8cbb894ea124dce206d493f2",
+      "currentSha256": "fcae68f31f17285e64e3de91c678c6cd50869c4d8cbb894ea124dce206d493f2"
+    },
+    {
+      "file": "public/icons/icon-512.png",
+      "unchanged": true,
+      "baselineSha256": "3769cb30fd06bb75c734b796d7dc40439d74121da1968e2ec0381e90543d7ff9",
+      "currentSha256": "3769cb30fd06bb75c734b796d7dc40439d74121da1968e2ec0381e90543d7ff9"
+    },
+    {
+      "file": "public/icons/maskable-512.png",
+      "unchanged": true,
+      "baselineSha256": "f574546b95bff524c1ce09d16a4ef1ee7aede3b8c77b99fad665bdbd2e6b51fc",
+      "currentSha256": "f574546b95bff524c1ce09d16a4ef1ee7aede3b8c77b99fad665bdbd2e6b51fc"
+    },
+    {
+      "file": "scripts/build-data/build.test.ts",
+      "unchanged": true,
+      "baselineSha256": "c15865774810fca78116efb00e940d2f8fbad04f49ae90dd475151342be74b03",
+      "currentSha256": "c15865774810fca78116efb00e940d2f8fbad04f49ae90dd475151342be74b03"
+    },
+    {
+      "file": "scripts/build-data/build.ts",
+      "unchanged": true,
+      "baselineSha256": "15c809d980b3deff5a0adf874f732f4c297a0975c3446ea91d7f1a6b583ce793",
+      "currentSha256": "15c809d980b3deff5a0adf874f732f4c297a0975c3446ea91d7f1a6b583ce793"
+    },
+    {
+      "file": "scripts/build-data/decayModes.ts",
+      "unchanged": true,
+      "baselineSha256": "b8cdd716ac10060d474e6d4112ff6bc766284f178a046d4a9ece204162d03d8d",
+      "currentSha256": "b8cdd716ac10060d474e6d4112ff6bc766284f178a046d4a9ece204162d03d8d"
+    },
+    {
+      "file": "scripts/build-data/index.ts",
+      "unchanged": true,
+      "baselineSha256": "f14905082c138ced92603906d67d14c7e9adfd63d5ca90b87d62bbf0462c745c",
+      "currentSha256": "f14905082c138ced92603906d67d14c7e9adfd63d5ca90b87d62bbf0462c745c"
+    },
+    {
+      "file": "scripts/build-data/parseAme.ts",
+      "unchanged": true,
+      "baselineSha256": "17376138c52957f4f7d8b2efb8e8b9cc3d4fa377e5d541f6ef885457bea242be",
+      "currentSha256": "17376138c52957f4f7d8b2efb8e8b9cc3d4fa377e5d541f6ef885457bea242be"
+    },
+    {
+      "file": "scripts/build-data/parseNubase.ts",
+      "unchanged": true,
+      "baselineSha256": "a8f549730f6e0dc4e2640d877deaf3170e8ab66dc5fead1cae91aa9b07505d38",
+      "currentSha256": "a8f549730f6e0dc4e2640d877deaf3170e8ab66dc5fead1cae91aa9b07505d38"
+    },
+    {
+      "file": "scripts/build-data/parsers.test.ts",
+      "unchanged": true,
+      "baselineSha256": "7ee238a45f512fa3306b54654bb2c7196385668922d7ec13d8c0ed29e079162f",
+      "currentSha256": "7ee238a45f512fa3306b54654bb2c7196385668922d7ec13d8c0ed29e079162f"
+    },
+    {
+      "file": "scripts/build-data/sources.ts",
+      "unchanged": true,
+      "baselineSha256": "770301d9a56b8c4ffd102d92e6060df8ba172d13131050f247762b72f54081f8",
+      "currentSha256": "770301d9a56b8c4ffd102d92e6060df8ba172d13131050f247762b72f54081f8"
+    },
+    {
+      "file": "scripts/build-data/validate.ts",
+      "unchanged": true,
+      "baselineSha256": "707b85b71d8a7f660b1b148fec0ddd110e5036b366860efd3a63e460877e5495",
+      "currentSha256": "707b85b71d8a7f660b1b148fec0ddd110e5036b366860efd3a63e460877e5495"
+    },
+    {
+      "file": "scripts/check-bundle.mjs",
+      "unchanged": true,
+      "baselineSha256": "cdfbd90e5695e1b37b9afb652fccd1649d3a25ca97933005115a87444cd43bc8",
+      "currentSha256": "cdfbd90e5695e1b37b9afb652fccd1649d3a25ca97933005115a87444cd43bc8"
+    },
+    {
+      "file": "scripts/create-icons.mjs",
+      "unchanged": true,
+      "baselineSha256": "b2ed7b00bd59d901b7f2980d1ef44662562e03a1732771c3024ebfb4a9580b8d",
+      "currentSha256": "b2ed7b00bd59d901b7f2980d1ef44662562e03a1732771c3024ebfb4a9580b8d"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "unchanged": true,
+      "baselineSha256": "ba2997645ce84f889cb2b6a0cf2dea7353d2ca085315442eb1fcc74d66e67a9c",
+      "currentSha256": "ba2997645ce84f889cb2b6a0cf2dea7353d2ca085315442eb1fcc74d66e67a9c"
+    },
+    {
+      "file": "src/app/store.ts",
+      "unchanged": true,
+      "baselineSha256": "3f445f047d0e6c910668627540a0cd6074f4151ee6349458253298c344f7336b",
+      "currentSha256": "3f445f047d0e6c910668627540a0cd6074f4151ee6349458253298c344f7336b"
+    },
+    {
+      "file": "src/app/urlState.test.ts",
+      "unchanged": true,
+      "baselineSha256": "1ad62a53442abcc57732521e79942fe3aaa0912f1f1e579c822040dc700a457e",
+      "currentSha256": "1ad62a53442abcc57732521e79942fe3aaa0912f1f1e579c822040dc700a457e"
+    },
+    {
+      "file": "src/app/urlState.ts",
+      "unchanged": true,
+      "baselineSha256": "0c54bd3590c0e23ffb951f39d9d884df34b19d9dc5e1518d0121ffe7e679f9c6",
+      "currentSha256": "0c54bd3590c0e23ffb951f39d9d884df34b19d9dc5e1518d0121ffe7e679f9c6"
+    },
+    {
+      "file": "src/chart/ChartEngine.ts",
+      "unchanged": true,
+      "baselineSha256": "5fbd963c713c0ae130033b476899414c024cfdba8d00cad1881268e339e6e873",
+      "currentSha256": "5fbd963c713c0ae130033b476899414c024cfdba8d00cad1881268e339e6e873"
+    },
+    {
+      "file": "src/chart/animation.ts",
+      "unchanged": true,
+      "baselineSha256": "d68326feb8094b0bb19b88bcb95f424f229294d1266f6a1cc6b3bd9e25f4edac",
+      "currentSha256": "d68326feb8094b0bb19b88bcb95f424f229294d1266f6a1cc6b3bd9e25f4edac"
+    },
+    {
+      "file": "src/chart/camera.ts",
+      "unchanged": true,
+      "baselineSha256": "e0eed03f7416b49013507f7aa8b9bf1b31e77521e71b71a999ffa1d9dc46ce86",
+      "currentSha256": "e0eed03f7416b49013507f7aa8b9bf1b31e77521e71b71a999ffa1d9dc46ce86"
+    },
+    {
+      "file": "src/chart/colorModes.ts",
+      "unchanged": true,
+      "baselineSha256": "2fee63b053cfa892a87879e109fd61bb1411c0027bc418af0265b3ff1a6376b9",
+      "currentSha256": "2fee63b053cfa892a87879e109fd61bb1411c0027bc418af0265b3ff1a6376b9"
+    },
+    {
+      "file": "src/chart/diagnostics.test.ts",
+      "unchanged": true,
+      "baselineSha256": "14c41cc3c2dcbf9673b9008bdfbe0f97b64de5ad8e2c4b6319b3c2386c4ed925",
+      "currentSha256": "14c41cc3c2dcbf9673b9008bdfbe0f97b64de5ad8e2c4b6319b3c2386c4ed925"
+    },
+    {
+      "file": "src/chart/diagnostics.ts",
+      "unchanged": true,
+      "baselineSha256": "c4a1b4d4d8a8e98e72e7cd3f483a88b63881ec44a625bb9e2194eed92d9fe819",
+      "currentSha256": "c4a1b4d4d8a8e98e72e7cd3f483a88b63881ec44a625bb9e2194eed92d9fe819"
+    },
+    {
+      "file": "src/chart/engine.test.ts",
+      "unchanged": true,
+      "baselineSha256": "f82a214c25a1d9b8747764d34338d54a56ebf943db4c3e07d8f5ed3395b8f800",
+      "currentSha256": "f82a214c25a1d9b8747764d34338d54a56ebf943db4c3e07d8f5ed3395b8f800"
+    },
+    {
+      "file": "src/chart/hitTest.ts",
+      "unchanged": true,
+      "baselineSha256": "4c80df78566e49c589bec81d7b21ad92975bc1315e0143f84000297f246b8986",
+      "currentSha256": "4c80df78566e49c589bec81d7b21ad92975bc1315e0143f84000297f246b8986"
+    },
+    {
+      "file": "src/chart/input/inertia.ts",
+      "unchanged": true,
+      "baselineSha256": "848a74c2d58f1b63e8e3dc7ea02603335768652e915e92a09741add9ca5ee6f9",
+      "currentSha256": "848a74c2d58f1b63e8e3dc7ea02603335768652e915e92a09741add9ca5ee6f9"
+    },
+    {
+      "file": "src/chart/input/keyboard.ts",
+      "unchanged": true,
+      "baselineSha256": "842926d4b75ed7614b52d8559dd089fdba32cf77fd1722d3861ebaaea27750c8",
+      "currentSha256": "842926d4b75ed7614b52d8559dd089fdba32cf77fd1722d3861ebaaea27750c8"
+    },
+    {
+      "file": "src/chart/input/pointer.ts",
+      "unchanged": true,
+      "baselineSha256": "3fde5f50baff76af2aaad0ddf391207631a63e561fc3f3fde8b47333afd53f35",
+      "currentSha256": "3fde5f50baff76af2aaad0ddf391207631a63e561fc3f3fde8b47333afd53f35"
+    },
+    {
+      "file": "src/chart/input/safariGesture.ts",
+      "unchanged": true,
+      "baselineSha256": "97f4e6417448597ecee8d3f9a4ac980a9d61654bb4c6a8e0280266424ae861c5",
+      "currentSha256": "97f4e6417448597ecee8d3f9a4ac980a9d61654bb4c6a8e0280266424ae861c5"
+    },
+    {
+      "file": "src/chart/input/wheel.ts",
+      "unchanged": true,
+      "baselineSha256": "6529ff79677eefe52c78573d84f8e42f9f40f00dab4e728e2dddfa912a7c4af7",
+      "currentSha256": "6529ff79677eefe52c78573d84f8e42f9f40f00dab4e728e2dddfa912a7c4af7"
+    },
+    {
+      "file": "src/chart/lod.ts",
+      "unchanged": true,
+      "baselineSha256": "045e6bd777268aa1e07e711e1ae671bce99ec5ce0254e542e8e80acf2fde4f2d",
+      "currentSha256": "045e6bd777268aa1e07e711e1ae671bce99ec5ce0254e542e8e80acf2fde4f2d"
+    },
+    {
+      "file": "src/chart/render/cells.ts",
+      "unchanged": true,
+      "baselineSha256": "8e53e758230c1c8540aa6ea6c45aa53d84c9b22ba8abb4078ccbb3421e799ddc",
+      "currentSha256": "8e53e758230c1c8540aa6ea6c45aa53d84c9b22ba8abb4078ccbb3421e799ddc"
+    },
+    {
+      "file": "src/chart/render/frame.ts",
+      "unchanged": true,
+      "baselineSha256": "ba5ba041ac8a329f20caf7a341e44e894a4a50e5a2e39ee2b4227d321d332a3e",
+      "currentSha256": "ba5ba041ac8a329f20caf7a341e44e894a4a50e5a2e39ee2b4227d321d332a3e"
+    },
+    {
+      "file": "src/chart/render/guides.ts",
+      "unchanged": true,
+      "baselineSha256": "50f52ec1066db9c5cdb1e218ed48179fbbe3090dac42ded2f35137f9325f1b21",
+      "currentSha256": "50f52ec1066db9c5cdb1e218ed48179fbbe3090dac42ded2f35137f9325f1b21"
+    },
+    {
+      "file": "src/chart/render/labels.ts",
+      "unchanged": true,
+      "baselineSha256": "58e7edb0bb139469aea1c1c4d4a49ec76cbb4a3d22e09880cf7aaa7606d45a00",
+      "currentSha256": "58e7edb0bb139469aea1c1c4d4a49ec76cbb4a3d22e09880cf7aaa7606d45a00"
+    },
+    {
+      "file": "src/chart/render/overlay.ts",
+      "unchanged": true,
+      "baselineSha256": "1b2660b5d2315cbbff5a9fcc75f1046ccc715929bfab1b0691b3675d61bfd1a6",
+      "currentSha256": "1b2660b5d2315cbbff5a9fcc75f1046ccc715929bfab1b0691b3675d61bfd1a6"
+    },
+    {
+      "file": "src/chart/render/rulers.test.ts",
+      "unchanged": true,
+      "baselineSha256": "5bfdb3fb3c3102919ec6cd8e116f0aa764a3e9b94f611ebc2021bfccf5752c7c",
+      "currentSha256": "5bfdb3fb3c3102919ec6cd8e116f0aa764a3e9b94f611ebc2021bfccf5752c7c"
+    },
+    {
+      "file": "src/chart/render/rulers.ts",
+      "unchanged": true,
+      "baselineSha256": "c53eb29f2865913289a1e87837d9ce5e368999a0d9970c733c6183a2569302ca",
+      "currentSha256": "c53eb29f2865913289a1e87837d9ce5e368999a0d9970c733c6183a2569302ca"
+    },
+    {
+      "file": "src/chart/render/text.ts",
+      "unchanged": true,
+      "baselineSha256": "c33e81fc7bd04454959e4bc3a21d249e18948a6901280f3d9648d8c717c45626",
+      "currentSha256": "c33e81fc7bd04454959e4bc3a21d249e18948a6901280f3d9648d8c717c45626"
+    },
+    {
+      "file": "src/chart/types.ts",
+      "unchanged": true,
+      "baselineSha256": "863dedbc920ba25323bde86ab46cffc045beaa985f2688d89df55bfb0387cd0f",
+      "currentSha256": "863dedbc920ba25323bde86ab46cffc045beaa985f2688d89df55bfb0387cd0f"
+    },
+    {
+      "file": "src/components/HelpDialog.tsx",
+      "unchanged": true,
+      "baselineSha256": "c9f4b797d913eecd7c2c96bfb827019f4ad27fadad30f0fb69cc32097cd77a8c",
+      "currentSha256": "c9f4b797d913eecd7c2c96bfb827019f4ad27fadad30f0fb69cc32097cd77a8c"
+    },
+    {
+      "file": "src/components/InfoPanel.tsx",
+      "unchanged": true,
+      "baselineSha256": "0e80a6f06275ed6d494f1a9cf2075cf5288cd2381960646ef42eb3d9397778c9",
+      "currentSha256": "0e80a6f06275ed6d494f1a9cf2075cf5288cd2381960646ef42eb3d9397778c9"
+    },
+    {
+      "file": "src/components/Minimap.tsx",
+      "unchanged": true,
+      "baselineSha256": "5351bfb0dfba7273c45dfe3facbd3d2f9d30680492ca13b40a60661b942363f1",
+      "currentSha256": "5351bfb0dfba7273c45dfe3facbd3d2f9d30680492ca13b40a60661b942363f1"
+    },
+    {
+      "file": "src/components/SearchBox.tsx",
+      "unchanged": true,
+      "baselineSha256": "a697c8e18677318dd6c24f4ae0a0817aa075858b0cdd11f1c065c79a404a03e7",
+      "currentSha256": "a697c8e18677318dd6c24f4ae0a0817aa075858b0cdd11f1c065c79a404a03e7"
+    },
+    {
+      "file": "src/data/decay.ts",
+      "unchanged": true,
+      "baselineSha256": "58bc943402b526f90c19748d22e47025291a2d65a8f1ea4c5281c15211b8834d",
+      "currentSha256": "58bc943402b526f90c19748d22e47025291a2d65a8f1ea4c5281c15211b8834d"
+    },
+    {
+      "file": "src/data/elements.ts",
+      "unchanged": true,
+      "baselineSha256": "e67c1ce6c77c213d487dac58f45563ce14a016f2a0b6eb609f6096c6d09a3fc0",
+      "currentSha256": "e67c1ce6c77c213d487dac58f45563ce14a016f2a0b6eb609f6096c6d09a3fc0"
+    },
+    {
+      "file": "src/data/format.test.ts",
+      "unchanged": true,
+      "baselineSha256": "6b3e3dc564fe979c96d5c04a4d02c2cb038f6898705d8fa33c07c29317853500",
+      "currentSha256": "6b3e3dc564fe979c96d5c04a4d02c2cb038f6898705d8fa33c07c29317853500"
+    },
+    {
+      "file": "src/data/format.ts",
+      "unchanged": true,
+      "baselineSha256": "b1a4d32fea1ba8f74fe0357c2197f6b605645959421b7afee35dac5cbbffcf46",
+      "currentSha256": "b1a4d32fea1ba8f74fe0357c2197f6b605645959421b7afee35dac5cbbffcf46"
+    },
+    {
+      "file": "src/data/generated/ame.json",
+      "unchanged": true,
+      "baselineSha256": "04144288ff84f7a67f436bccc7131ec02c606f7d06ecb5bb7a0ee06db444e8b8",
+      "currentSha256": "04144288ff84f7a67f436bccc7131ec02c606f7d06ecb5bb7a0ee06db444e8b8"
+    },
+    {
+      "file": "src/data/generated/nuclides.json",
+      "unchanged": true,
+      "baselineSha256": "15c6d6e76a02488d9aa4113d44e46786ff72ff571aa4649346b90ec665941014",
+      "currentSha256": "15c6d6e76a02488d9aa4113d44e46786ff72ff571aa4649346b90ec665941014"
+    },
+    {
+      "file": "src/data/hydrate.ts",
+      "unchanged": true,
+      "baselineSha256": "4693389e766dd364d0ad687197bd3c093e18d2abe28a55cf9d14ebb9ff05bd2c",
+      "currentSha256": "4693389e766dd364d0ad687197bd3c093e18d2abe28a55cf9d14ebb9ff05bd2c"
+    },
+    {
+      "file": "src/data/load.test.ts",
+      "unchanged": true,
+      "baselineSha256": "186635a7a1aa074e96a79e87ee54072e8941ccd64ea658d8401eff85d633b3ea",
+      "currentSha256": "186635a7a1aa074e96a79e87ee54072e8941ccd64ea658d8401eff85d633b3ea"
+    },
+    {
+      "file": "src/data/load.ts",
+      "unchanged": true,
+      "baselineSha256": "d827d5da5ee68f3c2205672c81c3346c4982dc6409822b6bf0115177e1e1b756",
+      "currentSha256": "d827d5da5ee68f3c2205672c81c3346c4982dc6409822b6bf0115177e1e1b756"
+    },
+    {
+      "file": "src/data/search.ts",
+      "unchanged": true,
+      "baselineSha256": "11dbd81c71bc00848f6c6ae005eb73d75757c144f6c4a156dd0401640f89e247",
+      "currentSha256": "11dbd81c71bc00848f6c6ae005eb73d75757c144f6c4a156dd0401640f89e247"
+    },
+    {
+      "file": "src/data/types.ts",
+      "unchanged": true,
+      "baselineSha256": "d3fdb8ba81ee3675851521e2edd66cb6a5c9ad5fdef8ef5068abb2e8c98ad992",
+      "currentSha256": "d3fdb8ba81ee3675851521e2edd66cb6a5c9ad5fdef8ef5068abb2e8c98ad992"
+    },
+    {
+      "file": "src/i18n/index.ts",
+      "unchanged": true,
+      "baselineSha256": "33593fe616674510558db874be651c70235d6c73eeadfc8bf1bd0ed0ff5ff935",
+      "currentSha256": "33593fe616674510558db874be651c70235d6c73eeadfc8bf1bd0ed0ff5ff935"
+    },
+    {
+      "file": "src/main.tsx",
+      "unchanged": true,
+      "baselineSha256": "11cd2c0dce826913c6e683fe59e61ae8eb3e45e77098a3ca6ac58883c514bb36",
+      "currentSha256": "11cd2c0dce826913c6e683fe59e61ae8eb3e45e77098a3ca6ac58883c514bb36"
+    },
+    {
+      "file": "src/styles/global.css",
+      "unchanged": true,
+      "baselineSha256": "2938528e09f3ff3bcac6100c4f590754643a9e252d42b11772345ea76bfd0cf1",
+      "currentSha256": "2938528e09f3ff3bcac6100c4f590754643a9e252d42b11772345ea76bfd0cf1"
+    },
+    {
+      "file": "src/theme/applyTheme.ts",
+      "unchanged": true,
+      "baselineSha256": "46d3192178869f969490e170547617ed02ddec28626c427c527e75937f67bc83",
+      "currentSha256": "46d3192178869f969490e170547617ed02ddec28626c427c527e75937f67bc83"
+    },
+    {
+      "file": "src/theme/colormaps.ts",
+      "unchanged": true,
+      "baselineSha256": "6318954a5211bd9a435783e4347aeca264f8eb6e7688dcd3512f56842be3a116",
+      "currentSha256": "6318954a5211bd9a435783e4347aeca264f8eb6e7688dcd3512f56842be3a116"
+    },
+    {
+      "file": "src/theme/tokens.ts",
+      "unchanged": true,
+      "baselineSha256": "b46f1fdd24e850c68c0e0b143a921d75429eeb4fc4be6f94bd046c92e339ce67",
+      "currentSha256": "b46f1fdd24e850c68c0e0b143a921d75429eeb4fc4be6f94bd046c92e339ce67"
+    },
+    {
+      "file": "tools/livechart-diff/export_nuclides.ts",
+      "unchanged": true,
+      "baselineSha256": "9a5d508b4618efaec4ade236383afb222ef80160afb46ee028da8f84a6d10d40",
+      "currentSha256": "9a5d508b4618efaec4ade236383afb222ef80160afb46ee028da8f84a6d10d40"
+    },
+    {
+      "file": "tools/livechart-diff/golden_set.md",
+      "unchanged": true,
+      "baselineSha256": "4efc01dd10a69c6512a1f3aaebabf7fff7c2c36b138ef4a8cc365c1616c09e16",
+      "currentSha256": "4efc01dd10a69c6512a1f3aaebabf7fff7c2c36b138ef4a8cc365c1616c09e16"
+    },
+    {
+      "file": "tools/livechart-diff/golden_set.py",
+      "unchanged": true,
+      "baselineSha256": "8655ee0179405fdeec20c2d819fd17fcdf342cb22093f794525b516a673bb8b3",
+      "currentSha256": "8655ee0179405fdeec20c2d819fd17fcdf342cb22093f794525b516a673bb8b3"
+    },
+    {
+      "file": "tools/livechart-diff/install_livechart_ground_states.md",
+      "unchanged": true,
+      "baselineSha256": "766535d3ec0c0e6122da647934c5811689d242aac2d2a7b1386c255e97e3fcdf",
+      "currentSha256": "766535d3ec0c0e6122da647934c5811689d242aac2d2a7b1386c255e97e3fcdf"
+    },
+    {
+      "file": "tools/livechart-diff/livechart_diff.py",
+      "unchanged": true,
+      "baselineSha256": "8a86d28c36f3465318e131906f8e9a6b0f2be8638f7a6eaaa5459cca701c4988",
+      "currentSha256": "8a86d28c36f3465318e131906f8e9a6b0f2be8638f7a6eaaa5459cca701c4988"
+    },
+    {
+      "file": "tsconfig.json",
+      "unchanged": true,
+      "baselineSha256": "b2ba15501e09abe607ad36384a030ca32bafe0cf6a0fce8c3f140292e47006b6",
+      "currentSha256": "b2ba15501e09abe607ad36384a030ca32bafe0cf6a0fce8c3f140292e47006b6"
+    },
+    {
+      "file": "vite.config.ts",
+      "unchanged": true,
+      "baselineSha256": "440267d7e3c51fc838d6b443c912df5f6af476d2d647da3f0c5812bd6c83a27e",
+      "currentSha256": "440267d7e3c51fc838d6b443c912df5f6af476d2d647da3f0c5812bd6c83a27e"
+    }
+  ]
+}

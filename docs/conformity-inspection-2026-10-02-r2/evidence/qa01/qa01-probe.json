@@ -1,0 +1,592 @@
+{
+  "capturedAt": "2026-10-02T02:09:23.122Z",
+  "base": "http://127.0.0.1:4173/",
+  "results": [
+    {
+      "project": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "deviceScaleFactor": 1,
+      "woff2RequestedBeforeRelease": 14,
+      "woff2RequestedTotal": 14,
+      "before": {
+        "t": 1882.6000000238419,
+        "rulerW": "64px",
+        "fontsStatus": "loading",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "loading": 14
+        },
+        "checkDigits500": false,
+        "checkLatin700": false,
+        "appFamily": {
+          "aRaw": 21.46875,
+          "bRaw": 19.23046875,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.70703125,
+          "bRaw": 19.4296875,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 20.865234375,
+          "bRaw": 19.5234375,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        }
+      },
+      "after": {
+        "t": 5054.300000011921,
+        "rulerW": "64px",
+        "fontsStatus": "loaded",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "loaded": 14
+        },
+        "checkDigits500": true,
+        "checkLatin700": true,
+        "appFamily": {
+          "aRaw": 21.46875,
+          "bRaw": 19.236328125,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.70703125,
+          "bRaw": 19.4296875,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 21.46875,
+          "bRaw": 19.236328125,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        }
+      },
+      "probeBefore": {
+        "rulerSets": [
+          {
+            "t": 362,
+            "value": "64px"
+          }
+        ],
+        "loadingdone": [],
+        "readyAt": 40.700000047683716
+      },
+      "probeAfter": {
+        "rulerSets": [
+          {
+            "t": 362,
+            "value": "64px"
+          },
+          {
+            "t": 2037.4000000357628,
+            "value": "64px"
+          },
+          {
+            "t": 2038.800000011921,
+            "value": "64px"
+          }
+        ],
+        "loadingdone": [
+          {
+            "t": 2024.5,
+            "faces": 14
+          }
+        ],
+        "readyAt": 40.700000047683716
+      },
+      "verdict": {
+        "canvasWidthsChangedAfterLoad": true,
+        "afterAppFamilyEqualsPretendardOnly": true,
+        "expectedRulerW_fallback": 62,
+        "expectedRulerW_loaded": 62,
+        "observedRulerW_before": "64px",
+        "observedRulerW_after": "64px",
+        "rulerSetCalledAfterRelease": 2
+      }
+    },
+    {
+      "project": "firefox",
+      "browserVersion": "155.0",
+      "deviceScaleFactor": 1,
+      "woff2RequestedBeforeRelease": 14,
+      "woff2RequestedTotal": 14,
+      "before": {
+        "t": 2300,
+        "rulerW": "62px",
+        "fontsStatus": "loading",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "loading": 14
+        },
+        "checkDigits500": false,
+        "checkLatin700": false,
+        "appFamily": {
+          "aRaw": 21.46666717529297,
+          "bRaw": 19.233333587646484,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.700000762939453,
+          "bRaw": 19.433332443237305,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 20.850000381469727,
+          "bRaw": 19.53333282470703,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        }
+      },
+      "after": {
+        "t": 5413,
+        "rulerW": "62px",
+        "fontsStatus": "loaded",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "loaded": 14
+        },
+        "checkDigits500": true,
+        "checkLatin700": true,
+        "appFamily": {
+          "aRaw": 21.46666717529297,
+          "bRaw": 19.233333587646484,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.700000762939453,
+          "bRaw": 19.433332443237305,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 21.46666717529297,
+          "bRaw": 19.233333587646484,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        }
+      },
+      "probeBefore": {
+        "rulerSets": [
+          {
+            "t": 729,
+            "value": "62px"
+          }
+        ],
+        "loadingdone": [
+          {
+            "t": 445,
+            "faces": 0
+          }
+        ],
+        "readyAt": 339
+      },
+      "probeAfter": {
+        "rulerSets": [
+          {
+            "t": 729,
+            "value": "62px"
+          },
+          {
+            "t": 2391,
+            "value": "62px"
+          },
+          {
+            "t": 2405,
+            "value": "62px"
+          }
+        ],
+        "loadingdone": [
+          {
+            "t": 445,
+            "faces": 0
+          },
+          {
+            "t": 2402,
+            "faces": 14
+          }
+        ],
+        "readyAt": 339
+      },
+      "verdict": {
+        "canvasWidthsChangedAfterLoad": false,
+        "afterAppFamilyEqualsPretendardOnly": true,
+        "expectedRulerW_fallback": 62,
+        "expectedRulerW_loaded": 62,
+        "observedRulerW_before": "62px",
+        "observedRulerW_after": "62px",
+        "rulerSetCalledAfterRelease": 2
+      }
+    },
+    {
+      "project": "webkit",
+      "browserVersion": "26.6",
+      "deviceScaleFactor": 2,
+      "woff2RequestedBeforeRelease": 14,
+      "woff2RequestedTotal": 14,
+      "before": {
+        "t": 1775,
+        "rulerW": "64px",
+        "fontsStatus": "loading",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "error": 14
+        },
+        "checkDigits500": true,
+        "checkLatin700": true,
+        "appFamily": {
+          "aRaw": 21.46875,
+          "bRaw": 19.23046875,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.70703125,
+          "bRaw": 19.4296875,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 18,
+          "bRaw": 18.662109375,
+          "widestNum": "100@500",
+          "widestSym": "Am@700",
+          "rulerW": 57,
+          "unrounded": 56.6
+        }
+      },
+      "after": {
+        "t": 4998,
+        "rulerW": "64px",
+        "fontsStatus": "loaded",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "loaded": 14
+        },
+        "checkDigits500": true,
+        "checkLatin700": true,
+        "appFamily": {
+          "aRaw": 21.46875,
+          "bRaw": 19.236328125,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.70703125,
+          "bRaw": 19.4296875,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 21.46875,
+          "bRaw": 19.236328125,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        }
+      },
+      "probeBefore": {
+        "rulerSets": [
+          {
+            "t": 263,
+            "value": "64px"
+          }
+        ],
+        "loadingdone": [],
+        "readyAt": 68
+      },
+      "probeAfter": {
+        "rulerSets": [
+          {
+            "t": 263,
+            "value": "64px"
+          },
+          {
+            "t": 1959,
+            "value": "64px"
+          }
+        ],
+        "loadingdone": [],
+        "readyAt": 68
+      },
+      "verdict": {
+        "canvasWidthsChangedAfterLoad": true,
+        "afterAppFamilyEqualsPretendardOnly": true,
+        "expectedRulerW_fallback": 62,
+        "expectedRulerW_loaded": 62,
+        "observedRulerW_before": "64px",
+        "observedRulerW_after": "64px",
+        "rulerSetCalledAfterRelease": 1
+      }
+    },
+    {
+      "project": "mobile-chromium",
+      "browserVersion": "153.0.8010.12",
+      "deviceScaleFactor": 2.625,
+      "woff2RequestedBeforeRelease": 14,
+      "woff2RequestedTotal": 14,
+      "before": {
+        "t": 1729.3999999761581,
+        "rulerW": "64px",
+        "fontsStatus": "loading",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "loading": 14
+        },
+        "checkDigits500": false,
+        "checkLatin700": false,
+        "appFamily": {
+          "aRaw": 21.46875,
+          "bRaw": 19.23046875,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.70703125,
+          "bRaw": 19.4296875,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 20.865234375,
+          "bRaw": 19.5234375,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        }
+      },
+      "after": {
+        "t": 4899.899999976158,
+        "rulerW": "64px",
+        "fontsStatus": "loaded",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "loaded": 14
+        },
+        "checkDigits500": true,
+        "checkLatin700": true,
+        "appFamily": {
+          "aRaw": 21.46875,
+          "bRaw": 19.236328125,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.70703125,
+          "bRaw": 19.4296875,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 21.46875,
+          "bRaw": 19.236328125,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        }
+      },
+      "probeBefore": {
+        "rulerSets": [
+          {
+            "t": 212.69999998807907,
+            "value": "64px"
+          }
+        ],
+        "loadingdone": [],
+        "readyAt": 18.5
+      },
+      "probeAfter": {
+        "rulerSets": [
+          {
+            "t": 212.69999998807907,
+            "value": "64px"
+          },
+          {
+            "t": 1877.8999999761581,
+            "value": "64px"
+          },
+          {
+            "t": 1880.2999999523163,
+            "value": "64px"
+          }
+        ],
+        "loadingdone": [
+          {
+            "t": 1857.5999999642372,
+            "faces": 14
+          }
+        ],
+        "readyAt": 18.5
+      },
+      "verdict": {
+        "canvasWidthsChangedAfterLoad": true,
+        "afterAppFamilyEqualsPretendardOnly": true,
+        "expectedRulerW_fallback": 62,
+        "expectedRulerW_loaded": 62,
+        "observedRulerW_before": "64px",
+        "observedRulerW_after": "64px",
+        "rulerSetCalledAfterRelease": 2
+      }
+    },
+    {
+      "project": "mobile-webkit",
+      "browserVersion": "26.6",
+      "deviceScaleFactor": 3,
+      "woff2RequestedBeforeRelease": 14,
+      "woff2RequestedTotal": 14,
+      "before": {
+        "t": 1858,
+        "rulerW": "64px",
+        "fontsStatus": "loading",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "error": 14
+        },
+        "checkDigits500": true,
+        "checkLatin700": true,
+        "appFamily": {
+          "aRaw": 21.46875,
+          "bRaw": 19.23046875,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.70703125,
+          "bRaw": 19.4296875,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 18,
+          "bRaw": 18.662109375,
+          "widestNum": "100@500",
+          "widestSym": "Am@700",
+          "rulerW": 57,
+          "unrounded": 56.6
+        }
+      },
+      "after": {
+        "t": 4971,
+        "rulerW": "64px",
+        "fontsStatus": "loaded",
+        "pretendardFaces": {
+          "unloaded": 78,
+          "loaded": 14
+        },
+        "checkDigits500": true,
+        "checkLatin700": true,
+        "appFamily": {
+          "aRaw": 21.46875,
+          "bRaw": 19.236328125,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        },
+        "fallbackOnly": {
+          "aRaw": 20.70703125,
+          "bRaw": 19.4296875,
+          "widestNum": "100@700",
+          "widestSym": "Am@700",
+          "rulerW": 61,
+          "unrounded": 60.6
+        },
+        "pretendardOnly": {
+          "aRaw": 21.46875,
+          "bRaw": 19.236328125,
+          "widestNum": "100@700",
+          "widestSym": "Cm@700",
+          "rulerW": 62,
+          "unrounded": 61.6
+        }
+      },
+      "probeBefore": {
+        "rulerSets": [
+          {
+            "t": 316,
+            "value": "64px"
+          }
+        ],
+        "loadingdone": [],
+        "readyAt": 98
+      },
+      "probeAfter": {
+        "rulerSets": [
+          {
+            "t": 316,
+            "value": "64px"
+          },
+          {
+            "t": 1950,
+            "value": "64px"
+          }
+        ],
+        "loadingdone": [],
+        "readyAt": 98
+      },
+      "verdict": {
+        "canvasWidthsChangedAfterLoad": true,
+        "afterAppFamilyEqualsPretendardOnly": true,
+        "expectedRulerW_fallback": 62,
+        "expectedRulerW_loaded": 62,
+        "observedRulerW_before": "64px",
+        "observedRulerW_after": "64px",
+        "rulerSetCalledAfterRelease": 1
+      }
+    }
+  ]
+}

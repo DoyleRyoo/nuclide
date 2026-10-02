@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xml:lang="ko" lang="ko">
+<head>
+<title>Table of Nuclides</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keyword" content="Table of Nuclides">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="StyleSheet" href="/css/style.css" type="text/css">
+<link rel="StyleSheet" href="/css/jquery-ui.css" type="text/css">
+<style>
+.ui-slider .ui-slider-handle {background: lightblue;}
+.ui-slider {background: lightgray;}
+</style>
+<script src="/libs/jquery.min.js" integrity="sha384-Pn+PczAsODRZ2PiGg0IheRROpP7lXO1NTIjiPo6cca8TliBvaeil42fobhzvZd74" crossorigin="anonymous"></script>
+<script src="/libs/jquery-ui.min.js" integrity="sha384-vIp38BeRN82wlvPB8/vo/5e0J1/gn7WfUf1Qq9bdh79iMPxjry99thNkscQG1b8C" crossorigin="anonymous"></script>
+<script nonce="805f8d235be9e4f27c36dbe06326d6fe93270712">
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
+</script>
+</head>
+<body style="margin-top:10px; margin-left:10px;">
+<div w3-include-html="/notice.html"></div>
+<table cellpadding=0 style="border-width:0; border-spacing:0;">
+<tr><td colspan=3 style='text-align:center;'><span class='title_xl'>Table of Nuclides</span><br><br></td>
+<td style="width:50px; text-align:center;"><a href="/"><span style="font-weight:bold;">Home</span></a></td></tr>
+
+<tr>
+<td style='width:732px; vertical-align:top;'>
+<table cellpadding=0 style='border-width:0; border-spacing:0; width:724px; height:410px;'>
+  <tr>
+  <td>
+  <div id='inuclides'>
+  <table cellpadding=0 style='border-width:0; border-spacing:0; width:724px; height:390px;'>
+    <tr>
+    <td id="zlabel" style="background-image:url(/images/zlabel_z2.png);width:20px;height:370px;background-repeat:no-repeat;background-position:0px -3438px;"></td>
+    <td id="itable" title="Drag this table to locate the desired nuclide" class='text_s' style="vertical-align:top;background-image:url(/images/table_of_nuclides_z2.png);width:650px;height:370px;background-repeat:no-repeat;background-position:0px -3438px;">&nbsp;</td>
+    <td rowspan=2 style='width:10px;'></td>
+    <td style='width:44px; height:390px;' rowspan=2><img src="/images/legend.png" width=44 height=390 alt="legend"></td>
+    </tr>
+    <tr>
+    <td class='title_m'>Z/N</td>
+    <td id="nlabel" style="background-image:url(/images/nlabel_z2.png);width:650px;height:20px;background-repeat:no-repeat;background-position:0px 0px"></td>
+    </tr>
+    </table>
+  </div>
+  </td>
+  </tr>
+  <tr>
+  <td>
+    <table cellpadding=0 style='border-width:0; border-spacing:0; width:724px; height:20px;'>
+    <tr>
+    <td style='width:20px;'></td>
+    <td style='height:20px;'><div id='hslider' title="Drag this horizontal slider to locate the desired nuclide" style='width:630px;'></div></td>
+    <td><button type="button" id='zoomin'>+</button><button type="button" id='zoomout'>-</button></td>
+    </tr>
+    </table>
+  </td>
+  </tr>
+  </table>
+</td>
+<td style='width:10px;' rowspan=3></td>
+<td rowspan=3 colspan=2 style='background-color:#ffffff;vertical-align:top;width:420px;border:solid 1px #aaaaaa'>
+  <table cellpadding=5 style='border-width:0; border-spacing:0; width:100%;'><tr><td style='text-align:right;'><input type='text' id='isotope' value='' size=10 placeholder='Nuclide name' title='Enter the nuclide (e.g. H, H1, H-1, 1H, 1-H) and click Find'>&nbsp;<button class='text_s' id='find'>Find</button></td></tr></table>
+<div id='iproperty' style='width:420px;height:760px;overflow:auto;'>
+<table style='border-width:0; border-spacing:0; width:100%; padding-left:5px; padding-right:5px;' cellpadding=0>
+<tr><td style='text-align:center;' class='title_l'>27-Co-59&nbsp;&nbsp;<a href='#' class='loadpage' data-value='iproperty,27,0,,,,,,,2'><img src='/images/isotopes.png' border=0 title='Isotopes' alt='isotopes'></a></td></tr>
+<tr><td class='title_m'>Nuclear Property</td></tr>
+<tr><td style='height:7px;'></td></tr>
+<tr><td><table style='border-width:0; border-spacing:0px;' cellpadding=2 class='text_s'>
+<tr><td style=width:130px;'>Atomic mass</td><td>58.933193524 &plusmn; 4.26E-7 u</td></tr>
+<tr><td>Mass excess</td><td>-62.229838 &plusmn; 3.97E-4 MeV</td></tr>
+<tr><td>Binding energy / A&nbsp;&nbsp;</td><td>8.7680379 &plusmn; 6.7E-6 MeV</td></tr>
+<tr><td>Beta decay energy</td><td>-1.073005 &plusmn; 1.944E-4 MeV</td></tr>
+<tr><td>Abundance</td><td>100 %</td></tr>
+</table></td></tr>
+<tr><td style='height:15px;'></td></tr>
+<tr><td class='title_m'>Neutron-induced Cross Sections</td></tr>
+<tr><td style='height:10px;'></td></tr>
+<!--
+<tr><td class='title_s'>Benchmark Results</td></tr>
+<tr><td class='text_s'>Note: Benchmark results will be added as soon as they become available.</td></tr>
+-->
+<tr><td class='title_s'>List of Evaluated Nuclear Data Libraries</td></tr>
+<tr><td style='height:7px;'></td></tr>
+<tr><td><table style='border-width:0; border-spacing:3px; width:100%;' cellpadding=0>
+<tr valign='top' class='text_s'><td align='left' style='width:297px;'>
+ENDF/B-VIII.0</td><td align=left><a href='getEvaf.jsp?mat=2725&lib=endfb8.0' target='_blank' rel='noopener noreferrer'>Full text</a></td></tr>
+<tr class='text_s'><td colspan=2><a href='#' class='loadpage' data-value='iproperty,27,59,0,endfb8.0,,3,,,2'><span style='font-size:130%;'>+</span></b></a> Cross sections</td></tr>
+<tr><td style='height:10px;' colspan=2></td></tr>
+<tr valign='top' class='text_s'><td align='left' style='width:297px;'>
+ENDF/B-VII.1</td><td align=left><a href='getEvaf.jsp?mat=2725&lib=endfb7.1' target='_blank' rel='noopener noreferrer'>Full text</a></td></tr>
+<tr class='text_s'><td colspan=2><a href='#' class='loadpage' data-value='iproperty,27,59,0,endfb7.1,,3,,,2'><span style='font-size:130%;'>+</span></b></a> Cross sections</td></tr>
+<tr><td style='height:10px;' colspan=2></td></tr>
+<tr valign='top' class='text_s'><td align='left' style='width:297px;'>
+ENDF/B-VII.0</td><td align=left><a href='getEvaf.jsp?mat=2725&lib=endfb7.0' target='_blank' rel='noopener noreferrer'>Full text</a></td></tr>
+<tr class='text_s'><td colspan=2><a href='#' class='loadpage' data-value='iproperty,27,59,0,endfb7.0,,3,,,2'><span style='font-size:130%;'>+</span></b></a> Cross sections</td></tr>
+<tr><td style='height:10px;' colspan=2></td></tr>
+<tr valign='top' class='text_s'><td align='left' style='width:297px;'>
+JENDL-4.0</td><td align=left><a href='getEvaf.jsp?mat=2725&lib=jendl4.0' target='_blank' rel='noopener noreferrer'>Full text</a></td></tr>
+<tr class='text_s'><td colspan=2><a href='#' class='loadpage' data-value='iproperty,27,59,0,jendl4.0,,3,,,2'><span style='font-size:130%;'>+</span></b></a> Cross sections</td></tr>
+<tr><td style='height:10px;' colspan=2></td></tr>
+<tr valign='top' class='text_s'><td align='left' style='width:297px;'>
+JEFF-3.2</td><td align=left><a href='getEvaf.jsp?mat=2725&lib=jeff3.2' target='_blank' rel='noopener noreferrer'>Full text</a></td></tr>
+<tr class='text_s'><td colspan=2><a href='#' class='loadpage' data-value='iproperty,27,59,0,jeff3.2,,3,,,2'><span style='font-size:130%;'>+</span></b></a> Cross sections</td></tr>
+<tr><td style='height:10px;' colspan=2></td></tr>
+<tr valign='top' class='text_s'><td align='left' style='width:297px;'>
+JEFF-3.1</td><td align=left><a href='getEvaf.jsp?mat=2725&lib=jeff3.1' target='_blank' rel='noopener noreferrer'>Full text</a></td></tr>
+<tr class='text_s'><td colspan=2><a href='#' class='loadpage' data-value='iproperty,27,59,0,jeff3.1,,3,,,2'><span style='font-size:130%;'>+</span></b></a> Cross sections</td></tr>
+<tr><td style='height:10px;' colspan=2></td></tr>
+<tr valign='top' class='text_s'><td align='left' style='width:297px;'>
+CENDL-3.1</td><td align=left><a href='getEvaf.jsp?mat=2725&lib=cendl3.1' target='_blank' rel='noopener noreferrer'>Full text</a></td></tr>
+<tr class='text_s'><td colspan=2><a href='#' class='loadpage' data-value='iproperty,27,59,0,cendl3.1,,3,,,2'><span style='font-size:130%;'>+</span></b></a> Cross sections</td></tr>
+<tr><td style='height:10px;' colspan=2></td></tr>
+</table></td></tr>
+</table>
+</div></td></tr>
+<tr><td style='height:10px;'></td></tr>
+<tr><td style='width:739px;height:360px;background-color:#ffffff;text-align:left;vertical-align:center;border:solid 1px #aaaaaa'>
+<div id='ichart'>
+<table style='width:739px;height:360px;background-color:#ffffff;border-width:0; border-spacing:0;' cellpadding=0>
+<tr><td style='width:500px;background-color:#ffffff;'>
+
+<table style='width:500px; height:360px; border-width:0; border-spacing:0;' cellpadding=0><tr><td style='width:500px;height:330px;text-align:center;' class='text_s'>
+<img src='/images/plot.png' width=500 height=300 alt=' '>
+</td></tr><tr><td style='text-align:center;vertical-align:bottom;height:40px;'><input type='button' id='getdata' value='      Get data      ' title='Get the text data used for plotting' data-value=',27,59,0,0,0' disabled>
+<input type='button' id='addplot' value='      Add to XSViewer      ' title='Add this plot to XSViewer for comparison' data-value=',0,0,0' disabled>
+<br><br></td></tr>
+</table>
+</td><td style='width:239px;height:360px;text-align:left;vertical-align:top;' class='text_t'>
+<br><center><input type='button' id='openxsviewer' value='Open XSViewer' style='background: #dddddd url(/images/xsviewer.png) no-repeat; width:180px; height:40px; background-position:3px 3px; padding-left:55px;' title='Open XSViewer'><br><br><span class='title_s'>List of added plots&nbsp;&nbsp;</span><input type='image' src='/images/refresh.png' id='refresh' alt='refresh' title='Refresh'>&nbsp;&nbsp;<input type='image' src='/images/reset.png' id='resetplots' title='Reset'></center><br>
+<div id='iplots' style='width:239px;height:270px;overflow:auto;'>
+</div>
+</td></tr></table>
+</div>
+</td></tr></table>
+
+<script nonce="805f8d235be9e4f27c36dbe06326d6fe93270712">
+var itableX=0, itableY=-3438;
+var zlv = 2;
+
+$(document).ready(function() {
+  var mouseX, mouseY, mouseX0, mouseY0;
+  var drag = false;
+  var rect = document.getElementById("itable").getBoundingClientRect();
+  var tmargin = rect.top;
+  var lmargin = rect.left;
+
+  $("#itable").mousedown(function(event) {
+    drag = true;
+    mouseX = mouseX0 = event.pageX;
+    mouseY = mouseY0 = event.pageY;
+    $(document).attr('unselectable', 'on').css('MozUserSelect', 'none').css('webkitUserSelect', 'none').on('selectstart', false);
+  });
+
+  $(document).mouseup(function(event) {
+    if (drag) {
+      drag = false;
+      $(document).attr('unselectable', 'off').css('MozUserSelect', '').off('selectstart');
+    }
+    if (event.pageX >= mouseX0-3 && event.pageX <= mouseX0+3 &&
+        event.pageY >= mouseY0-3 && event.pageY <= mouseY0+3) {
+      var z = parseInt((itableY+3808-event.pageY+tmargin)/32);
+      var a = z + parseInt((event.pageX-lmargin-itableX)/32);
+      load("iproperty",z,a,"","","","","","",2);
+    }
+  });
+
+  $("*").mousemove(function(event) {
+    if (event.pageX >= rect.left && event.pageX <= rect.right &&
+        event.pageY >= rect.top && event.pageY <= rect.bottom) {
+      var z = parseInt((itableY+3808-event.pageY+tmargin)/32);
+      var a = z + parseInt((event.pageX-lmargin-itableX)/32);
+      var symbol = getSymbol(z).split(":");
+      if (a >= symbol[1] && a <= symbol[2] && zlv < 2)
+        $("#itable").html("<span style='background-color:white;color:black;position:absolute;left:"+(event.pageX)+";top:"+(event.pageY-20)+";'>&nbsp;"+z+"-"+symbol[0]+"-"+a+"&nbsp;</span>");
+      else $("#itable").html("");
+    }
+
+    if (!drag) return;
+
+    itableX += event.pageX-mouseX;
+    itableY += event.pageY-mouseY;
+
+    mouseX = event.pageX;
+    mouseY = event.pageY;
+
+    if (itableX < -5046) itableX = -5046;
+    if (itableX > 0) itableX = 0;
+    if (itableY < -3438) itableY = -3438;
+    if (itableY > 0) itableY = 0;
+
+    scroll(itableX, itableY);
+    $("#hslider").slider({value: 650/-5046*itableX});
+  });
+
+  $("#itable").mouseleave(function() {
+    $("#itable").html("");
+  });
+
+  $('#itable').bind('mousewheel DOMMouseScroll', function(event){
+    if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+      zlv++;
+    } else{
+      zlv--;
+    }
+    if (zlv < 0) zlv = 0;
+    else if (zlv > 2) zlv = 2;
+    if (2 != zlv) window.location.href="/nuchart/?zlv="+zlv;
+  });
+
+  $("#hslider").slider({
+    min: 0,
+    max: 650,
+    value: itableX*650/-5046,
+    slide: function(event, ui) {
+      itableX = parseInt(ui.value*-5046/650);
+      itableY = parseInt(-3438+ui.value*3438/650);
+      scroll(itableX, itableY);
+    }
+  });
+
+  $("#isotope").keyup(function(event) {
+    if (event.keyCode == 13) find();
+  });
+
+  $("#find").click(function(){
+    find();
+  });
+
+  $("#zoomin").click(function(){
+    zoomin();
+  });
+
+  $("#zoomout").click(function(){
+    zoomout();
+  });
+
+  $("#openxsviewer").unbind().click(function(){
+    window.open("plotEvaf.jsp");
+  });
+
+  $('body').on('click','#refresh',function(){
+    addplot('',0,0,0);
+  })
+
+  $('body').on('click','#resetplots',function(){
+    resetplots();
+  })
+});
+
+function find()
+{
+  var str = document.getElementById("isotope").value.replace("-","").match(/(\d+|[^\d]+)(M|)/g);
+  var symbol, a;
+  var isomer = false;
+  if (str[2] == "m" || str[2] == "M") isomer = true;
+  if (isNaN(str[0])) symbol = str[0];
+  else a = parseInt(str[0]);
+  if (str[1] != undefined) {
+    if (isNaN(str[1])) symbol = str[1];
+    else a = parseInt(str[1]);
+  }
+  if (symbol != undefined) {
+    var z = getZ(symbol);
+    if (z == -1) {
+      alert("Element '"+symbol+"' not found");
+      return;
+    }
+  } else return;
+  if (a == undefined) a = 0;
+  if (z==0) a = 1;
+
+  if (isomer) load("iproperty",z,a,"1","","","","","",2);
+  else load("iproperty",z,a,"","","","","","",2);
+
+}
+
+function zoomin()
+{
+  ++zlv;
+  if (zlv < 0) zlv = 0;
+  else if (zlv > 2) zlv = 2;
+  if (2 != zlv) window.location.href="/nuchart/?zlv="+zlv;
+}
+
+function zoomout()
+{
+  --zlv;
+  if (zlv < 0) zlv = 0;
+  else if (zlv > 2) zlv = 2;
+  if (2 != zlv) window.location.href="/nuchart/?zlv="+zlv;
+}
+
+function scroll(xoffset, yoffset)
+{
+  if (xoffset < -5046) xoffset = -5046;
+  if (xoffset > 0) xoffset = 0;
+  if (yoffset < -3438) yoffset = -3438;
+  if (yoffset > 0) yoffset = 0;
+
+  $("#itable").css({
+    backgroundPosition: xoffset+'px'+' '+yoffset+'px'
+  });
+  $("#zlabel").css({
+    backgroundPosition: '0px'+' '+yoffset+'px'
+  });
+  $("#nlabel").css({
+    backgroundPosition: xoffset+'px'+' 0px'
+  });
+}
+
+function load(id,z,a,im,lib,mat,mf,mt,rg,zlv)
+{
+  $("#"+id).load("/nuchart/?z="+z+"&a="+a+"&im="+im+"&lib="+lib+"&mat="+mat+"&mf="+mf+"&mt="+mt+"&rg="+rg+"&zlv="+zlv+"&ix="+itableX+"&iy="+itableY+" #"+id, function() {
+    $(".loadpage").unbind().click(function(){
+      args=$(this).data("value").split(',');
+      load.apply(this, args);
+    });
+    $("#getdata").unbind().click(function(){
+      args=$(this).data("value");
+      window.open("getData.jsp?target="+args);
+    });
+//    $('body').on('click','#addplot',function(){
+//      args=$(this).data("value").split(',');
+//      addplot.apply(this, args);
+//    })
+    $('body').on('click','#refresh',function(){
+      addplot('',0,0,0);
+    })
+    $('body').on('click','#resetplots',function(){
+      resetplots();
+    })
+    $("#addplot").unbind().click(function(){
+      args=$(this).data("value").split(',');
+      addplot.apply(this, args);
+    });
+    $("#openxsviewer").unbind().click(function(){
+      window.open("plotEvaf.jsp");
+    });
+  });
+//  alert("/nuchart/?z="+z+"&a="+a+"&lib="+lib+"&mat="+mat+"&mf="+mf+"&mt="+mt+"&zlv="+zlv+"&ix="+itableX+"&iy="+itableY+" #"+id);
+
+  return true;
+}
+
+function addplot(lib,mat,mf,mt)
+{
+  $("#iplots").load("addPlot.jsp?lib="+lib+"&mat="+mat+"&mf="+mf+"&mt="+mt); 
+}
+
+function resetplots()
+{
+  $("#iplots").load("resetPlots.jsp");
+}
+
+var elements = [
+  "n:1:1",
+  "H:1:7","He:3:10","Li:3:13","Be:5:16","B:6:21","C:8:23","N:10:25","O:12:28","F:14:31","Ne:16:34",
+  "Na:18:37","Mg:19:40","Al:21:43","Si:22:45","P:24:47","S:26:49","Cl:28:51","Ar:30:53","K:32:56","Ca:34:58",
+  "Sc:36:61","Ti:38:63","V:40:66","Cr:42:68","Mn:44:71","Fe:45:74","Co:47:76","Ni:48:79","Cu:52:82","Zn:54:85",
+  "Ga:56:87","Ge:58:90","As:60:92","Se:65:95","Br:67:98","Kr:69:101","Rb:71:103","Sr:73:107","Y:76:109","Zr:78:112",
+  "Nb:81:115","Mo:83:117","Tc:85:120","Ru:87:124","Rh:89:126","Pd:91:128","Ag:93:130","Cd:95:133","In:97:135","Sn:99:138",
+  "Sb:103:140","Te:105:143","I:107:145","Xe:108:148","Cs:112:151","Ba:112:153","La:117:155","Ce:119:157","Pr:121:159","Nd:124:161",
+  "Pm:126:163","Sm:128:165","Eu:130:167","Gd:133:169","Tb:135:171","Dy:138:173","Ho:140:175","Er:142:177","Tm:144:179","Yb:148:181",
+  "Lu:150:184","Hf:153:189","Ta:155:192","W:157:194","Re:159:198","Os:161:202","Ir:164:204","Pt:166:205","Au:169:210","Hg:171:216",
+  "Tl:176:217","Pb:178:220","Bi:184:224","Po:186:227","At:191:229","Rn:193:231","Fr:199:233","Ra:201:235","Ac:206:237","Th:208:239",
+  "Pa:212:241","U:217:243","Np:225:245","Pu:228:247","Am:230:249","Cm:233:252","Bk:234:254","Cf:237:256","Es:240:258","Fm:241:260",
+  "Md:245:262","No:248:264","Lr:251:266","Rf:253:268","Db:255:270","Sg:258:273","Bh:260:275","Hs:263:277","Mt:265:279","Ds:267:281",
+  "Rg:272:283","Cn:276:285","Nh:278:287","Fl:285:289","Mc:287:291","Lv:289:293","Ts:291:294","Og:294:295", 
+];
+
+function getSymbol(z)
+{
+  if (z < 0 || z >= elements.length) return "";
+  return elements[z];
+}
+
+function getZ(symbol)
+{
+  if (symbol == "n") return 0;
+  for (i=1; i<elements.length; i++) {
+    var s = elements[i].split(":");
+    if (symbol.toLowerCase() == s[0].toLowerCase()) return i;
+  }
+  return -1;
+}
+
+includeHTML();
+</script>
+</body>
+</html>

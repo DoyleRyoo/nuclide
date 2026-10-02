@@ -1,0 +1,9 @@
+file	url_or_request	queried_at_KST	sha256
+laraweb_index.html	GET http://www.lnhb.fr/Laraweb/index.php	2026-10-02T11:45	fdc77e62db6eb071a6b3b61a9de5de76a313b79be79dc52982d4443086b4de95
+laraweb_choix.html	GET http://www.lnhb.fr/Laraweb/Choix_Lara.php	2026-10-02T11:45	6d746c2e3930d308e6b6f8487d6fd8c573320888d0d95d7bca9750e7b5484140
+laraweb_F_result.html	POST http://www.lnhb.fr/Laraweb/Result_Lara1.php Nrj1=1172-1174 Nrj2=1332-1334 Nrj_AND_OR_mode=AND BP/BM/IT/Alpha=1 X/G/A_emission=1	2026-10-02T11:45	5e21191dd7a9df5bba1b8970064f377112d1d21b60acdd4915f2db21b840a8a1
+kaeri_index.html	GET https://atom.kaeri.re.kr/nuchart/	2026-10-02T11:46	b2e9fa935a1397d6aab5116c9424e18a61b0113c99243c2f250d7106b3c9ad7d
+kaeri_co59.html	GET https://atom.kaeri.re.kr/nuchart/?z=27&a=59&im=0&lib=&mat=0&mf=0&mt=0&rg=&zlv=2	2026-10-02T11:47	77ddef5539318fc54ca74ce40a43ce508b8e54008ce63315168e57eceb7c6227
+kaeri_co59_endfb8_mf3.html	GET https://atom.kaeri.re.kr/nuchart/?z=27&a=59&im=0&lib=endfb8.0&mat=&mf=3&mt=&rg=&zlv=2	2026-10-02T11:47	29bf4bc36c7e27bc5aa4b41ac46404857df566edf9762f037f61111426b2dfab
+kaeri_co59_endfb8_mt102.html	GET https://atom.kaeri.re.kr/nuchart/?z=27&a=59&im=0&lib=endfb8.0&mat=2725&mf=3&mt=102&rg=&zlv=2	2026-10-02T11:48	48d6335982be1920c8ea2bab71b6dbd208e2366852228d598184db83d6cdd09c
+kaeri_co59_endfb8_mt102_data.txt	GET https://atom.kaeri.re.kr/nuchart/getData.jsp?target=endfb8.0,27,59,2725,3,102	2026-10-02T11:48	e3064a5d3ce631175d42085054045017e150fa61175bd3e916c5b0fe6e5417b4

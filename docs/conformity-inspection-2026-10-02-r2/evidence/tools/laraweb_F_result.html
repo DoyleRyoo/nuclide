@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<LINK REL="stylesheet" HREF="styles/Lara.css" TYPE="text/css">
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+<SCRIPT language="javascript">
+function Hide_Show_Panel(Only_if_hidden) {
+	if (parent.document.getElementById)	{
+		var obj = parent.document.getElementById('MainFrame');   
+		var obj2 = parent.document.getElementById('MiddleFrame');   
+		if (obj.getAttribute('cols') == '322,260,*') {
+			var col = 260;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 22) {clearInterval(id2);}
+				else {
+					col = col - 17; 
+					larg_col = "322," + col + ",*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'AUTO') {obj2.setAttribute('scrolling', 'NO');}
+		}
+		else if (obj.getAttribute('cols') == '322,22,*') {
+			var col = 22;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 260) {clearInterval(id2);}
+				else {
+					col = col + 17; 
+					larg_col = "322," + col + ",*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'NO') {obj2.setAttribute('scrolling', 'AUTO');}
+		}
+		else if (obj.getAttribute('cols') == '22,260,*') {
+			var col = 260;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 22) {clearInterval(id2);}
+				else {
+					col = col - 17; 
+					larg_col = "22," + col + ",*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'AUTO') {obj2.setAttribute('scrolling', 'NO');}
+		}
+		else if (obj.getAttribute('cols') == '22,22,*') {
+			var col = 22;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 260) {clearInterval(id2);}
+				else {
+					col = col + 17; 
+					larg_col = "22," + col + ",*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'NO') {obj2.setAttribute('scrolling', 'AUTO');}
+		}
+	}
+}
+function Show_Panel() {
+	if (parent.document.getElementById)	{
+		var obj = parent.document.getElementById('MainFrame');   
+		var obj2 = parent.document.getElementById('MiddleFrame');   
+		if (obj.getAttribute('cols') == '322,22,*') {
+			var col = 22;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 260) {clearInterval(id2);}
+				else {
+					col = col + 17; 
+					larg_col = "322," + col + ",*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'NO') {obj2.setAttribute('scrolling', 'AUTO');}
+		}
+		else if (obj.getAttribute('cols') == '22,22,*') {
+			var col = 22;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 260) {clearInterval(id2);}
+				else {
+					col = col + 17; 
+					larg_col = "22," + col + ",*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'NO') {obj2.setAttribute('scrolling', 'AUTO');}
+		}
+	}
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<script>Show_Panel();</script>
+<table border="1" cellspacing="0" cellpadding="5" width="100%">
+	<tr bgcolor=white>
+	<td width="8%" valign="top" rowspan="8" onclick="javascript:Hide_Show_Panel()" style="cursor:pointer;"><abbr lang="ENG" title="Hide/show panel"><img src="./images/left-right.png" width="10" height="27"><br><img src="./images/SearchPanel_ENG.png" width="10" height="200"></abbr></td>
+		<td width="92%" colspan="2" align="center" style="line-height:13px"><h2><sup>&nbsp;</sup>Selection results<sub>&nbsp;</sub></h2></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<div style="line-height:10px"><b class="semi">3</b> nuclides disintegrating by</div>			<div style="line-height:14px"><b class="semi">&beta;<sup>+</sup>, &epsilon;&nbsp;</b>or <b class="semi">&beta;<sup>-</sup>&nbsp;</b>or <b class="semi">I.T.&nbsp;</b>or <b class="semi">&alpha;&nbsp;</b>giving</div>			<div style="line-height:14px"><b class="semi">8</b>  emissions where</div>			<div style="line-height:14px">Energy 1: <b class="semi">1172 &LessSlantEqual; </b><b class="semi">E</b><b class="semi"> &LessSlantEqual; 1174</b> <b class="semi"> keV</b> and</div>			<div style="line-height:14px">Energy 2: <b class="semi">1332 &LessSlantEqual; </b><b class="semi">E</b><b class="semi"> &LessSlantEqual; 1334</b> <b class="semi"> keV</b></div>
+		</td>
+	</tr>
+	<FORM action="Result_Lara2.php" method="POST" target="RightFrame">
+	<tr>
+		<td colspan="2">
+			<b class="semi">Energy&nbsp;/&nbsp;Intensity&nbsp;&nbsp;(nuclide):</b><br>
+			(sorted by increasing energy)<br>
+			<SELECT name="Energy" size="8">
+				<OPTION SELECTED>1173.228&nbsp;9.98E+1&nbsp;(60Co)
+				<OPTION >1174&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.90E-1&nbsp;(133Te-M EQUI)
+				<OPTION >1174&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.90E-1&nbsp;(133Te-M)
+				<OPTION >1332.492&nbsp;10.00E+1&nbsp;(60Co)
+				<OPTION >1333.21&nbsp;&nbsp;2.41E+0&nbsp;(133Te-M EQUI)
+				<OPTION >1333.7&nbsp;&nbsp;&nbsp;1.80E-2&nbsp;(133Te-M EQUI)
+				<OPTION >1334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.80E-1&nbsp;(133Te-M)
+				<OPTION >1334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.80E-1&nbsp;(133Te-M EQUI)
+			</SELECT>
+			<INPUT type="hidden" name="Nrj1_min" 		value="1172">
+			<INPUT type="hidden" name="Nrj1_max" 		value="1174">
+			<INPUT type="hidden" name="Nrj2_min" 		value="1332">
+			<INPUT type="hidden" name="Nrj2_max" 		value="1334">
+			<INPUT type="hidden" name="Nrj3_min" 		value="">
+			<INPUT type="hidden" name="Nrj3_max" 		value="">
+			<INPUT type="hidden" name="Int_min" 		value="">
+			<INPUT type="hidden" name="Int_max" 		value="">
+			<INPUT type="hidden" name="X_emission" 	value="1">
+			<INPUT type="hidden" name="G_emission" 	value="1">
+			<INPUT type="hidden" name="A_emission" 	value="1">
+			<INPUT type="hidden" name="Data_show" 		value="True">
+			<INPUT type="hidden" name="Tools_show" 	value="True">
+			<INPUT type="hidden" name="Emi_show" 		value="True">
+			<INPUT type="hidden" name="Scheme_show" 	value="True">
+			<INPUT type="hidden" name="Sc_nrj_show" 	value="True">
+			<INPUT type="hidden" name="Chain_show" 	value="True">
+			<INPUT type="hidden" name="Reduced_chain" 	value="False">
+			<INPUT type="hidden" name="Form_Origine" 	value="2">
+		</td>
+	</tr>
+	<tr><td colspan="2" align="center"><INPUT class="button2" type="submit" value="Show emissions"></td></tr>
+	</FORM>
+	<FORM action="Result_Lara2.php" method="POST" target="RightFrame">
+	<tr>
+		<td colspan="2">
+			<b class="semi">Energy&nbsp;/&nbsp;Intensity&nbsp;&nbsp;(nuclide):</b><br>
+			(sorted by decreasing intensity)<br>
+			<SELECT name="Energy" size="8">
+				<OPTION SELECTED>1173.228&nbsp;9.98E+1&nbsp;(60Co)
+				<OPTION >1174&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.90E-1&nbsp;(133Te-M EQUI)
+				<OPTION >1174&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.90E-1&nbsp;(133Te-M)
+				<OPTION >1332.492&nbsp;10.00E+1&nbsp;(60Co)
+				<OPTION >1333.21&nbsp;&nbsp;2.41E+0&nbsp;(133Te-M EQUI)
+				<OPTION >1334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.80E-1&nbsp;(133Te-M EQUI)
+				<OPTION >1334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.80E-1&nbsp;(133Te-M)
+				<OPTION >1333.7&nbsp;&nbsp;&nbsp;1.80E-2&nbsp;(133Te-M EQUI)
+			</SELECT>
+			<INPUT type="hidden" name="Nrj1_min" 		value="1172">
+			<INPUT type="hidden" name="Nrj1_max" 		value="1174">
+			<INPUT type="hidden" name="Nrj2_min" 		value="1332">
+			<INPUT type="hidden" name="Nrj2_max" 		value="1334">
+			<INPUT type="hidden" name="Nrj3_min" 		value="">
+			<INPUT type="hidden" name="Nrj3_max" 		value="">
+			<INPUT type="hidden" name="Int_min"  		value="">
+			<INPUT type="hidden" name="Int_max" 		value="">
+			<INPUT type="hidden" name="X_emission" 	value="1">
+			<INPUT type="hidden" name="G_emission" 	value="1">
+			<INPUT type="hidden" name="A_emission" 	value="1">
+			<INPUT type="hidden" name="Data_show" 		value="True">
+			<INPUT type="hidden" name="Tools_show" 	value="True">
+			<INPUT type="hidden" name="Emi_show" 		value="True">
+			<INPUT type="hidden" name="Scheme_show" 	value="True">
+			<INPUT type="hidden" name="Sc_nrj_show" 	value="True">
+			<INPUT type="hidden" name="Chain_show" 	value="True">
+			<INPUT type="hidden" name="Reduced_chain" 	value="False">
+			<INPUT type="hidden" name="Form_Origine" 	value="2">
+		</td>
+	</tr>
+	<tr><td colspan="2" align="center"><INPUT class="button2" type="submit" value="Show emissions"></td></tr>
+	</FORM>
+	<FORM action="Result_Lara2.php" method="POST" target="RightFrame">
+	<tr>
+		<td colspan="2">
+			<b class="semi">Nuclide (half-life):</b><br>
+			<SELECT name="Nuclide[]" MULTIPLE size="3">
+				<OPTION SELECTED VALUE="60Co">60Co&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5.2711 a)
+				<OPTION  VALUE="133Te-M EQUI">133Te-M EQUI&nbsp;(55.4 min)
+				<OPTION  VALUE="133Te-M">133Te-M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(55.4 min)
+			</SELECT>
+			<br>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr><td colspan="2" style="line-height:5px">&nbsp;</td></tr>
+				<!-- Energy threshold (keV): -->
+				<tr>
+					<td colspan="2"><b class="semi">Energy threshold (keV):</b></td>
+										<td colspan="2">&nbsp;<INPUT type="text" value="" name="Nrj_thd" size="5"></td>
+				</tr>
+
+				<!-- Intensity threshold (%): -->
+				<tr>
+					<td colspan="2"><b class="semi">Intensity threshold (%):</b></td>
+										<td colspan="2">&nbsp;<INPUT type="text" value="" name="Int_thd" size="5"></td>
+				</tr>
+
+				<!-- Scheme show: -->
+
+<!-- ChD - Juin 2018 -->
+<!-- On affiche tout par défaut, y compris le schéma. À l'utilisateur de masquer ce qu'il souhaite ensuite --> 
+<!--				<tr>
+					<td colspan="2"><b class="semi"></b></td>
+-->				
+					 		<!-- CHECKED par défaut, si pas de cookie présent -->
+							<!-- CHECKED par défaut, si pas de cookie présent -->
+<!--					<td colspan="2"><sub><INPUT type="checkbox" value ="1" name="Scheme_show" ></sub></td>
+				</tr>
+-->
+<!-- Fin de "On affiche tout par défaut, y compris le schéma. À l'utilisateur de masquer ce qu'il souhaite ensuite" --> 
+			</table>
+
+			<INPUT type="hidden" name="Nrj1_min"    	value="1172">
+			<INPUT type="hidden" name="Nrj1_max"    	value="1174">
+			<INPUT type="hidden" name="Nrj1_aff"    	value="1172 < E1 < 1174 keV">
+			<INPUT type="hidden" name="Nrj2_min"    	value="1332">
+			<INPUT type="hidden" name="Nrj2_max"    	value="1334">
+			<INPUT type="hidden" name="Nrj2_aff"    	value="1332 < E2 < 1334 keV">
+			<INPUT type="hidden" name="Nrj3_min"    	value="">
+			<INPUT type="hidden" name="Nrj3_max"    	value="">
+			<INPUT type="hidden" name="Nrj3_aff"    	value="">
+			<INPUT type="hidden" name="Int_min"     	value="">
+			<INPUT type="hidden" name="Int_max"     	value="">
+			<INPUT type="hidden" name="Int_aff"    		value="">
+			<INPUT type="hidden" name="X_emission"  	value="1">
+			<INPUT type="hidden" name="G_emission"  	value="1">
+			<INPUT type="hidden" name="A_emission"  	value="1">
+			<INPUT type="hidden" name="Data_show"   	value="True">
+			<INPUT type="hidden" name="Emi_show"    	value="True">
+			<INPUT type="hidden" name="Tools_show"  	value="True">
+			<INPUT type="hidden" name="Chain_show"  	value="True">
+			<INPUT type="hidden" name="Reduced_chain"  	value="False">
+			<INPUT type="hidden" name="Scheme_show"  	value="True">
+			<INPUT type="hidden" name="Sc_nrj_show"  	value="True">
+			<INPUT type="hidden" name="Form_Origine" 	value="2">
+		</td>
+	</tr>
+		<tr><td colspan="2" align="center">
+<!-- Show emissions & Scheme only -->
+			<b></b>			<INPUT class="button2" name="Show_data" type="submit" value="Show emissions" onclick='this.form.target="RightFrame";'>
+			&nbsp;
+			<INPUT class="button2" name="Show_scheme_only" type="submit" value="Show scheme only" onclick='this.form.target="_blank";'>
+		</td></tr>
+	</FORM>
+
+	
+</table>
+</BODY>
+</HTML>

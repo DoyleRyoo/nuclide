@@ -1,0 +1,122 @@
+// QA-01 반사실 프로브. 저장소 파일은 건드리지 않는다.
+// mode "asis": 그대로 실행 (이 PC에는 사용자 글꼴로 Pretendard가 설치되어 있음)
+// mode "noLocal": 프로브 브라우저가 받는 JS/CSS 응답에서 글꼴 목록의 로컬 `Pretendard` 항목만
+//   존재하지 않는 이름으로 바꿔, 로컬 Pretendard가 없는 PC를 흉내 낸다. 웹 글꼴 'Pretendard Variable'은 그대로.
+// 판정은 e2e/rulers.spec.ts:128-155 와 같은 조건(--ruler-w 변화, .map-meta x > --ruler-w)으로 한다.
+const { chromium, firefox, webkit, devices } = require('D:/000_rd_workspace/998_nuclide/node_modules/@playwright/test');
+const fs = require('fs');
+
+const BASE = 'http://127.0.0.1:4173/';
+const projects = [
+  { name: 'chromium', type: chromium, use: devices['Desktop Chrome'] },
+  { name: 'firefox', type: firefox, use: devices['Desktop Firefox'] },
+  { name: 'webkit', type: webkit, use: devices['Desktop Safari'] },
+  { name: 'mobile-chromium', type: chromium, use: devices['Pixel 7'] },
+  { name: 'mobile-webkit', type: webkit, use: devices['iPhone 14'] },
+];
+
+const read = () => {
+  const app = document.querySelector('.app');
+  const draws = window.__draws.filter((d) => d.align === 'right');
+  const meta = document.querySelector('.map-meta')?.getBoundingClientRect();
+  return {
+    t: performance.now(),
+    rulerW: getComputedStyle(app).getPropertyValue('--ruler-w'),
+    rootFontSize: getComputedStyle(document.documentElement).fontSize,
+    safeLeftRaw: getComputedStyle(document.documentElement).getPropertyValue('--safe-left'),
+    rulerFont: draws[0]?.font ?? null,
+    widestRightLabelWidth: Math.max(0, ...draws.map((d) => d.width)),
+    mapMetaX: meta ? meta.x : null,
+    fontsStatus: document.fonts.status,
+  };
+};
+
+async function run(p, mode) {
+  const browser = await p.type.launch();
+  const context = await browser.newContext({ ...p.use, locale: 'ko-KR', colorScheme: 'light', reducedMotion: 'reduce' });
+  const page = await context.newPage();
+  const rewrites = [];
+  if (mode === 'noLocal') {
+    await page.route(/\/assets\/.*\.(js|css)$/, async (route) => {
+      const res = await route.fetch();
+      let body = await res.text();
+      const before = body;
+      body = body.replace(/(["'])Pretendard Variable\1,\s*Pretendard,/g, '$1Pretendard Variable$1, __NoLocalPretendard__,');
+      body = body.replace(/Pretendard Variable,\s*Pretendard,/g, 'Pretendard Variable,__NoLocalPretendard__,');
+      body = body.replace(/("Pretendard Variable"|'Pretendard Variable'),\s*Pretendard,/g, '$1,__NoLocalPretendard__,');
+      if (body !== before) rewrites.push(route.request().url().split('/').pop());
+      await route.fulfill({ response: res, body });
+    });
+  }
+  await page.addInitScript(() => {
+    window.__draws = [];
+    window.__sets = [];
+    const of = CanvasRenderingContext2D.prototype.fillText;
+    const oc = CanvasRenderingContext2D.prototype.clearRect;
+    CanvasRenderingContext2D.prototype.clearRect = function (...a) {
+      if (this.canvas.matches('.chart canvas:last-child')) window.__draws = [];
+      return oc.apply(this, a);
+    };
+    CanvasRenderingContext2D.prototype.fillText = function (label, x, y) {
+      if (this.canvas.matches('.chart canvas:last-child'))
+        window.__draws.push({ label, x, width: this.measureText(label).width, font: this.font, align: this.textAlign });
+      return of.call(this, label, x, y);
+    };
+    const sp = CSSStyleDeclaration.prototype.setProperty;
+    CSSStyleDeclaration.prototype.setProperty = function (n, v, pr) {
+      if (n === '--ruler-w') window.__sets.push({ t: performance.now(), v });
+      return sp.call(this, n, v, pr);
+    };
+  });
+  let release;
+  const gate = new Promise((r) => (release = r));
+  await page.route('**/*.woff2', async (route) => {
+    await gate;
+    await route.continue();
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${BASE}?nuclide=Og-294`, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => document.querySelectorAll('.chart canvas').length === 2 && window.__draws.length > 0);
+  await page.waitForTimeout(1000);
+  const before = await page.evaluate(read);
+  release();
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+  // 테스트의 expect.poll 기본 제한(5 s) 안에서 변화를 기다린다.
+  let after;
+  const deadline = Date.now() + 5000;
+  do {
+    await page.waitForTimeout(250);
+    after = await page.evaluate(read);
+  } while (after.rulerW === before.rulerW && Date.now() < deadline);
+  const sets = await page.evaluate(() => window.__sets);
+  await browser.close();
+  const changed = after.rulerW !== before.rulerW;
+  return {
+    project: p.name,
+    mode,
+    rewrittenAssets: rewrites,
+    before,
+    after,
+    rulerSets: sets.map((s) => ({ t: Math.round(s.t), v: s.v })),
+    testCondition1_rulerWChanged: changed,
+    testCondition2_mapMetaRightOfRuler: after.mapMetaX > parseFloat(after.rulerW),
+    wouldPass: changed && after.mapMetaX > parseFloat(after.rulerW),
+  };
+}
+
+(async () => {
+  const results = [];
+  for (const mode of ['asis', 'noLocal']) {
+    for (const p of projects) {
+      const r = await run(p, mode);
+      results.push(r);
+      console.log(
+        mode.padEnd(8),
+        p.name.padEnd(16),
+        `before ${r.before.rulerW} (${r.before.rulerFont}) -> after ${r.after.rulerW}`,
+        `| root ${r.after.rootFontSize} | wouldPass ${r.wouldPass} | rewritten ${r.rewrittenAssets.length}`,
+      );
+    }
+  }
+  fs.writeFileSync(process.argv[2], JSON.stringify({ capturedAt: new Date().toISOString(), base: BASE, results }, null, 2));
+})();

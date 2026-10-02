@@ -1,0 +1,117 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도" [active]
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "18"
+    - text: Na
+    - heading "소듐-18" [level=2]
+    - paragraph:
+      - generic: Sodium-18
+      - generic: NUBASE2020
+    - generic: Z 11
+    - generic: N 7
+    - generic: A 18
+    - generic: 양성자 방출
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 1.3 ± 0.4 zs
+    - term: 자연 존재비
+    - definition: —
+    - term: 스핀·패리티
+    - definition:
+      - text: 1−
+      - generic: 추정
+    - term: 발견 연도
+    - definition: "2004"
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: p
+      - generic: "?"
+      - button "→ 17Ne":
+        - text: →
+        - superscript: "17"
+        - text: Ne
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: 25,040 ± 90
+    - term: 원자 질량 (u)
+    - definition: 18.02688 ± 0.00010
+    - term: 핵자당 결합에너지
+    - definition: 6,202.2 ± 5.2
+    - term: Qα
+    - definition: −9,350 ± 100
+    - term: QEC
+    - definition: 19,720 ± 94
+    - term: Sn
+    - definition: 17,750 ± 110
+    - term: Sp
+    - definition: −1,249 ± 94
+    - term: S2p
+    - definition: 215 ± 94
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - generic: Na-18 · Z 11, N 7 · 선택됨

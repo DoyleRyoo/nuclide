@@ -1,0 +1,194 @@
+{
+ "sources": {
+  "nubase2020_ascii": {
+   "file": "data/raw/nubase_4.mas20.txt",
+   "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859",
+   "live_mirror_url": "https://www-nds.iaea.org/amdc/ame2020/nubase_4.mas20.txt",
+   "live_mirror_sha256_2026-10-02T11:30+09:00": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+  },
+  "nubase2020_pdf": {
+   "url": "https://www-nds.iaea.org/amdc/ame2020/NUBASE2020.pdf",
+   "sha256": "e60a8dc17c96e443c394d8cbc5906e8be689c435300eed1fd215cdc9647148d2",
+   "text": "pdftotext -raw (Table I 행·주석) / -layout (본문)",
+   "pdftotext": "pdftotext version 4.06 [www.xpdfreader.com]",
+   "cutoff_quote": "All experimental data available to the authors by October 30, 2020 were considered. (§1, p.030001-2)"
+  },
+  "nubase2016_ascii": {
+   "url": "https://www-nds.iaea.org/amdc/ame2016/nubase2016.txt",
+   "sha256": "f3d08e4af75892ec4626805ca3465b7925144d53e0bfee713f664c2abd4dd7c4",
+   "queried_at": "2026-10-02T11:37:00+09:00"
+  },
+  "livechart_bulk": "tools/livechart-diff/livechart_ground_states.csv (1차와 같은 2026-10-01 수신본)",
+  "app_values": "docs/conformity-inspection-2026-10-02/evidence/nuclides-export.json (1차 생성)"
+ },
+ "items": {
+  "164Ho": {
+   "nubase2020_ascii": [
+    "164 0670   164Ho  -64980.5        1.4                                  28.8    m 0.5    1+*           17          1938 EC=61 1;B+=39 1"
+   ],
+   "nubase2020_pdf_tableI": [
+    "164Ho -64980.5 1.4 28.8 m 0.5 1+ 17 1938 =61 1;+=39 1"
+   ],
+   "nubase2016_ascii": [
+    "164 0670   164Ho  -64981.5      1.5                           29      m 1      1+            01          1938 EC=60 5;B-=40 5"
+   ],
+   "livechart": {
+    "half_life": "28.8",
+    "unc_hl": "5",
+    "unit_hl": "m",
+    "decay_1": "EC+B+",
+    "decay_1_%": "60",
+    "unc_1": "5",
+    "decay_2": "B-",
+    "decay_2_%": "40",
+    "unc_2": "5",
+    "qec": "987.132",
+    "qbm": "962.0559",
+    "ENSDFpublicationcut-off": "30-Nov-2017",
+    "ENSDFauthors": "BALRAJ SINGH AND JUN CHEN{+#}"
+   },
+   "app": {
+    "half_life_display": "28.8 ± 0.5 min",
+    "decay_display": "EC 61 ± 1 %; β+ 39 ± 1 %",
+    "primary": "beta+",
+    "qEC": "987.1 ± 1.4",
+    "qBetaMinus": "962.1 ± 1.4"
+   }
+  },
+  "182Pt": {
+   "nubase2020_ascii": [
+    "182 0780   182Pt  -36168         13                                     2.67   m 0.12   0+            15          1963 B+=0.962 2;A=0.038 2"
+   ],
+   "nubase2020_pdf_tableI": [
+    "182Pt -36168 13 2.67 m 0.12 0+ 15 1963 +=0.962 2;=0.038 2"
+   ],
+   "nubase2016_ascii": [
+    "182 0780   182Pt  -36168       13                              2.67   m 0.12   0+            15          1963 B+~100;A=0.038 2"
+   ],
+   "livechart": {
+    "half_life": "2.67",
+    "unc_hl": "12",
+    "unit_hl": "m",
+    "decay_1": "EC+B+",
+    "decay_1_%": "99.962",
+    "unc_1": "0.002",
+    "decay_2": "A",
+    "decay_2_%": "0.038",
+    "unc_2": "0.002",
+    "qec": "2883.262",
+    "qbm": "-7864.4447",
+    "ENSDFpublicationcut-off": "15-Jul-2015",
+    "ENSDFauthors": "BALRAJ SINGH"
+   },
+   "app": {
+    "half_life_display": "2.67 ± 0.12 min",
+    "decay_display": "β+ 0.962 ± 0.002 %; α 0.038 ± 0.002 %",
+    "primary": "beta+",
+    "qEC": "2,883 ± 25",
+    "qBetaMinus": "−7,864 ± 23"
+   }
+  },
+  "151Ho": {
+   "nubase2020_ascii": [
+    "151 0670   151Ho  -63623          8                                    35.2    s 0.1    11/2-*        09          1963 B+=88 3;A=22 3"
+   ],
+   "nubase2020_pdf_tableI": [
+    "151Ho -63623 8 35.2 s 0.1 11/2- 09 87NeZZ J 1963 +=88 3;=22 3"
+   ],
+   "nubase2016_ascii": [
+    "151 0670   151Ho  -63623        8                             35.2    s 0.1    11/2(-)       09 87Ne.Aj  1963 B+=?;A=22 3"
+   ],
+   "livechart": {
+    "half_life": "35.2",
+    "unc_hl": "1",
+    "unit_hl": "s",
+    "decay_1": "EC+B+",
+    "decay_1_%": "78",
+    "unc_1": "3",
+    "decay_2": "A",
+    "decay_2_%": "22",
+    "unc_2": "3",
+    "qec": "5129.642",
+    "qbm": "-5356.4558",
+    "ENSDFpublicationcut-off": "20-Nov-2008",
+    "ENSDFauthors": "BALRAJ SINGH"
+   },
+   "app": {
+    "half_life_display": "35.2 ± 0.1 s",
+    "decay_display": "β+ 88 ± 3 %; α 22 ± 3 %",
+    "primary": "beta+",
+    "qEC": "5,129.6 ± 8.8",
+    "qBetaMinus": "−5,356 ± 18"
+   }
+  },
+  "138Cs": {
+   "nubase2020_ascii": [
+    "138 0550   138Cs  -82887          9                                    33.5    m 0.2    3-*           17          1943 B-=100"
+   ],
+   "nubase2020_pdf_tableI": [
+    "138Cs -82887 9 33.5 m 0.2 3- 17 1943 -=100",
+    "138Cs J : 67St22,78Sc27,79Bo01=3",
+    "138Cs J : 81Th06=6"
+   ],
+   "nubase2016_ascii": [
+    "138 0550   138Cs  -82887        9                             33.41   m 0.18   3-            03          1943 B-=100"
+   ],
+   "livechart": {
+    "half_life": "32.5",
+    "unc_hl": "2",
+    "unit_hl": "m",
+    "decay_1": "B-",
+    "decay_1_%": "100",
+    "unc_1": "",
+    "decay_2": "",
+    "decay_2_%": "",
+    "unc_2": "",
+    "qec": "-2914.784",
+    "qbm": "5374.7776",
+    "ENSDFpublicationcut-off": "30-Sep-2017",
+    "ENSDFauthors": "JUN CHEN"
+   },
+   "app": {
+    "half_life_display": "33.5 ± 0.2 min",
+    "decay_display": "β− 100 %",
+    "primary": "beta-",
+    "qEC": "−2,914.8 ± 9.6",
+    "qBetaMinus": "5,374.8 ± 9.2"
+   }
+  },
+  "217Pa": {
+   "nubase2020_ascii": [
+    "217 0910   217Pa   17055         12                                     3.8   ms 0.2    9/2-          18          1968 A=100;B- ?"
+   ],
+   "nubase2020_pdf_tableI": [
+    "217Pa 17055 12 3.8 ms0.2 9/2- 18 1968 =100;- ?",
+    "217Pa J : favored  decay to 213Ac (J=9/2-)"
+   ],
+   "nubase2016_ascii": [
+    "217 0910   217Pa   17068       16                              3.48  ms 0.09   9/2-#         03 02He29t  1968 A=100;B=0.0024#"
+   ],
+   "livechart": {
+    "half_life": "3.8",
+    "unc_hl": "2",
+    "unit_hl": "ms",
+    "decay_1": "A",
+    "decay_1_%": "100",
+    "unc_1": "",
+    "decay_2": "",
+    "decay_2_%": "",
+    "unc_2": "",
+    "qec": "4848.968",
+    "qbm": "-5916",
+    "ENSDFpublicationcut-off": "1-DEC-2017",
+    "ENSDFauthors": "BALRAJ SINGH"
+   },
+   "app": {
+    "half_life_display": "3.8 ± 0.2 ms",
+    "decay_display": "α 100 %; β− ?",
+    "primary": "alpha",
+    "qEC": "4,849 ± 16",
+    "qBetaMinus": "−5,916# ± 81"
+   }
+  }
+ }
+}

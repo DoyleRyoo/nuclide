@@ -1,0 +1,517 @@
+[
+  {
+    "case": "rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-chromium",
+    "fontRequests": [
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.91-Csm0YNoH.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.690Z",
+        "time": 464.368,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.90-BF7RiZjm.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.690Z",
+        "time": 465.037,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.83-DF-zBLLe.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.689Z",
+        "time": 468.164,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.89-DOzqWPpX.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.698Z",
+        "time": 463.891,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.88-CqX6JSgh.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.698Z",
+        "time": 463.387,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.79-XpoyPP38.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.699Z",
+        "time": 462.844,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.82-BgAHe30u.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.858Z",
+        "time": 309.453,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.84-Brb8EsYQ.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.861Z",
+        "time": 307.71500000000003,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.85-Byo_x2hf.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.712Z",
+        "time": 459.223,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.80-DsV9Qp_h.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.866Z",
+        "time": 304.293,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.73-DMrK970F.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.979Z",
+        "time": 172.043,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.71-DuPZj8us.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.985Z",
+        "time": 166.33499999999998,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.86-XG7lTN_6.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.702Z",
+        "time": 488.801,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.87-Lzui2vbK.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:27:27.700Z",
+        "time": 505.807,
+        "failure": null
+      }
+    ]
+  },
+  {
+    "case": "rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-firefox",
+    "fontRequests": [
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.91-Csm0YNoH.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.442Z",
+        "time": 4.021,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.83-DF-zBLLe.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.443Z",
+        "time": 4.418,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.88-CqX6JSgh.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.443Z",
+        "time": 3.5719999999999996,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.89-DOzqWPpX.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.443Z",
+        "time": 3.8209999999999997,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.90-BF7RiZjm.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.443Z",
+        "time": 5.015,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.87-Lzui2vbK.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.443Z",
+        "time": 8.501999999999999,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.79-XpoyPP38.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.444Z",
+        "time": 9.605,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.86-XG7lTN_6.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.444Z",
+        "time": 9.224,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.85-Byo_x2hf.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.444Z",
+        "time": 9.231,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.84-Brb8EsYQ.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.745Z",
+        "time": 5.965,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.82-BgAHe30u.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.745Z",
+        "time": 10.101999999999999,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.80-DsV9Qp_h.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.744Z",
+        "time": 4.418,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.71-DuPZj8us.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.748Z",
+        "time": 2.981,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.73-DMrK970F.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:28:30.747Z",
+        "time": 4.016,
+        "failure": null
+      }
+    ]
+  },
+  {
+    "case": "rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-mobile-chromium",
+    "fontRequests": [
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.83-DF-zBLLe.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.780Z",
+        "time": 441.94000000000005,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.90-BF7RiZjm.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.782Z",
+        "time": 440.826,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.91-Csm0YNoH.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.782Z",
+        "time": 441.552,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.89-DOzqWPpX.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.792Z",
+        "time": 436.629,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.88-CqX6JSgh.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.792Z",
+        "time": 436.202,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.79-XpoyPP38.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.794Z",
+        "time": 434.694,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.87-Lzui2vbK.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.795Z",
+        "time": 427.14599999999996,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.86-XG7lTN_6.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.798Z",
+        "time": 424.774,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.85-Byo_x2hf.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.810Z",
+        "time": 414.639,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.82-BgAHe30u.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.962Z",
+        "time": 262.163,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.84-Brb8EsYQ.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.964Z",
+        "time": 260.012,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.80-DsV9Qp_h.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:39.966Z",
+        "time": 258.59999999999997,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.73-DMrK970F.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:40.070Z",
+        "time": 153.863,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.71-DuPZj8us.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:30:40.073Z",
+        "time": 150.661,
+        "failure": null
+      }
+    ]
+  },
+  {
+    "case": "rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-mobile-webkit",
+    "fontRequests": [
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.91-Csm0YNoH.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.243Z",
+        "time": 588.074,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.83-DF-zBLLe.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.281Z",
+        "time": 550.04,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.88-CqX6JSgh.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.281Z",
+        "time": 550.024,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.89-DOzqWPpX.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.281Z",
+        "time": 551.711,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.90-BF7RiZjm.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.281Z",
+        "time": 552.785,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.79-XpoyPP38.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.282Z",
+        "time": 553.8389999999999,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.87-Lzui2vbK.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.282Z",
+        "time": 556.722,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.86-XG7lTN_6.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.282Z",
+        "time": 557.3389999999999,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.85-Byo_x2hf.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.282Z",
+        "time": 557.414,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.82-BgAHe30u.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.410Z",
+        "time": 428.93499999999995,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.84-Brb8EsYQ.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.410Z",
+        "time": 428.85699999999997,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.80-DsV9Qp_h.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.410Z",
+        "time": 429.831,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.71-DuPZj8us.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.673Z",
+        "time": 168.839,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.73-DMrK970F.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:32:12.673Z",
+        "time": 169.149,
+        "failure": null
+      }
+    ]
+  },
+  {
+    "case": "rulers-늦은-웹-글꼴-로드-뒤-눈금자-폭과-클릭-여백이-함께-갱신된다-webkit",
+    "fontRequests": [
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.91-Csm0YNoH.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.059Z",
+        "time": 475.077,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.83-DF-zBLLe.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.082Z",
+        "time": 452.467,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.88-CqX6JSgh.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.082Z",
+        "time": 452.507,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.89-DOzqWPpX.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.082Z",
+        "time": 454.77,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.90-BF7RiZjm.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.082Z",
+        "time": 454.981,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.79-XpoyPP38.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.082Z",
+        "time": 454.79,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.86-XG7lTN_6.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.082Z",
+        "time": 460.023,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.85-Byo_x2hf.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.082Z",
+        "time": 460.32,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.87-Lzui2vbK.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.082Z",
+        "time": 460.46299999999997,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.82-BgAHe30u.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.190Z",
+        "time": 352.88,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.84-Brb8EsYQ.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.190Z",
+        "time": 353.84499999999997,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.80-DsV9Qp_h.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.190Z",
+        "time": 353.919,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.73-DMrK970F.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.358Z",
+        "time": 186.913,
+        "failure": null
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/PretendardVariable.subset.71-DuPZj8us.woff2",
+        "status": 200,
+        "started": "2026-10-02T01:29:46.358Z",
+        "time": 187.44,
+        "failure": null
+      }
+    ]
+  }
+]

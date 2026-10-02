@@ -1,0 +1,148 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도" [active]
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "212"
+    - text: Bi
+    - heading "비스무트-212" [level=2]
+    - paragraph:
+      - generic: Bismuth-212
+      - generic: NUBASE2020
+    - generic: Z 83
+    - generic: N 129
+    - generic: A 212
+    - generic: β− 붕괴
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 60.55 ± 0.06 min ≈ 1시간 1분
+    - term: 자연 존재비
+    - definition: —
+    - term: 스핀·패리티
+    - definition:
+      - text: 1−
+      - generic: 측정
+    - term: 발견 연도
+    - definition: "1905"
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: β−
+      - generic: 64.06 ± 0.06 %
+      - button "→ 212Po":
+        - text: →
+        - superscript: "212"
+        - text: Po
+      - generic: α
+      - generic: 35.94 ± 0.06 %
+      - button "→ 208Tl":
+        - text: →
+        - superscript: "208"
+        - text: Tl
+      - generic: β−α
+      - generic: ~0.014 %
+      - button "→ 208Pb":
+        - text: →
+        - superscript: "208"
+        - text: Pb
+    - heading "들뜬 상태 2" [level=3]:
+      - text: 들뜬 상태
+      - generic: "2"
+    - button "212mBi 250 ± 30 keV 25.0 ± 0.2 min +":
+      - superscript: 212m
+      - text: Bi
+      - text: 250 ± 30 keV
+      - generic: 25.0 ± 0.2 min
+      - generic: +
+    - button "212m2Bi 1,479 ± 30 keV 7.0 ± 0.3 min +":
+      - superscript: 212m2
+      - text: Bi
+      - text: 1,479 ± 30 keV
+      - generic: 7.0 ± 0.3 min
+      - generic: +
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: −8,117.9 ± 1.9
+    - term: 원자 질량 (u)
+    - definition: 211.991 285 0 ± 0.000 002 0
+    - term: 핵자당 결합에너지
+    - definition: 7,803.3140 ± 0.0087
+    - term: Qα
+    - definition: 6,207.262 ± 0.028
+    - term: Qβ−
+    - definition: 2,251.5 ± 1.7
+    - term: QEC
+    - definition: −569.0 ± 1.8
+    - term: Sn
+    - definition: 4,330.1 ± 5.6
+    - term: Sp
+    - definition: 4,913.9 ± 2.7
+    - term: S2n
+    - definition: 9,468.7 ± 1.8
+    - term: S2p
+    - definition: 13,449 ± 12
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - generic: Bi-212 · Z 83, N 129 · 선택됨

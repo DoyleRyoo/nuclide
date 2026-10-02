@@ -1,0 +1,77 @@
+{
+ "summary": {
+  "sum": 5,
+  "energy": 0,
+  "energy_q": 1,
+  "ec_bplus": 1
+ },
+ "sum": [
+  {
+   "state": "54Zn",
+   "z": 1.86,
+   "n": 24,
+   "level": 0,
+   "br": "2p=87 7",
+   "sum": 87.0,
+   "sigma": 7.0
+  },
+  {
+   "state": "151Ho",
+   "z": 2.36,
+   "n": 84,
+   "level": 0,
+   "br": "B+=88 3;A=22 3",
+   "sum": 110.0,
+   "sigma": 4.2426
+  },
+  {
+   "state": "157Hf",
+   "z": 1.41,
+   "n": 85,
+   "level": 0,
+   "br": "A=94 4;B+=14 4",
+   "sum": 108.0,
+   "sigma": 5.6569
+  },
+  {
+   "state": "164Ho",
+   "z": 61.0,
+   "n": 97,
+   "level": 0,
+   "br": "EC=61 1;B+=39 1",
+   "sum": 39.0,
+   "sigma": 1.0
+  },
+  {
+   "state": "182Pt",
+   "z": 35001.79,
+   "n": 104,
+   "level": 0,
+   "br": "B+=0.962 2;A=0.038 2",
+   "sum": 1.0,
+   "sigma": 0.0028
+  }
+ ],
+ "energy": [],
+ "energy_q": [
+  {
+   "state": "217Pa",
+   "z": 91,
+   "n": 126,
+   "mode": "B-",
+   "op": "?",
+   "val": null,
+   "Q": "qBetaMinus",
+   "Q_keV": -5916.0,
+   "Q_unc": 81.0,
+   "threshold_keV": 0.0,
+   "br": "A=100;B- ?"
+  }
+ ],
+ "ec_bplus": [
+  {
+   "state": "164Ho",
+   "br": "EC=61 1;B+=39 1"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=decay_rads&nuclides=137cs&rad_types=bm",
+    "file": "137cs_decay_bm.csv",
+    "sha256": "9d6bb8c6e176e004646e1dd435170e852389c04c8ec9c59a003f54e975676f05",
+    "queried_at": "2026-10-02T10:27:00.752373+09:00"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=decay_rads&nuclides=137cs&rad_types=g",
+    "file": "137cs_decay_g.csv",
+    "sha256": "1abb121dc32e15fc778a85bf3aa98d45555c9ff519a8e0077ed598ca4bab1d74",
+    "queried_at": "2026-10-02T10:27:02.313744+09:00"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=decay_rads&nuclides=18f&rad_types=bp",
+    "file": "18f_decay_bp.csv",
+    "sha256": "bd4b8d6bc0a4da4f76a61819be53223667e516ec511335b128653b75397535c1",
+    "queried_at": "2026-10-02T10:27:03.014734+09:00"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=decay_rads&nuclides=40k&rad_types=bp",
+    "file": "40k_decay_bp.csv",
+    "sha256": "262f8ab0a15690e46f2beb071bed38c03a8ad21d2d7a865c3eaeee8e23f68dd1",
+    "queried_at": "2026-10-02T10:27:03.737924+09:00"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=decay_rads&nuclides=64cu&rad_types=bp",
+    "file": "64cu_decay_bp.csv",
+    "sha256": "7b0bd09d8148646ce7d97353a10eecd7161a1bc1fa85aae07f7ab717e287fead",
+    "queried_at": "2026-10-02T10:27:04.466056+09:00"
+  }
+]

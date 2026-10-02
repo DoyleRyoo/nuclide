@@ -1,0 +1,18 @@
+const { chromium } = require('D:/000_rd_workspace/998_nuclide/node_modules/@playwright/test');
+(async () => {
+  const b = await chromium.launch();
+  const p = await b.newPage({ viewport: { width: 1280, height: 900 }, locale: 'ko-KR', colorScheme: 'light' });
+  await p.addInitScript(() => {
+    window.__t = [];
+    const f = CanvasRenderingContext2D.prototype.fillText;
+    CanvasRenderingContext2D.prototype.fillText = function (s, x, y) { window.__t.push(String(s)); return f.call(this, s, x, y); };
+  });
+  await p.goto('http://127.0.0.1:4173/?view=46.5,38.5,128');
+  await p.waitForTimeout(1500);
+  await p.evaluate(() => document.fonts.ready);
+  await p.waitForTimeout(800);
+  const drawn = await p.evaluate(() => window.__t.filter((s) => /00\.56|0\.56/.test(s)));
+  await p.screenshot({ path: process.argv[2], clip: { x: 340, y: 250, width: 600, height: 400 } });
+  console.log(JSON.stringify(drawn));
+  await b.close();
+})();

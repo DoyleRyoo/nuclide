@@ -1,0 +1,9 @@
+{
+ "note": "NNDC NSR 링크(nsrlink.jsp?KEY,B)가 돌려준 출판사 주소. 2026-10-02 조회. 출판사 페이지 원문은 크고 쿠키 안내만 포함해 보존하지 않았다.",
+ "keys": {
+  "2004De40": {"doi": "10.1140/epja/i2003-10204-2", "journal": "The European Physical Journal A", "date": "2004-08", "title": "The beta decay of neutron-deficient rhodium and ruthenium isotopes", "used_for": "93Rh T½ 11.9(7) s — ENSDF 가중평균에 포함, NUBASE는 미포함"},
+  "2001Ki13": {"publisher_url": "https://linkinghub.elsevier.com/retrieve/pii/S0146641001001090", "used_for": "93Rh T½ 13.9(16) s — NUBASE 단일값"},
+  "1987Ra12": {"publisher_url": "https://linkinghub.elsevier.com/retrieve/pii/0168583X8790735X", "used_for": "152Cs 식별·T½ 하한(ENSDF > 50 ms)"},
+  "1993Wa03": {"doi": "10.1007/BF01290335", "journal": "Zeitschrift für Physik A", "date": "1993-03", "title": "Alpha-decay study of 188Pb and 180,182Hg", "used_for": "188Pb T½ 25.5(1) s — ENSDF 가중평균의 주성분"}
+ }
+}

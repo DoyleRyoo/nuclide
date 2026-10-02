@@ -1,0 +1,5 @@
+name	url	queried_at	http	sha256
+242am_adopted.html	https://www.nndc.bnl.gov/nudat3/getdatasetClassic.jsp?nucleus=242AM&unc=NDS	2026-10-02T11:39:52+09:00	200	534bdabe73bd67a217c7e86cb0dbbcf34c6f232e2fc320b1cde90d0fa5480822
+294og_adopted.html	https://www.nndc.bnl.gov/nudat3/getdatasetClassic.jsp?nucleus=294OG&unc=NDS	2026-10-02T11:39:54+09:00	200	280f067e707918b3621de4852ae997d0e442e14c32a51a20d07b451f8cdac853
+180ta_adopted.html	https://www.nndc.bnl.gov/nudat3/getdatasetClassic.jsp?nucleus=180TA&unc=NDS	2026-10-02T11:39:57+09:00	200	383edf90fb391b8c506bed271e7e46e1855c9bb64faf683e1818ed1871544678
+ciaaw_tantalum.html	https://www.ciaaw.org/tantalum.htm	2026-10-02T11:39:59+09:00	200	63ba1a024f94678ea6ca2da3edd4f0f0965ff2016982ee1dfb6348db39527726

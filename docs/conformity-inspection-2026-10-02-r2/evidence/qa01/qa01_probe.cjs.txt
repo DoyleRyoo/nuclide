@@ -1,0 +1,122 @@
+// QA-01 진단 프로브: 제품·테스트 코드를 수정하지 않고 외부에서 관찰만 한다.
+// e2e/rulers.spec.ts:128 과 같은 조건(woff2 지연, 390x844, Og-294)을 재현하고
+// 글꼴 상태·캔버스 측정값·--ruler-w 갱신 기록을 남긴다.
+const { chromium, firefox, webkit, devices } = require('D:/000_rd_workspace/998_nuclide/node_modules/@playwright/test');
+const fs = require('fs');
+
+const BASE = 'http://127.0.0.1:4173/';
+const FAMILY =
+  '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif';
+const FALLBACK = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif';
+
+const projects = [
+  { name: 'chromium', type: chromium, use: devices['Desktop Chrome'] },
+  { name: 'firefox', type: firefox, use: devices['Desktop Firefox'] },
+  { name: 'webkit', type: webkit, use: devices['Desktop Safari'] },
+  { name: 'mobile-chromium', type: chromium, use: devices['Pixel 7'] },
+  { name: 'mobile-webkit', type: webkit, use: devices['iPhone 14'] },
+];
+
+// 페이지 안에서 measureRulers(rulers.ts:27-66)와 같은 식으로 기대 폭을 계산한다.
+const measureInPage = ({ FAMILY, FALLBACK }) => {
+  const els = [
+    'n','H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca','Sc','Ti','V','Cr','Mn','Fe','Co','Ni','Cu','Zn','Ga','Ge','As','Se','Br','Kr','Rb','Sr','Y','Zr','Nb','Mo','Tc','Ru','Rh','Pd','Ag','Cd','In','Sn','Sb','Te','I','Xe','Cs','Ba','La','Ce','Pr','Nd','Pm','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu','Hf','Ta','W','Re','Os','Ir','Pt','Au','Hg','Tl','Pb','Bi','Po','At','Rn','Fr','Ra','Ac','Th','Pa','U','Np','Pu','Am','Cm','Bk','Cf','Es','Fm','Md','No','Lr','Rf','Db','Sg','Bh','Hs','Mt','Ds','Rg','Cn','Nh','Fl','Mc','Lv','Ts','Og',
+  ];
+  const ctx = document.createElement('canvas').getContext('2d');
+  const fs = 12; // 390px < COMPACT_WIDTH(768), textScale 1
+  const calc = (family) => {
+    let a = 0, b = 0, widestNum = '', widestSym = '';
+    for (const w of [500, 700]) {
+      ctx.font = `${w} ${fs}px ${family}`;
+      for (let z = 0; z <= 118; z++) {
+        const wn = ctx.measureText(String(z)).width;
+        if (wn > a) { a = wn; widestNum = `${z}@${w}`; }
+        const ws = ctx.measureText(els[z]).width;
+        if (ws > b) { b = ws; widestSym = `${els[z]}@${w}`; }
+      }
+    }
+    const pad = Math.max(6, fs * 0.5), gap = fs * 0.3;
+    const pillWidth = Math.ceil(a) + gap + Math.ceil(b) + 2 * pad;
+    return { aRaw: a, bRaw: b, widestNum, widestSym, rulerW: Math.ceil(2 + pillWidth + 2), unrounded: 2 + pillWidth + 2 };
+  };
+  const faces = [];
+  document.fonts.forEach((f) => { if (/Pretendard/.test(f.family)) faces.push(f.status); });
+  const statusCount = faces.reduce((m, s) => ((m[s] = (m[s] || 0) + 1), m), {});
+  return {
+    t: performance.now(),
+    rulerW: getComputedStyle(document.querySelector('.app')).getPropertyValue('--ruler-w'),
+    fontsStatus: document.fonts.status,
+    pretendardFaces: statusCount,
+    checkDigits500: document.fonts.check('500 12px "Pretendard Variable"', '0123456789'),
+    checkLatin700: document.fonts.check('700 12px "Pretendard Variable"', 'OgMcTs'),
+    appFamily: calc(FAMILY),
+    fallbackOnly: calc(FALLBACK),
+    pretendardOnly: calc('"Pretendard Variable"'),
+  };
+};
+
+(async () => {
+  const results = [];
+  for (const p of projects) {
+    const browser = await p.type.launch();
+    const context = await browser.newContext({ ...p.use, locale: 'ko-KR', colorScheme: 'light', reducedMotion: 'reduce' });
+    const page = await context.newPage();
+    await page.addInitScript(() => {
+      window.__probe = { rulerSets: [], loadingdone: [], readyAt: null };
+      const orig = CSSStyleDeclaration.prototype.setProperty;
+      CSSStyleDeclaration.prototype.setProperty = function (name, value, prio) {
+        if (name === '--ruler-w') window.__probe.rulerSets.push({ t: performance.now(), value });
+        return orig.call(this, name, value, prio);
+      };
+      document.fonts.addEventListener('loadingdone', (e) =>
+        window.__probe.loadingdone.push({ t: performance.now(), faces: e.fontfaces.length }),
+      );
+      document.fonts.ready.then(() => (window.__probe.readyAt = performance.now()));
+    });
+    let release;
+    const gate = new Promise((r) => (release = r));
+    const fontReqs = [];
+    await page.route('**/*.woff2', async (route) => {
+      fontReqs.push({ url: route.request().url().split('/').pop(), queuedAt: Date.now() });
+      await gate;
+      await route.continue();
+    });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`${BASE}?nuclide=Og-294`, { waitUntil: 'domcontentloaded' });
+    await page.waitForFunction(() => document.querySelectorAll('.chart canvas').length === 2);
+    await page.waitForTimeout(1500);
+    const before = await page.evaluate(measureInPage, { FAMILY, FALLBACK });
+    const probeBefore = await page.evaluate(() => JSON.parse(JSON.stringify(window.__probe)));
+    const requestedBeforeRelease = fontReqs.length;
+    release();
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    await page.waitForTimeout(3000);
+    const after = await page.evaluate(measureInPage, { FAMILY, FALLBACK });
+    const probeAfter = await page.evaluate(() => window.__probe);
+    results.push({
+      project: p.name,
+      browserVersion: browser.version(),
+      deviceScaleFactor: p.use.deviceScaleFactor,
+      woff2RequestedBeforeRelease: requestedBeforeRelease,
+      woff2RequestedTotal: fontReqs.length,
+      before,
+      after,
+      probeBefore,
+      probeAfter,
+      verdict: {
+        canvasWidthsChangedAfterLoad:
+          before.appFamily.aRaw !== after.appFamily.aRaw || before.appFamily.bRaw !== after.appFamily.bRaw,
+        afterAppFamilyEqualsPretendardOnly:
+          after.appFamily.aRaw === after.pretendardOnly.aRaw && after.appFamily.bRaw === after.pretendardOnly.bRaw,
+        expectedRulerW_fallback: before.appFamily.rulerW,
+        expectedRulerW_loaded: after.appFamily.rulerW,
+        observedRulerW_before: before.rulerW,
+        observedRulerW_after: after.rulerW,
+        rulerSetCalledAfterRelease: probeAfter.rulerSets.filter((s) => s.t > before.t).length,
+      },
+    });
+    console.log(p.name, JSON.stringify(results.at(-1).verdict));
+    await browser.close();
+  }
+  fs.writeFileSync(process.argv[2], JSON.stringify({ capturedAt: new Date().toISOString(), base: BASE, results }, null, 2));
+})();

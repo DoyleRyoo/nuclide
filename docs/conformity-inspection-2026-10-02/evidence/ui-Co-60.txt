@@ -1,0 +1,130 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도" [active]
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "60"
+    - text: Co
+    - heading "코발트-60" [level=2]
+    - paragraph:
+      - generic: Cobalt-60
+      - generic: NUBASE2020
+    - generic: Z 27
+    - generic: N 33
+    - generic: A 60
+    - generic: β− 붕괴
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 5.2714 ± 0.0006 y ≈ 5.27년
+    - term: 자연 존재비
+    - definition: —
+    - term: 스핀·패리티
+    - definition:
+      - text: 5+
+      - generic: 측정
+    - term: 발견 연도
+    - definition: "1941"
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: β−
+      - generic: 100 %
+      - button "→ 60Ni":
+        - text: →
+        - superscript: "60"
+        - text: Ni
+    - heading "들뜬 상태 1" [level=3]:
+      - text: 들뜬 상태
+      - generic: "1"
+    - button "60mCo 58.59 ± 0.01 keV 10.467 ± 0.006 min +":
+      - superscript: 60m
+      - text: Co
+      - text: 58.59 ± 0.01 keV
+      - generic: 10.467 ± 0.006 min
+      - generic: +
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: −61,650.4 ± 0.4
+    - term: 원자 질량 (u)
+    - definition: 59.933 815 54 ± 0.000 000 43
+    - term: 핵자당 결합에너지
+    - definition: 8,746.7692 ± 0.0067
+    - term: Qα
+    - definition: −7,163.69 ± 0.38
+    - term: Qβ−
+    - definition: 2,822.81 ± 0.21
+    - term: QEC
+    - definition: −237.3 ± 3.4
+    - term: Sn
+    - definition: 7,491.918 ± 0.071
+    - term: Sp
+    - definition: 8,274.45 ± 0.38
+    - term: S2n
+    - definition: 17,945.8 ± 1.1
+    - term: S2p
+    - definition: 20,400.8 ± 2.7
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - generic: Co-60 · Z 27, N 33 · 선택됨

@@ -1,0 +1,421 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<LINK REL="stylesheet" HREF="styles/Lara.css" TYPE="text/css">
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+<SCRIPT language="javascript">
+function Hide_Show_Panel() {
+	if (parent.document.getElementById)	{
+		var obj = parent.document.getElementById('MainFrame');   
+		var obj2 = parent.document.getElementById('LeftFrame');   
+		if (obj.getAttribute('cols') == '322,260,*') {
+			var col = 322;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 22) {clearInterval(id2);}
+				else {
+					col = col - 30; 
+					larg_col = col + ",260,*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'AUTO') {obj2.setAttribute('scrolling', 'NO');}
+		}
+		else if (obj.getAttribute('cols') == '322,22,*') {
+			var col = 322;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 22) {clearInterval(id2);}
+				else {
+					col = col - 30; 
+					larg_col = col + ",22,*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'AUTO') {obj2.setAttribute('scrolling', 'NO');}
+		}
+		else if (obj.getAttribute('cols') == '22,260,*') {
+			var col = 22;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 322) {clearInterval(id2);}
+				else {
+					col = col + 30; 
+					larg_col = col + ",260,*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'NO') {obj2.setAttribute('scrolling', 'AUTO');}
+		}
+		else if (obj.getAttribute('cols') == '22,22,*') {
+			var col = 22;
+			var id2 = setInterval(frame, 1);
+			function frame() {
+				if (col == 322) {clearInterval(id2);}
+				else {
+					col = col + 30; 
+					larg_col = col + ",22,*";
+					obj.setAttribute('cols', larg_col);
+				}
+			}
+			if (obj2.getAttribute('scrolling') == 'NO') {obj2.setAttribute('scrolling', 'AUTO');}
+		}
+	}
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<table border="1" cellspacing="0" cellpadding="5" width="100%">
+<!--Nucléide-Lara / Library for gamma and alpha emissions -->
+		<tr bgcolor=white>
+		<td width="11" valign="top" align="center" rowspan="10" onclick="javascript:Hide_Show_Panel()" style="cursor:pointer;">
+			<abbr lang="ENG" title="Hide/show panel"><img src="./images/left-right.png" width="10" height="27"><br><img src="./images/MainPanel_ENG.png" width="10" height="200"></abbr>
+		</td>
+		<td align="center" style="line-height:13px"><h2>Nucl&eacute;ide - Lara</h2>Library for gamma and alpha emissions</td>
+	</tr>
+<FORM action="Result_Lara2.php" method="POST">
+<tr><td>
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<!-- Nuclide list: -->
+	<tr>
+		<td valign="top">
+			<b class="semi">Nuclide list:</b><br>
+			<SELECT name="Nuclide[]" MULTIPLE size="5">
+			<OPTION >3H</OPTION><OPTION >6He</OPTION><OPTION >7Be</OPTION><OPTION >10Be</OPTION><OPTION >11C</OPTION><OPTION >13N</OPTION><OPTION >14C</OPTION><OPTION >15O</OPTION><OPTION >16N</OPTION><OPTION >18F</OPTION><OPTION >19O</OPTION><OPTION >22Na</OPTION><OPTION >23Ne</OPTION><OPTION >24Na</OPTION><OPTION >24Na-M</OPTION><OPTION >26Al</OPTION><OPTION >27Mg</OPTION><OPTION >28Mg</OPTION><OPTION >28Al</OPTION><OPTION >31Si</OPTION><OPTION >32P</OPTION><OPTION >33P</OPTION><OPTION >35S</OPTION><OPTION >36Cl</OPTION><OPTION >37S</OPTION><OPTION >37Ar</OPTION><OPTION >38Cl</OPTION><OPTION >40K</OPTION><OPTION >41Ar</OPTION><OPTION >41Ca</OPTION><OPTION >42K</OPTION><OPTION >43K</OPTION><OPTION >44Sc</OPTION><OPTION >44Ti</OPTION><OPTION >45Ca</OPTION><OPTION >45Ti</OPTION><OPTION >46Sc</OPTION><OPTION >47Ca EQUI</OPTION><OPTION >47Ca</OPTION><OPTION >47Sc</OPTION><OPTION >48Sc</OPTION><OPTION >48V</OPTION><OPTION >49Ca</OPTION><OPTION >49Sc</OPTION><OPTION >50V</OPTION><OPTION >51Ti</OPTION><OPTION >51Cr</OPTION><OPTION >52V</OPTION><OPTION >52Mn</OPTION><OPTION >52Mn-M</OPTION><OPTION >52Fe</OPTION><OPTION >52Fe EQUI</OPTION><OPTION >54Mn</OPTION><OPTION >55Fe</OPTION><OPTION >55Co</OPTION><OPTION >56Mn</OPTION><OPTION >56Co</OPTION><OPTION >56Ni</OPTION><OPTION >57Co</OPTION><OPTION >57Ni</OPTION><OPTION >58Co-M</OPTION><OPTION >58Co</OPTION><OPTION >59Fe</OPTION><OPTION >59Ni</OPTION><OPTION >60Co</OPTION><OPTION >60Co-M</OPTION><OPTION >61Co</OPTION><OPTION >61Cu</OPTION><OPTION >63Ni</OPTION><OPTION >63Zn</OPTION><OPTION >64Cu</OPTION><OPTION >65Ni</OPTION><OPTION >65Zn</OPTION><OPTION >66Cu</OPTION><OPTION >66Ga</OPTION><OPTION >67Cu</OPTION><OPTION >67Ga</OPTION><OPTION >68Ga</OPTION><OPTION >68Ge EQUI</OPTION><OPTION >68Ge</OPTION><OPTION >69Zn</OPTION><OPTION >69Zn-M</OPTION><OPTION >72Ga</OPTION><OPTION >73As</OPTION><OPTION >73Se</OPTION><OPTION >75Se</OPTION><OPTION >76As</OPTION><OPTION >76Br</OPTION><OPTION >77Ge</OPTION><OPTION >77As</OPTION><OPTION >79Se</OPTION><OPTION >79Kr</OPTION><OPTION >80Br-M</OPTION><OPTION >80Br</OPTION><OPTION >81Kr-M</OPTION><OPTION >81Kr</OPTION><OPTION >81Rb</OPTION><OPTION >81Rb-M</OPTION><OPTION >82Br</OPTION><OPTION >82Rb</OPTION><OPTION >82Sr</OPTION><OPTION >83Br</OPTION><OPTION >83Kr-M</OPTION><OPTION >83Rb</OPTION><OPTION >84Rb</OPTION><OPTION >85Kr</OPTION><OPTION >85Kr-M</OPTION><OPTION >85Sr</OPTION><OPTION >86Br</OPTION><OPTION >86Rb</OPTION><OPTION >87Br</OPTION><OPTION >87Kr</OPTION><OPTION >87Rb</OPTION><OPTION >88Kr</OPTION><OPTION >88Rb</OPTION><OPTION >88Y</OPTION><OPTION >88Zr</OPTION><OPTION >89Kr</OPTION><OPTION >89Rb</OPTION><OPTION >89Sr</OPTION><OPTION >89Y-M</OPTION><OPTION >89Zr</OPTION><OPTION >90Kr</OPTION><OPTION >90Rb</OPTION><OPTION >90Rb-M</OPTION><OPTION >90Sr</OPTION><OPTION >90Y</OPTION><OPTION >90Y-M</OPTION><OPTION >91Kr</OPTION><OPTION >91Rb</OPTION><OPTION >91Sr</OPTION><OPTION >91Y-M</OPTION><OPTION >91Y</OPTION><OPTION >92Sr</OPTION><OPTION >92Y</OPTION><OPTION >92Nb-M</OPTION><OPTION >92Nb</OPTION><OPTION >93Y</OPTION><OPTION >93Zr</OPTION><OPTION >93Nb-M</OPTION><OPTION >93Mo</OPTION><OPTION >93Mo-M</OPTION><OPTION >94Sr</OPTION><OPTION >94Y</OPTION><OPTION >94Nb</OPTION><OPTION >94Tc-M</OPTION><OPTION >95Zr</OPTION><OPTION >95Zr EQUI</OPTION><OPTION >95Nb</OPTION><OPTION >95Nb-M</OPTION><OPTION >95Tc-M</OPTION><OPTION >95Tc</OPTION><OPTION >96Nb</OPTION><OPTION >96Tc</OPTION><OPTION >97Zr EQUI</OPTION><OPTION >97Zr</OPTION><OPTION >97Nb-M</OPTION><OPTION >97Nb</OPTION><OPTION >97Tc</OPTION><OPTION >97Ru</OPTION><OPTION >99Mo</OPTION><OPTION >99Tc</OPTION><OPTION >99Tc-M</OPTION><OPTION >101Mo</OPTION><OPTION >101Tc</OPTION><OPTION >103Ru</OPTION><OPTION >103Rh-M</OPTION><OPTION >103Pd</OPTION><OPTION >104Tc</OPTION><OPTION >105Rh</OPTION><OPTION >106Ru</OPTION><OPTION >106Ru EQUI</OPTION><OPTION >106Rh</OPTION><OPTION >107Pd-M</OPTION><OPTION >107Pd</OPTION><OPTION >108Ag-M</OPTION><OPTION >108Ag</OPTION><OPTION >109Pd</OPTION><OPTION >109Cd</OPTION><OPTION >110Ag</OPTION><OPTION >110Ag-M</OPTION><OPTION >111Ag</OPTION><OPTION >111In</OPTION><OPTION >113In-M</OPTION><OPTION >113Sn EQUI</OPTION><OPTION >113Sn</OPTION><OPTION >114In-M EQUI</OPTION><OPTION >114In-M</OPTION><OPTION >114In</OPTION><OPTION >115Cd-M</OPTION><OPTION >115Cd EQUI</OPTION><OPTION >115Cd</OPTION><OPTION >115In</OPTION><OPTION >115In-M</OPTION><OPTION >116In-M</OPTION><OPTION >117Sn-M</OPTION><OPTION >119Sn-M</OPTION><OPTION >120I</OPTION><OPTION >121Sn-M</OPTION><OPTION >121Sn</OPTION><OPTION >121Te-M</OPTION><OPTION >121Te</OPTION><OPTION >121I</OPTION><OPTION >122Sb</OPTION><OPTION >123Te-M</OPTION><OPTION >123I</OPTION><OPTION >123Xe</OPTION><OPTION >124Sb</OPTION><OPTION >124I</OPTION><OPTION >125Sn</OPTION><OPTION >125Sb</OPTION><OPTION >125Sb EQUI</OPTION><OPTION >125Te-M</OPTION><OPTION >125I</OPTION><OPTION >125Xe</OPTION><OPTION >126Sb-M</OPTION><OPTION >126Sb</OPTION><OPTION >126I</OPTION><OPTION >127Sb</OPTION><OPTION >127Te</OPTION><OPTION >127Te-M</OPTION><OPTION >127Xe</OPTION><OPTION >128I</OPTION><OPTION >129Sn-M</OPTION><OPTION >129Sb</OPTION><OPTION >129Te</OPTION><OPTION >129Te-M</OPTION><OPTION >129I</OPTION><OPTION >129Xe-M</OPTION><OPTION >131Te</OPTION><OPTION >131Te-M</OPTION><OPTION >131Te-M EQUI</OPTION><OPTION >131I</OPTION><OPTION >131Xe-M</OPTION><OPTION >131Cs</OPTION><OPTION >131Ba</OPTION><OPTION >132Sb-M</OPTION><OPTION >132Sb</OPTION><OPTION >132Te</OPTION><OPTION >132I-M</OPTION><OPTION >132I</OPTION><OPTION >132Xe-M</OPTION><OPTION >133Te-M EQUI</OPTION><OPTION >133Te</OPTION><OPTION >133Te-M</OPTION><OPTION >133I</OPTION><OPTION >133Xe-M</OPTION><OPTION >133Xe</OPTION><OPTION >133Ba</OPTION><OPTION >134Te</OPTION><OPTION >134I</OPTION><OPTION >134Cs-M</OPTION><OPTION >134Cs</OPTION><OPTION >135I</OPTION><OPTION >135I EQUI</OPTION><OPTION >135Xe-M</OPTION><OPTION >135Xe</OPTION><OPTION >135Cs</OPTION><OPTION >135Ba-M</OPTION><OPTION >136Cs</OPTION><OPTION >136Ba-M</OPTION><OPTION >137I</OPTION><OPTION >137Xe</OPTION><OPTION >137Cs</OPTION><OPTION >137Ba-M</OPTION><OPTION >138I</OPTION><OPTION >138Xe</OPTION><OPTION >138Cs</OPTION><OPTION >138La</OPTION><OPTION >139Xe</OPTION><OPTION >139Cs</OPTION><OPTION >139Ba</OPTION><OPTION >139Ce</OPTION><OPTION >140Xe</OPTION><OPTION >140Cs</OPTION><OPTION >140Ba</OPTION><OPTION >140Ba EQUI</OPTION><OPTION >140La</OPTION><OPTION >141Ba</OPTION><OPTION >141La</OPTION><OPTION >141Ce</OPTION><OPTION >142Pr</OPTION><OPTION >143Cs</OPTION><OPTION >143Ba</OPTION><OPTION >143La</OPTION><OPTION >143Ce</OPTION><OPTION >143Pr</OPTION><OPTION >144Ce EQUI</OPTION><OPTION >144Ce</OPTION><OPTION >144Pr-M</OPTION><OPTION >144Pr</OPTION><OPTION >144Nd</OPTION><OPTION >146Pm</OPTION><OPTION >146Sm</OPTION><OPTION >147Pr</OPTION><OPTION >147Nd</OPTION><OPTION >147Pm</OPTION><OPTION >147Sm</OPTION><OPTION >148Pm-M</OPTION><OPTION >148Pm</OPTION><OPTION >148Sm</OPTION><OPTION >150Eu</OPTION><OPTION >151Pm</OPTION><OPTION >151Sm</OPTION><OPTION >152Eu-M</OPTION><OPTION >152Eu</OPTION><OPTION >153Sm</OPTION><OPTION >153Gd</OPTION><OPTION >154Eu</OPTION><OPTION >155Sm</OPTION><OPTION >155Eu</OPTION><OPTION >156Eu</OPTION><OPTION >159Gd</OPTION><OPTION >160Tb</OPTION><OPTION >161Tb</OPTION><OPTION >165Dy</OPTION><OPTION >166Dy</OPTION><OPTION >166Ho</OPTION><OPTION >166Ho-M</OPTION><OPTION >169Er</OPTION><OPTION >169Yb</OPTION><OPTION >169Yb-M</OPTION><OPTION >170Tm</OPTION><OPTION >171Er</OPTION><OPTION >171Tm</OPTION><OPTION >175Yb</OPTION><OPTION >175Hf</OPTION><OPTION >176Lu</OPTION><OPTION >176Lu-M</OPTION><OPTION >177Lu</OPTION><OPTION >177Lu-M</OPTION><OPTION >178Ta</OPTION><OPTION >178W</OPTION><OPTION >179Ta</OPTION><OPTION >181Hf</OPTION><OPTION >181W</OPTION><OPTION >182Ta-M</OPTION><OPTION >182Ta</OPTION><OPTION >183Ta EQUI</OPTION><OPTION >183W</OPTION><OPTION >183W-M</OPTION><OPTION >184Re</OPTION><OPTION >184Re-M</OPTION><OPTION >185W-M</OPTION><OPTION >185W</OPTION><OPTION >185Os</OPTION><OPTION >186Re</OPTION><OPTION >186Os</OPTION><OPTION >187W</OPTION><OPTION >187Re</OPTION><OPTION >188W EQUI</OPTION><OPTION >188W</OPTION><OPTION >188Re-M</OPTION><OPTION >188Re</OPTION><OPTION >191Os</OPTION><OPTION >191Ir-M</OPTION><OPTION >191Pt</OPTION><OPTION >192Ir</OPTION><OPTION >193Os</OPTION><OPTION >193Pt</OPTION><OPTION >193Pt-M</OPTION><OPTION >194Ir</OPTION><OPTION >195Pt-M</OPTION><OPTION >195Au</OPTION><OPTION >196Au</OPTION><OPTION >197Pt</OPTION><OPTION >197Pt-M</OPTION><OPTION >197Au-M</OPTION><OPTION >197Hg-M</OPTION><OPTION >197Hg</OPTION><OPTION >198Au</OPTION><OPTION >199Au</OPTION><OPTION >200Tl</OPTION><OPTION >200Pb</OPTION><OPTION >201Tl</OPTION><OPTION >201Pb</OPTION><OPTION >202Tl</OPTION><OPTION >203Hg</OPTION><OPTION >203Pb</OPTION><OPTION >204Tl</OPTION><OPTION >205Pb</OPTION><OPTION >206Hg</OPTION><OPTION >206Tl</OPTION><OPTION >206Bi</OPTION><OPTION >207Tl</OPTION><OPTION >207Bi</OPTION><OPTION >208Tl</OPTION><OPTION >209Tl</OPTION><OPTION >209Pb</OPTION><OPTION >209Bi</OPTION><OPTION >209Po</OPTION><OPTION >210Tl</OPTION><OPTION >210Pb</OPTION><OPTION >210Bi</OPTION><OPTION >210Po</OPTION><OPTION >210At</OPTION><OPTION >211Pb</OPTION><OPTION >211Bi</OPTION><OPTION >211Po-M</OPTION><OPTION >211Po</OPTION><OPTION >211At</OPTION><OPTION >212Pb</OPTION><OPTION >212Bi</OPTION><OPTION >212Po</OPTION><OPTION >213Bi</OPTION><OPTION >213Bi EQUI</OPTION><OPTION >213Po</OPTION><OPTION >214Pb</OPTION><OPTION >214Bi</OPTION><OPTION >214Po</OPTION><OPTION >215Bi</OPTION><OPTION >215Po</OPTION><OPTION >215At</OPTION><OPTION >216Po</OPTION><OPTION >216At</OPTION><OPTION >216Rn</OPTION><OPTION >217At</OPTION><OPTION >217Rn</OPTION><OPTION >218Po</OPTION><OPTION >218At</OPTION><OPTION >218Rn</OPTION><OPTION >219At</OPTION><OPTION >219Rn</OPTION><OPTION >220Rn</OPTION><OPTION >220Fr</OPTION><OPTION >220Ra</OPTION><OPTION >221Fr</OPTION><OPTION >221Ra</OPTION><OPTION >222Rn</OPTION><OPTION >223Fr</OPTION><OPTION >223Ra</OPTION><OPTION >224Fr</OPTION><OPTION >224Ra</OPTION><OPTION >224Ac</OPTION><OPTION >225Ra</OPTION><OPTION >225Ac</OPTION><OPTION >226Ra</OPTION><OPTION >226Ra EQUI</OPTION><OPTION >227Fr</OPTION><OPTION >227Ra</OPTION><OPTION >227Ac</OPTION><OPTION >227Ac EQUI</OPTION><OPTION >227Th</OPTION><OPTION >228Ra</OPTION><OPTION >228Ac</OPTION><OPTION >228Th</OPTION><OPTION >228Pa</OPTION><OPTION >229Th</OPTION><OPTION >230Th</OPTION><OPTION >231Th</OPTION><OPTION >231Pa</OPTION><OPTION >232Th EQUI</OPTION><OPTION >232Th</OPTION><OPTION >232Pa</OPTION><OPTION >232U</OPTION><OPTION >233Th</OPTION><OPTION >233Pa</OPTION><OPTION >233U EQUI</OPTION><OPTION >233U</OPTION><OPTION >234Th</OPTION><OPTION >234Pa</OPTION><OPTION >234Pa-M</OPTION><OPTION >234U</OPTION><OPTION >235U</OPTION><OPTION >235U EQUI</OPTION><OPTION >235Np</OPTION><OPTION >236U</OPTION><OPTION >236Np</OPTION><OPTION >236Np-M</OPTION><OPTION >236Pu</OPTION><OPTION >237U</OPTION><OPTION >237Np EQUI</OPTION><OPTION >237Np</OPTION><OPTION >237Pu</OPTION><OPTION >238U EQUI</OPTION><OPTION >238U</OPTION><OPTION >238Np</OPTION><OPTION >238Pu</OPTION><OPTION >239U</OPTION><OPTION >239Np</OPTION><OPTION >239Pu</OPTION><OPTION >240U</OPTION><OPTION >240Np</OPTION><OPTION >240Pu</OPTION><OPTION >240Cm</OPTION><OPTION >241Pu EQUI</OPTION><OPTION >241Pu</OPTION><OPTION >241Am</OPTION><OPTION >242Pu</OPTION><OPTION >242Am-M</OPTION><OPTION >242Am</OPTION><OPTION >242Cm</OPTION><OPTION >243Pu</OPTION><OPTION >243Am</OPTION><OPTION >243Cm</OPTION><OPTION >244Pu EQUI</OPTION><OPTION >244Pu</OPTION><OPTION >244Am-M</OPTION><OPTION >244Am</OPTION><OPTION >244Cm</OPTION><OPTION >245Am</OPTION><OPTION >245Cm</OPTION><OPTION >246Cm</OPTION><OPTION >248Cm</OPTION><OPTION >252Cf</OPTION>			</SELECT>
+		</td>
+
+	<!-- Or -->
+		<td valign="center"><br><br>or&nbsp;&nbsp;&nbsp;<br>&nbsp;</td>
+	<!-- Nuclide search: -->
+		<td valign="center">
+			<b class="semi">Nuclide, element or<br>mass number search:</b><br>
+			<INPUT type="text" name="Nuclide2" size="15"><br>
+			(e.g.: 57Co, Co-57, Co, 57)		</td>
+	</tr>
+	</table>
+	
+	<table border="0" cellspacing="0" cellpadding="0">
+	<!-- Energy threshold (keV): -->
+	<tr>
+		<td><b class="semi">Energy threshold (keV):</b></td>
+				<td>&nbsp;<INPUT type="text" value="" name="Nrj_thd" size="10"></td>
+	</tr>
+
+	<!-- Energy threshold high (keV): -->
+
+	<!-- Intensity threshold (%): -->
+	<tr>
+		<td><b class="semi">Intensity threshold (%):</b></td>
+				<td>&nbsp;<INPUT type="text" value="" name="Int_thd" size="10"></td>
+	</tr>
+
+	<!-- Coincidence threshold (%): -->
+	<tr>
+		<td><b class="semi">Coincidence threshold (%):</b></td>
+				<td>&nbsp;<INPUT type="text" value="10" name="Coinc_thd" size="10"></td>
+	</tr>
+	
+	<!-- Show gamma-gamma coincidences -->
+	<tr>
+		<td><label for="Coinc_show"><b class="semi">Show <font face="Times">&gamma;-&gamma;</font> coincidences&nbsp;</b></label></td>
+				<td><INPUT type="checkbox" value="1" id="Coinc_show" name="Coinc_show" ></td>
+	</tr>
+
+	<!-- Sort by decreasing intensity -->
+	<tr>
+		<td><label for="Sort_by_Int">Sort by decreasing intensity&nbsp;</label></td>
+				<td><INPUT type="checkbox" value="1" id="Sort_by_Int" name="Sort_by_Int" ></td>
+	</tr>
+
+	<!-- Show daughters emissions -->
+	<tr>
+		<td><label for="Dtr_emi_show"><b class="semi">Show daughter emissions&nbsp;</b></label></td>
+				<td><INPUT type="checkbox" value="1" id="Dtr_emi_show" name="Dtr_emi_show" CHECKED></td>
+	</tr>
+
+	<!-- Sort by nuclide in case of radioactive chain -->
+	<tr>
+		<td><label for="Sort_by_Nuc">Sort by nuclide if in chain&nbsp;</label></td>
+				<td><INPUT type="checkbox" value="1" id="Sort_by_Nuc" name="Sort_by_Nuc" CHECKED></td>
+	</tr>
+
+	</table>
+
+	<table>
+<!-- Display results: Infos / Emissions / Scheme -->
+	<tr><td>
+	Display:<sup>&nbsp;</sup><sub>&nbsp;</sub>	</td></tr>
+	<tr><td>&nbsp;
+		<label><sub><INPUT type="checkbox" value="1" name="Data_show" CHECKED></sub>Data</label>&nbsp;&nbsp;
+		<label><sub><INPUT type="checkbox" value="1" name="Emi_show" CHECKED></sub>Emissions</label>&nbsp;&nbsp;
+		<label><sub><INPUT type="checkbox" value="1" name="Tools_show" CHECKED></sub>Tools</label>&nbsp;&nbsp;
+		<label><sub><INPUT type="checkbox" value="1" name="Scheme_show" CHECKED></sub>Scheme</label>
+	</td></tr>
+	<tr><td>&nbsp;
+		<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub><INPUT type="checkbox" value="1" name="Sc_nrj_show" CHECKED></sub>Show energies on scheme</label>&nbsp;
+	</td></tr>
+	<tr><td>&nbsp;
+		<label><sub><INPUT type="checkbox" value="1" name="Chain_show" CHECKED></sub>Radioactive chain</label>&nbsp;
+		-&nbsp;&nbsp;Zoom (0.5 - 5):&nbsp;<INPUT type="text" value="1" name="Chain_scale" size="3">
+	</td></tr>
+	<tr><td>&nbsp;
+			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub><INPUT type="checkbox" value="1" name="Reduced_chain" ></sub><abbr lang="ENG" title="Displays only nuclides contributing significantly to total activity,
+after 7 half-lives of the parent nuclide (&asymp; equilibrium).">Simplified chain</abbr></label>&nbsp;
+			-&nbsp;&nbsp;<abbr lang="ENG" title="Relative daughter activity value, above which daughter nuclides are displayed.">Threshold (%):</abbr>&nbsp;<INPUT type="text" value="1" name="Chain_thd" size="3">
+	</td></tr>
+
+
+<!-- Emission type: X / gamma / alpha / beta -->
+	<tr><td>
+	<b class="semi">Emissions:&nbsp;</b>
+		<label><sub><INPUT type="checkbox" value="1" name="X_emission" CHECKED></sub>X&nbsp;&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="1" name="G_emission" CHECKED></sub>Gamma&nbsp;&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="1" name="A_emission" CHECKED></sub>Alpha&nbsp;&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="0" name="B_emission" CHECKED hidden></sub></label>
+<!--	<label><sub><INPUT type="checkbox" value="1" name="B_emission" ></sub></label> -->
+	</td></tr>
+	</table>
+
+	<!-- Language: Eng / Epo/ Fra -->
+	<tr><td>
+	<b class="semi">Language:&nbsp;</b>
+		<label><sub><INPUT type="radio" value="ENG" name="Langue" CHECKED></sub>EN</label>&nbsp;
+	<label><sub><INPUT type="radio" value="EPO" name="Langue" ></sub>EO</label>&nbsp;
+	<label><sub><INPUT type="radio" value="FRA" name="Langue" ></sub>FR</label>&nbsp;
+	</td></tr>
+
+	<INPUT type="hidden" value="1" name="Form_Origine">	<!-- Boutons "Show data" & "Show scheme only" -->
+	<tr><td align="center" colspan="3">			<b></b>			<INPUT class="button2" name="Show_data" type="submit" value="Show all data" onclick='this.form.target="RightFrame";'>
+			&nbsp;
+			<INPUT class="button2" name="Show_scheme_only" type="submit" value="Show scheme only" onclick='this.form.target="_blank";'>
+	</td></tr></td></tr>
+</FORM>
+<!-- 
+#*********************************************************#*********************************************************#***       Formulaire de recherche d'un nucléide       ***#*********************************************************
+--><FORM action="Result_Lara1.php" method="POST" target="MiddleFrame">
+<!-- Nuclide search criteria: -->
+<tr bgcolor=white><td align="center" style="line-height:14px" colspan="3"><b class="semi">Nuclide search criteria</b></td></tr>
+<tr><td>	<!-- Decay mode: -->
+		<b class="semi">Decay mode:&nbsp;</b>
+	<label><sub><INPUT type="checkbox" value="1" name="BP_mode"    CHECKED></sub>&beta;<sup>+</sup>,&epsilon;&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="1" name="BM_mode"    CHECKED></sub>&beta;<sup>-</sup>&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="1" name="IT_mode"    CHECKED></sub>IT&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="1" name="Alpha_mode" CHECKED></sub>&alpha;&nbsp;</label>
+ <!--	<label><sub><INPUT type="checkbox" value="1" name="Gamma_mode" ></sub></label> -->
+	<br>
+	&nbsp;(<label><sub><INPUT type="radio" value="AND" name="AND_OR_mode" ></sub>And</label>
+		   <label><sub><INPUT type="radio" value="OR"  name="AND_OR_mode" CHECKED></sub>Or</label>
+		   <label><sub><INPUT type="radio" value="XOR" name="AND_OR_mode" ></sub>XOr</label>)&nbsp;
+	<br>
+
+	<!-- Emission type: -->
+	<div style="line-height:20px"><b class="semi">Emissions:&nbsp;</b>
+		<label><sub><INPUT type="checkbox" value="1" name="X_emission" CHECKED></sub>X&nbsp;&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="1" name="G_emission" CHECKED></sub>Gamma&nbsp;&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="1" name="A_emission" CHECKED></sub>Alpha&nbsp;&nbsp;</label>
+	<label><sub><INPUT type="checkbox" value="0" name="B_emission" CHECKED hidden></sub></label>
+<!--	<label><sub><INPUT type="checkbox" value="1" name="B_emission" ></sub></label> -->
+	</div>
+
+	<table border="0">
+		<tr><td>
+			<!-- Energies: -->
+					<table>
+			<tr><td>
+				<b class="semi">Energies (<abbr lang="ENG" title="Set energy and uncertainty: E &plusmn; &Delta;E,
+or energy range: Emin - Emax">or range</abbr>):</b>
+			</td></tr>
+			<!-- Energy 1 range: -->
+			<tr><td>
+				<b class="semi">E1:&nbsp;</b>
+								<INPUT type="text" value="" name="Nrj1_min" size="7">
+				&plusmn; / -								<INPUT type="text" value="" name="Nrj1_max" size="7">
+				<b class="semi">&nbsp;keV</b>
+			</td></tr>
+			<!-- Energy 2 range: -->
+			<tr><td>
+				<b class="semi">E2:&nbsp;</b>
+								<INPUT type="text" value="" name="Nrj2_min" size="7">
+				&plusmn; / -								<INPUT type="text" value="" name="Nrj2_max" size="7">
+				<b class="semi">&nbsp;keV</b>
+			</td></tr>
+			<!-- Energy 3 range: -->
+			<tr><td>
+				<b class="semi">E3:&nbsp;</b>
+								<INPUT type="text" value="" name="Nrj3_min" size="7">
+				&plusmn; / -								<INPUT type="text" value="" name="Nrj3_max" size="7">
+				<b class="semi">&nbsp;keV</b>
+			</td></tr>
+		</table>
+		</td>
+		<!-- Nrj mode: -->
+		<td><br>&nbsp;&nbsp;<img src="images/Accolade_S.png" width="10" height="60"></td>	<!-- Grande accolade sur 3 lignes de haut -->
+				<td><br>&nbsp;<label><sub><INPUT type="radio" value="AND" name="Nrj_AND_OR_mode" CHECKED></sub>And</label>
+			<br>&nbsp;<label><sub><INPUT type="radio" value="OR" name="Nrj_AND_OR_mode" ></sub>Or</label>
+		</td></tr>
+	</table>
+	
+	<table border="0">
+		<!-- Intensity range: -->
+		<tr><td>	
+			<b class="semi">Intensity:&nbsp;</b>
+		</td>
+		<td>
+						<INPUT type="text" value="" name="Int_min" size="7">			<b class="semi">&nbsp;-&nbsp;</b>						<INPUT type="text" value="" name="Int_max" size="7">			<b class="semi">&nbsp;%</b>		</td></tr>
+
+		<!-- Mass range: -->
+		<tr><td>	
+			<b class="semi">Mass number:&nbsp;</b>
+		</td>
+		<td>
+						<INPUT type="text" value="" name="Mass_min" size="7">
+			<b class="semi">&nbsp;-&nbsp;</b>
+						<INPUT type="text" value="" name="Mass_max" size="7">
+			<b class="semi">&nbsp;u</b>
+		</td></tr>
+
+		<!-- Z range: -->
+		<tr><td>	
+			<b class="semi">Atomic number:&nbsp;</b>
+		</td>
+		<td>
+						<INPUT type="text" value="" name="Z_min" size="7">
+			<b class="semi">&nbsp;-&nbsp;</b>
+						<INPUT type="text" value="" name="Z_max" size="7">
+		</td></tr>
+
+		<!-- Q range: -->
+		<tr><td>	
+			<b class="semi">Q value:&nbsp;</b>
+		</td>
+		<td>
+						<INPUT type="text" value="" name="Q_min" size="7">
+			<b class="semi">&nbsp;-&nbsp;</b>
+						<INPUT type="text" value="" name="Q_max" size="7">
+			<b class="semi">&nbsp;keV</b>
+		</td></tr>
+	</table>
+
+	<table border="0">
+	<!-- Half-life range: -->
+		<tr><td><b class="semi">Half-life:</b>	
+						<INPUT type="text" value="" name="HL_min" size="6">						<SELECT name="HL_min_unit" size="1">				<OPTION SELECTED>a</OPTION>				<OPTION >d</OPTION>				<OPTION >h</OPTION>				<OPTION >min</OPTION>				<OPTION >s</OPTION>			</SELECT>			<b class="semi">&nbsp;-&nbsp;</b>						<INPUT type="text" value="" name="HL_max" size="6">						<SELECT name="HL_max_unit" size="1">				<OPTION SELECTED>a</OPTION>
+				<OPTION >d</OPTION>
+				<OPTION >h</OPTION>
+				<OPTION >min</OPTION>
+				<OPTION >s</OPTION>
+			</SELECT>		</td></tr>
+	</table>
+
+</td></tr>
+
+<INPUT type="hidden" value="1" name="Form_Origine">
+<!-- Bouton "Find nuclides" -->
+<tr><td align="center">	<INPUT class="button2" type="submit" value="Find nuclides">
+</td></tr></FORM>	<tr bgcolor=white>
+	<td>
+		<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<FORM action="Choix_Lara.php" method="POST">
+				<!-- Bouton "Reset all forms" -->
+				<td align="center">
+					<INPUT type="hidden" value ="1" name="RAZ">
+					<INPUT class="button2" type="submit" value="Reset all forms">
+				</td>
+				</FORM>
+				<FORM action="Choix_Lara.php" method="POST">
+				<!-- Bouton "Load last settings" -->
+				<td align="center">
+					<INPUT type="hidden" value ="0" name="RAZ">
+					<INPUT class="button2" type="submit" value="Load last settings">
+				</td>
+				</FORM>
+			</tr>
+		</table>
+	</td></tr>
+	
+<!-- Date et heure UTC -->
+	<tr><td bgcolor=#FCD000>
+		<a href="https://time.is/UTC" id="time_is_link" rel="nofollow" target="_blank"><b class="semi"><u>UTC date & time</u>:&nbsp;</b></a>
+		<span id="UTC_za00" style="font-size:12px;font-weight:600;"></span>
+		<script src="//widget.time.is/fr.js"></script>
+		<script>time_is_widget.init({UTC_za00:{template:"DATE - TIME", date_format:"year-monthnum-daynum"}});</script>
+	</td></tr>
+	
+<!-- Date de mise à jour des données et du code -->
+	<tr><td bgcolor=white>
+		<table>
+			<!-- Dates de mise à jour des données et du code -->
+			<tr><td style="height: 22px; vertical-align:top;">
+				&nbsp;Last update: <b class="semi">2026-09-18</b> (<abbr lang="ENG" title="2026-09-18 : Upd: Nb-95
+2026-04-01 : Upd: P-32, P-33
+2026-03-19 : New: Cu-67
+2026-03-03 : New: Pd-107, Pd-107m ; Upd: N-13, O-15, Se-79
+2025-12-09 : Upd: Massive update, see Quick user&rsquo;s Guide below for more information.
+2025-12-04 : Upd: Co-56, Pb-212
+2025-11-27 : Upd: Lu-177
+2025-11-14 : Upd: Tc-99
+2025-11-06 : Upd: K-40, Am-242
+2025-02-14 : New: Ti-45
+2024-09-04 : New: Co-55
+2024-08-28 : New: Pd-103, Rh-103m
+2024-06-24 : Upd: Ho-166
+2024-03-19 : New: Sn-129m ; Upd: Fe-55
+2024-03-13 : New: Sn-129m
+2023-12-20 : Upd: Ac-225
+2023-09-07 : Upd: Ba-137m, Cs-137, Sm-151
+2023-01-27 : Upd: Cs-137
+2022-11-10 : New: He-6 ; Upd: Al-26
+2022-05-25 : Upd: Rb-87
+2021-09-21 : New: Cs-131
+2021-07-21 : New: I-124
+2021-06-17 : Upd: Bi-213, Pa-234, Pa-234m
+2021-02-10 : Upd: Mn-52, Mn-52m
+2017-03-03 : Upd: Co-57, Xe-133m
+2017-01-11 : New: Br-76, La-138 ; Upd: Y-88
+2016-03-25 : New: Rb-82, Sr-82, Cd-109, Sm-151, Er-169 ; Upd: Y-88, Y-90, Ba-133, Ba-140, La-140, Bi-210
+2014-11-07 : New: Zr-89 ; Upd: F-18, Fe-59, Sc-46
+2014-07-15 : New: Tc-94m, Ce-144, Pr-144, Pr-144m ; Upd: Ba-133
+2014-06-11 : Upd: Mn-54, Na-24
+2014-06-04 : Upd: global update
+2014-05-05 : New: Pb-200 ; Upd: Tl-200
+2014-04-28 : Upd: Ru-97
+2014-04-11 : New: Fe-52, Se-73 ; Upd: Au-198
+2014-02-26 : New: Xe-127, La-138 ; Upd: Sc-47, I-131, Xe-131m, Th-232D, U-235
+2013-11-19 : New: Co-58, Cu-61, Pm-148, Pm-148m, Zr-93 ; Upd: Nb-93m
+2013-09-09 : New: Zn-63 ; Upd: Se-75
+">data</abbr><sup>*</sup>) & <b class="semi">2026-08-26</b> (code)			</td></tr>
+			
+			<!-- Quick user's guide -->
+			<tr><td>
+								<b class="semi">&middot;</b>&nbsp;<a href="Laraweb_HowTo.html" target="RightFrame"><b class="semi">Quick user's guide</b></a> - <a href="Laraweb_video.mp4" target="blank"><b class="semi">Short video presentation</b></a>
+			</td></tr>
+
+			<!-- Pub MiniTable -->
+			<tr><td>
+				<b class="semi">&middot;</b>&nbsp;Printed version (<b class="semi">2015</b>) available by <a href="http://laboutique.edpsciences.fr/produit/781/9782759818075/Mini%20Table%20de%20radionucleides%202015" target="blank"><u><b class="semi">EDP Sciences</b></u></a>
+			</td></tr>
+
+			<!-- Contact us -->
+			<tr><td>
+				<b class="semi">&middot;</b>&nbsp;<a href="mailto:webmestre-nucleide@cea.fr?subject=Laraweb"><b class="semi">Contact us</b></a> (suggestions, comments, remarks, ...)
+			</td></tr>
+
+			<!-- Back to LNHB home page -->
+			<tr><td>
+				<b class="semi">&middot;</b>&nbsp;Back to <a href="http://www.lnhb.fr" target="blank"><u><b class="semi">LNHB</b> home page</u></a>
+			</td></tr>
+
+			<!-- RSS feed -->
+			<tr><td>
+				<b class="semi">&middot;</b>&nbsp;Subscribe to LNHB RSS feed&nbsp;<a target="_blank" href="http://www.lnhb.fr/LNHB_news.xml"><img border="0" src="images/feed-icon-14x14.png"></a>
+			</td></tr>
+		</table>
+	</td></tr>
+</table>
+
+
+</BODY>
+</HTML>

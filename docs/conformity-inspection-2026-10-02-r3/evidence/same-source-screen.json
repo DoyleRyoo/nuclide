@@ -1,0 +1,367 @@
+{
+ "stats": {
+  "pairs": 3357,
+  "same_eval": 2803,
+  "T_compared": 1417,
+  "D_compared": 497
+ },
+ "half_life_candidates": [
+  {
+   "state": "33Na",
+   "nubase_ens_year": 2011,
+   "lc_cutoff": "2011-03-31",
+   "lc_authors": "JUN CHEN AND BALRAJ SINGH",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "8.2 ms 0.4",
+   "livechart": "8.0 ms ±4",
+   "rel_diff": 0.025,
+   "z": 0.5,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "33Si",
+   "nubase_ens_year": 2011,
+   "lc_cutoff": "2011-03-31",
+   "lc_authors": "JUN CHEN AND BALRAJ SINGH",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "6.18 s 0.18",
+   "livechart": "6.11 s ±21",
+   "rel_diff": 0.0115,
+   "z": 0.33,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "66Co",
+   "nubase_ens_year": 2010,
+   "lc_cutoff": "2009-03-03",
+   "lc_authors": "E. BROWNE and  J. K. TULI",
+   "lc_source": "일괄",
+   "nubase_ref": "12Li02 J",
+   "nubase": "194 ms 17",
+   "livechart": "0.20 s ±2",
+   "rel_diff": -0.03,
+   "z": 0.3,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "79Ni",
+   "nubase_ens_year": 2016,
+   "lc_cutoff": "2016-05-31",
+   "lc_authors": "BALRAJ SINGH",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "44 ms 8",
+   "livechart": "43.0 ms ±+86-75",
+   "rel_diff": 0.0233,
+   "z": 0.12,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "93Rh",
+   "nubase_ens_year": 2011,
+   "lc_cutoff": "2010-12-15",
+   "lc_authors": "CORAL M. BAGLIN",
+   "lc_source": "단건 캐시",
+   "nubase_ref": " ",
+   "nubase": "13.9 s 1.6",
+   "livechart": "12.2 s ±7",
+   "rel_diff": 0.1393,
+   "z": 1.06,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "108Zr",
+   "nubase_ens_year": 2015,
+   "lc_cutoff": "2015-06-10",
+   "lc_authors": "BALRAJ SINGH",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "78.5 ms 2.0",
+   "livechart": "77.4 ms ±22",
+   "rel_diff": 0.0142,
+   "z": 0.5,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "119Ag",
+   "nubase_ens_year": 2009,
+   "lc_cutoff": "2008-12-01",
+   "lc_authors": "D. M. SYMOCHKO and  E. BROWNE and  J. K. TULI",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "6.0 s 0.5",
+   "livechart": "2.1 s ±1",
+   "rel_diff": 1.8571,
+   "z": 7.8,
+   "matches_nubase_isomer": [
+    "119Agm"
+   ]
+  },
+  {
+   "state": "124La",
+   "nubase_ens_year": 2008,
+   "lc_cutoff": "2008-04-01",
+   "lc_authors": "J. KATAKURA and  Z.D. WU",
+   "lc_source": "일괄",
+   "nubase_ref": "92Id01 J",
+   "nubase": "29.21 s 0.17",
+   "livechart": "21 s ±4",
+   "rel_diff": 0.391,
+   "z": 2.05,
+   "matches_nubase_isomer": [
+    "124Lam"
+   ]
+  },
+  {
+   "state": "138Cs",
+   "nubase_ens_year": 2017,
+   "lc_cutoff": "2017-09-30",
+   "lc_authors": "JUN CHEN",
+   "lc_source": "단건 캐시",
+   "nubase_ref": " ",
+   "nubase": "33.5 m 0.2",
+   "livechart": "32.5 m ±2",
+   "rel_diff": 0.0308,
+   "z": 5.0,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "138Pm",
+   "nubase_ens_year": 2017,
+   "lc_cutoff": "2017-09-30",
+   "lc_authors": "JUN CHEN",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "3.24 m 0.05",
+   "livechart": "10 s ±2",
+   "rel_diff": 18.44,
+   "z": 61.47,
+   "matches_nubase_isomer": [
+    "138Pmm"
+   ]
+  },
+  {
+   "state": "163W",
+   "nubase_ens_year": 2010,
+   "lc_cutoff": "2010-04-12",
+   "lc_authors": "C. W. REICH and  BALRAJ SINGH",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "2.63 s 0.09",
+   "livechart": "2.67 s ±10",
+   "rel_diff": -0.015,
+   "z": 0.4,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "172Re",
+   "nubase_ens_year": 2016,
+   "lc_cutoff": "2015-12-31",
+   "lc_authors": "BALRAJ SINGH",
+   "lc_source": "일괄",
+   "nubase_ref": "FGK208 J",
+   "nubase": "55 s 5",
+   "livechart": "15 s ±3",
+   "rel_diff": 2.6667,
+   "z": 8.0,
+   "matches_nubase_isomer": [
+    "172Rem"
+   ]
+  },
+  {
+   "state": "184Bi",
+   "nubase_ens_year": 2010,
+   "lc_cutoff": "2009-10-01",
+   "lc_authors": "CORAL M. BAGLIN",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "6.6 ms 1.5",
+   "livechart": "13 ms ±2",
+   "rel_diff": -0.4923,
+   "z": 3.2,
+   "matches_nubase_isomer": [
+    "184Bim"
+   ]
+  },
+  {
+   "state": "188Pb",
+   "nubase_ens_year": 2018,
+   "lc_cutoff": "2018-02-01",
+   "lc_authors": "F.G. KONDEV and  S. JUUTINEN and  D.J. HARTLEY",
+   "lc_source": "단건 캐시",
+   "nubase_ref": " ",
+   "nubase": "25.1 s 0.1",
+   "livechart": "25.5 s ±1",
+   "rel_diff": -0.0157,
+   "z": 4.0,
+   "matches_nubase_isomer": []
+  },
+  {
+   "state": "192At",
+   "nubase_ens_year": 2012,
+   "lc_cutoff": "2012-06-15",
+   "lc_authors": "Coral M. Baglin",
+   "lc_source": "일괄",
+   "nubase_ref": "13An03 D",
+   "nubase": "11.5 ms 0.6",
+   "livechart": "88 ms ±6",
+   "rel_diff": -0.8693,
+   "z": 12.75,
+   "matches_nubase_isomer": [
+    "192Atm"
+   ]
+  },
+  {
+   "state": "256Es",
+   "nubase_ens_year": 2017,
+   "lc_cutoff": "2017-03-22",
+   "lc_authors": "BALRAJ SINGH",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "nubase": "7.6 h ",
+   "livechart": "25.4 m ±24",
+   "rel_diff": 16.9528,
+   "z": 179.42,
+   "matches_nubase_isomer": [
+    "256Esm"
+   ]
+  },
+  {
+   "state": "258Md",
+   "nubase_ens_year": 2017,
+   "lc_cutoff": "2017-08-25",
+   "lc_authors": "BALRAJ SINGH",
+   "lc_source": "일괄",
+   "nubase_ref": "93Mo18 D",
+   "nubase": "51.59 d 0.29",
+   "livechart": "51.50 d ±29",
+   "rel_diff": 0.0017,
+   "z": 0.31,
+   "matches_nubase_isomer": []
+  }
+ ],
+ "branching_candidates": [
+  {
+   "state": "17C",
+   "nubase_ens_year": 2017,
+   "lc_cutoff": "2017-05-01",
+   "lc_authors": "J.H. Kelley and  G.C. Sheu",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "mode": "B-n",
+   "nubase": "B-n=28.4",
+   "livechart": "B-N 26 ±1.8",
+   "diff_pctpt": 2.4,
+   "ratio": 1.0923,
+   "z": 1.33,
+   "nubase_br": "B-=100;B-n=28.4 13;B-2n ?"
+  },
+  {
+   "state": "76Sr",
+   "nubase_ens_year": 2011,
+   "lc_cutoff": "2011-02-28",
+   "lc_authors": "BALRAJ SINGH AND AMEENAH FARHAN",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "mode": "B+p",
+   "nubase": "B+p=3.4e-3",
+   "livechart": "ECP 0.000034 ±0.000008",
+   "diff_pctpt": 0.003366,
+   "ratio": 100.0,
+   "z": 4.21,
+   "nubase_br": "B+=100;B+p=3.4e-3 8"
+  },
+  {
+   "state": "146Pm",
+   "nubase_ens_year": 2016,
+   "lc_cutoff": "2016-07-14",
+   "lc_authors": "Yu. KHAZOV and  A. RODIONOV AND G. SHULYAK",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "mode": "B-",
+   "nubase": "B-=34.0",
+   "livechart": "B- 34.3 ±1.5",
+   "diff_pctpt": -0.3,
+   "ratio": 0.9913,
+   "z": 0.2,
+   "nubase_br": "EC=66.0 13;B-=34.0 13"
+  },
+  {
+   "state": "151Ho",
+   "nubase_ens_year": 2009,
+   "lc_cutoff": "2008-11-20",
+   "lc_authors": "BALRAJ SINGH",
+   "lc_source": "단건 캐시",
+   "nubase_ref": "87NeZZ J",
+   "mode": "B+",
+   "nubase": "B+=88",
+   "livechart": "EC+B+ 78 ±3",
+   "diff_pctpt": 10.0,
+   "ratio": 1.1282,
+   "z": 3.33,
+   "nubase_br": "B+=88 3;A=22 3"
+  },
+  {
+   "state": "164Ho",
+   "nubase_ens_year": 2017,
+   "lc_cutoff": "2017-11-30",
+   "lc_authors": "BALRAJ SINGH AND JUN CHEN{+#}",
+   "lc_source": "단건 캐시",
+   "nubase_ref": " ",
+   "mode": "B+",
+   "nubase": "B+=39",
+   "livechart": "EC+B+ 60 ±5",
+   "diff_pctpt": -21.0,
+   "ratio": 0.65,
+   "z": 4.2,
+   "nubase_br": "EC=61 1;B+=39 1"
+  },
+  {
+   "state": "182Pt",
+   "nubase_ens_year": 2015,
+   "lc_cutoff": "2015-07-15",
+   "lc_authors": "BALRAJ SINGH",
+   "lc_source": "단건 캐시",
+   "nubase_ref": " ",
+   "mode": "B+",
+   "nubase": "B+=0.962",
+   "livechart": "EC+B+ 99.962 ±0.002",
+   "diff_pctpt": -99.0,
+   "ratio": 0.0096,
+   "z": 49500.0,
+   "nubase_br": "B+=0.962 2;A=0.038 2"
+  },
+  {
+   "state": "204At",
+   "nubase_ens_year": 2010,
+   "lc_cutoff": "2009-10-01",
+   "lc_authors": "C.J. CHIARA and F.G. KONDEV",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "mode": "B+",
+   "nubase": "B+=96.2",
+   "livechart": "EC+B+ 96.09 ±0.16",
+   "diff_pctpt": 0.11,
+   "ratio": 1.0011,
+   "z": 0.55,
+   "nubase_br": "B+=96.2 2;A=3.8 2"
+  },
+  {
+   "state": "204At",
+   "nubase_ens_year": 2010,
+   "lc_cutoff": "2009-10-01",
+   "lc_authors": "C.J. CHIARA and F.G. KONDEV",
+   "lc_source": "일괄",
+   "nubase_ref": " ",
+   "mode": "A",
+   "nubase": "A=3.8",
+   "livechart": "A 3.91 ±0.16",
+   "diff_pctpt": -0.11,
+   "ratio": 0.9719,
+   "z": 0.55,
+   "nubase_br": "B+=96.2 2;A=3.8 2"
+  }
+ ]
+}

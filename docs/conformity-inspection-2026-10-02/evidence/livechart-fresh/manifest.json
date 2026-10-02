@@ -1,0 +1,236 @@
+[
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=40k",
+    "name": "40k",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:18:55.544175+09:00",
+    "file": "40k_ground_states.csv",
+    "bytes": 821,
+    "sha256": "1cecd16d01fede77efb7eb6bb86de7e03c0da944fd693332b03e0ae44ae33849"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=209bi",
+    "name": "209bi",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:18:55.544932+09:00",
+    "file": "209bi_ground_states.csv",
+    "bytes": 815,
+    "sha256": "f032ce8635d31223aee5fa076ff42f5a69f9d14ec12a7de9f1c726476afc514a"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=130te",
+    "name": "130te",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:18:55.545448+09:00",
+    "file": "130te_ground_states.csv",
+    "bytes": 769,
+    "sha256": "b8b04ff0ab4533e1880fb90d6c4ef02769879cccaf6c59ab17d623f35c7e75b5"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=137cs",
+    "name": "137cs",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:18:55.545933+09:00",
+    "file": "137cs_ground_states.csv",
+    "bytes": 802,
+    "sha256": "f95bb5bee98466e7449ed4a7ca926fd745bc924b75c37d657d3f46a539858449"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=212bi",
+    "name": "212bi",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:18:57.152365+09:00",
+    "file": "212bi_ground_states.csv",
+    "bytes": 784,
+    "sha256": "0e1bb46d8a0c23385e37bde1cf2b4c08ed1629ce7d2b3274ccb8d805ffd2f352"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=252cf",
+    "name": "252cf",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:00.162439+09:00",
+    "file": "252cf_ground_states.csv",
+    "bytes": 816,
+    "sha256": "00c18585b87aabade29c1df23187035e33ab9ae8a2d147890161d902f0810d95"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=11li",
+    "name": "11li",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:00.221018+09:00",
+    "file": "11li_ground_states.csv",
+    "bytes": 770,
+    "sha256": "fa1feb5b8b51d6e43a6f70713d5408fefc42e301da972f9135389c9e5037a175"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=5he",
+    "name": "5he",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:00.237770+09:00",
+    "file": "5he_ground_states.csv",
+    "bytes": 771,
+    "sha256": "25f5a622e16ec5ba49c573b230c6008fc516033fdf7cb47e69dfd28aa25e8456"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=8be",
+    "name": "8be",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:00.238209+09:00",
+    "file": "8be_ground_states.csv",
+    "bytes": 820,
+    "sha256": "17b29e2bd8d97cb87f493c4996937506b5676c3a30cb49f610b0107d1501976d"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=18f",
+    "name": "18f",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:00.853382+09:00",
+    "file": "18f_ground_states.csv",
+    "bytes": 760,
+    "sha256": "008f3dc85033e9dc043057a7c5868f7af9ad8d6f34455ea5191d82bdafd9e942"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=64cu",
+    "name": "64cu",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:00.922340+09:00",
+    "file": "64cu_ground_states.csv",
+    "bytes": 784,
+    "sha256": "42b33e06ea5db1c740002f2ae54656c0129b4a099654ce4cfd6c9d4895bfc3e1"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=294og",
+    "name": "294og",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:01.585577+09:00",
+    "file": "294og_ground_states.csv",
+    "bytes": 674,
+    "sha256": "73ec7f9e390c9ee67bbe3f58b250c7612b69c82156962c9b6bb51becdb784df6"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=6li",
+    "name": "6li",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:01.661453+09:00",
+    "file": "6li_ground_states.csv",
+    "bytes": 790,
+    "sha256": "a4b05156730ac0b9df0e6d9dff297345f4db5c81e95862dda9fdfb91271d55f6"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=7li",
+    "name": "7li",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:01.665707+09:00",
+    "file": "7li_ground_states.csv",
+    "bytes": 805,
+    "sha256": "87bda5c089acfad219c7ac54211f884016deae8cd96ddb31b364d0d9fac225a0"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=204pb",
+    "name": "204pb",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:01.693969+09:00",
+    "file": "204pb_ground_states.csv",
+    "bytes": 773,
+    "sha256": "e2c01c1b946461eb88ead20bbf3dfdae3556fe191d00f593df88b8d0b7d1ad03"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=206pb",
+    "name": "206pb",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:02.339566+09:00",
+    "file": "206pb_ground_states.csv",
+    "bytes": 733,
+    "sha256": "ffb64655412a614b8c670daa43b773d657ce66b085fe47a7fe442a72a922f0e2"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=207pb",
+    "name": "207pb",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:03.023081+09:00",
+    "file": "207pb_ground_states.csv",
+    "bytes": 764,
+    "sha256": "de9c30b5bab888d26a7d2662d62230823a6963880946f88fb13078010e599a4b"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=208pb",
+    "name": "208pb",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:03.032511+09:00",
+    "file": "208pb_ground_states.csv",
+    "bytes": 731,
+    "sha256": "bc7785446f34b57685ed3278dc2c40a49504d6c65b97dd4cef42d7dc090552ac"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=102zr",
+    "name": "102zr",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:03.101110+09:00",
+    "file": "102zr_ground_states.csv",
+    "bytes": 738,
+    "sha256": "66f7301c220df8161741a3217f4cdfcd2638a3e60a608b6c033b96a151e446b1"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=131cd",
+    "name": "131cd",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:03.186238+09:00",
+    "file": "131cd_ground_states.csv",
+    "bytes": 766,
+    "sha256": "8ee1ff6bd1bd1459e6de03842d64463ae281e8300774549818803e410c8be6f9"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=140i",
+    "name": "140i",
+    "field": "ground_states",
+    "queried_at": "2026-10-02T10:19:03.710746+09:00",
+    "file": "140i_ground_states.csv",
+    "bytes": 740,
+    "sha256": "cac5078712281bf94b5277950ace842903a816a1be1852e5a8b856fc5d0687c9"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=levels&nuclides=180ta",
+    "name": "180ta",
+    "field": "levels",
+    "queried_at": "2026-10-02T10:19:03.795001+09:00",
+    "file": "180ta_levels.csv",
+    "bytes": 22223,
+    "sha256": "ef72679d5f8a7df8958fac16b056198bb88135a4eda5b414626d1df1d1281d6d"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=levels&nuclides=242am",
+    "name": "242am",
+    "field": "levels",
+    "queried_at": "2026-10-02T10:19:03.852011+09:00",
+    "file": "242am_levels.csv",
+    "bytes": 22899,
+    "sha256": "7b0aae5c93c2fd225fc5e5ade308cb771dc3ad87b517209b68ba3df566d43b33"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=levels&nuclides=99tc",
+    "name": "99tc",
+    "field": "levels",
+    "queried_at": "2026-10-02T10:19:03.861888+09:00",
+    "file": "99tc_levels.csv",
+    "bytes": 15412,
+    "sha256": "22227f20e5219d8b253fe222631fa2510cd1fcf7fe958a19cecff9ded0306d86"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=levels&nuclides=178hf",
+    "name": "178hf",
+    "field": "levels",
+    "queried_at": "2026-10-02T10:19:04.380980+09:00",
+    "file": "178hf_levels.csv",
+    "bytes": 25108,
+    "sha256": "82e823fe3776d015b4a334b8a06ea2028060217ff8eef9a9e1156865d5fa2b7b"
+  },
+  {
+    "url": "https://nds.iaea.org/relnsd/v1/data?fields=levels&nuclides=137ba",
+    "name": "137ba",
+    "field": "levels",
+    "queried_at": "2026-10-02T10:19:05.209080+09:00",
+    "file": "137ba_levels.csv",
+    "bytes": 9856,
+    "sha256": "d992e96c9e7a143a68b3b6f490c2030cc5ffa0e9491d44dd2bd4e982ef436f7b"
+  }
+]

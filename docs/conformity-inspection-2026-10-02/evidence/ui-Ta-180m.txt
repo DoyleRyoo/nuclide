@@ -1,0 +1,168 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도" [active]
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "180"
+    - text: Ta
+    - heading "탄탈럼-180" [level=2]
+    - paragraph:
+      - generic: Tantalum-180
+      - generic: NUBASE2020
+    - generic: Z 73
+    - generic: N 107
+    - generic: A 180
+    - generic: β+ / 전자 포획
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 8.154 ± 0.006 h ≈ 8시간 9분
+    - term: 자연 존재비
+    - definition: —
+    - term: 스핀·패리티
+    - definition: 1+
+    - term: 발견 연도
+    - definition: "1938"
+    - paragraph: 자연에 존재하는 안정 상태는 ¹⁸⁰ᵐTa입니다. 기저 상태 ¹⁸⁰Ta는 방사성입니다.
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: EC
+      - generic: 85 ± 3 %
+      - button "→ 180Hf":
+        - text: →
+        - superscript: "180"
+        - text: Hf
+      - generic: β−
+      - generic: 15 ± 3 %
+      - button "→ 180W":
+        - text: →
+        - superscript: "180"
+        - text: W
+    - heading "들뜬 상태 4" [level=3]:
+      - text: 들뜬 상태
+      - generic: "4"
+    - button "180mTa 75.3 ± 1.4 keV 안정 (> 45 Py) −" [expanded]:
+      - superscript: 180m
+      - text: Ta
+      - text: 75.3 ± 1.4 keV
+      - generic: 안정 (> 45 Py)
+      - generic: −
+    - term: 반감기
+    - definition: 안정 (> 45 Py)
+    - term: 스핀·패리티
+    - definition: 9−
+    - term: 자연 존재비
+    - definition: 0.01201 ± 0.00032 %
+    - term: 질량 초과
+    - definition: −48,858.3 ± 1.6 keV
+    - list:
+      - generic: β−
+      - generic: "?"
+      - button "→ 180W":
+        - text: →
+        - superscript: "180"
+        - text: W
+    - button "180m2Ta 1,452.39 ± 0.22 keV 31.2 ± 1.4 μs +":
+      - superscript: 180m2
+      - text: Ta
+      - text: 1,452.39 ± 0.22 keV
+      - generic: 31.2 ± 1.4 μs
+      - generic: +
+    - button "180m3Ta 3,678.9 ± 1.0 keV 2.0 ± 0.5 μs +":
+      - superscript: 180m3
+      - text: Ta
+      - text: 3,678.9 ± 1.0 keV
+      - generic: 2.0 ± 0.5 μs
+      - generic: +
+    - button "180m4Ta 4,172.2 ± 1.6 keV 17 ± 5 μs +":
+      - superscript: 180m4
+      - text: Ta
+      - text: 4,172.2 ± 1.6 keV
+      - generic: 17 ± 5 μs
+      - generic: +
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: −48,933.6 ± 2.1
+    - term: 원자 질량 (u)
+    - definition: 179.947 467 6 ± 0.000 002 2
+    - term: 핵자당 결합에너지
+    - definition: 8,025.886 ± 0.012
+    - term: Qα
+    - definition: 2,023.8 ± 2.3
+    - term: Qβ−
+    - definition: 702.6 ± 2.4
+    - term: QEC
+    - definition: 845.8 ± 2.3
+    - term: Sn
+    - definition: 6,647.5 ± 2.4
+    - term: Sp
+    - definition: 5,759.6 ± 2.3
+    - term: S2n
+    - definition: 14,478# ± 52
+    - term: S2p
+    - definition: 13,173.7 ± 3.0
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - generic: Ta-180 · Z 73, N 107 · 선택됨

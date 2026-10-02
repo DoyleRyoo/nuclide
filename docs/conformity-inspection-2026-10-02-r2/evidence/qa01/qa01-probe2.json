@@ -1,0 +1,425 @@
+{
+  "capturedAt": "2026-10-02T02:11:37.109Z",
+  "base": "http://127.0.0.1:4173/",
+  "results": [
+    {
+      "project": "chromium",
+      "mode": "asis",
+      "rewrittenAssets": [],
+      "before": {
+        "t": 1269.9000000357628,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 6562.100000023842,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 243,
+          "v": "64px"
+        },
+        {
+          "t": 1359,
+          "v": "64px"
+        },
+        {
+          "t": 1360,
+          "v": "64px"
+        }
+      ],
+      "testCondition1_rulerWChanged": false,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": false
+    },
+    {
+      "project": "firefox",
+      "mode": "asis",
+      "rewrittenAssets": [],
+      "before": {
+        "t": 1611,
+        "rulerW": "62px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0.0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 18.383333206176758,
+        "mapMetaX": 72,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 6914,
+        "rulerW": "62px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0.0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 18.383333206176758,
+        "mapMetaX": 72,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 542,
+          "v": "62px"
+        },
+        {
+          "t": 1697,
+          "v": "62px"
+        },
+        {
+          "t": 1698,
+          "v": "62px"
+        }
+      ],
+      "testCondition1_rulerWChanged": false,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": false
+    },
+    {
+      "project": "webkit",
+      "mode": "asis",
+      "rewrittenAssets": [],
+      "before": {
+        "t": 1412,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, Malgun Gothic, sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 6709,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, Malgun Gothic, sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 260,
+          "v": "64px"
+        },
+        {
+          "t": 1488,
+          "v": "64px"
+        }
+      ],
+      "testCondition1_rulerWChanged": false,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": false
+    },
+    {
+      "project": "mobile-chromium",
+      "mode": "asis",
+      "rewrittenAssets": [],
+      "before": {
+        "t": 1309.800000011921,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 6649.300000011921,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 272,
+          "v": "64px"
+        },
+        {
+          "t": 1439,
+          "v": "64px"
+        },
+        {
+          "t": 1441,
+          "v": "64px"
+        }
+      ],
+      "testCondition1_rulerWChanged": false,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": false
+    },
+    {
+      "project": "mobile-webkit",
+      "mode": "asis",
+      "rewrittenAssets": [],
+      "before": {
+        "t": 1461,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, Malgun Gothic, sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 6742,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, Malgun Gothic, sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 248,
+          "v": "64px"
+        },
+        {
+          "t": 1536,
+          "v": "64px"
+        }
+      ],
+      "testCondition1_rulerWChanged": false,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": false
+    },
+    {
+      "project": "chromium",
+      "mode": "noLocal",
+      "rewrittenAssets": [
+        "index-Dd9qgdRr.css",
+        "index-CLcyobkO.js"
+      ],
+      "before": {
+        "t": 1320,
+        "rulerW": "61px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 19.986328125,
+        "mapMetaX": 71,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 1687.5999999642372,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 291,
+          "v": "61px"
+        },
+        {
+          "t": 1420,
+          "v": "64px"
+        },
+        {
+          "t": 1423,
+          "v": "64px"
+        }
+      ],
+      "testCondition1_rulerWChanged": true,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": true
+    },
+    {
+      "project": "firefox",
+      "mode": "noLocal",
+      "rewrittenAssets": [
+        "index-Dd9qgdRr.css",
+        "index-CLcyobkO.js"
+      ],
+      "before": {
+        "t": 1670,
+        "rulerW": "61px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0.0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 19.399999618530273,
+        "mapMetaX": 71,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 1988,
+        "rulerW": "62px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0.0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 18.383333206176758,
+        "mapMetaX": 72,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 595,
+          "v": "61px"
+        },
+        {
+          "t": 1728,
+          "v": "62px"
+        },
+        {
+          "t": 1732,
+          "v": "62px"
+        }
+      ],
+      "testCondition1_rulerWChanged": true,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": true
+    },
+    {
+      "project": "webkit",
+      "mode": "noLocal",
+      "rewrittenAssets": [
+        "index-Dd9qgdRr.css",
+        "index-CLcyobkO.js"
+      ],
+      "before": {
+        "t": 1441,
+        "rulerW": "61px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px Pretendard Variable, __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, Segoe UI, Malgun Gothic, sans-serif",
+        "widestRightLabelWidth": 19.986328125,
+        "mapMetaX": 71,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 1810,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px Pretendard Variable, __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, Segoe UI, Malgun Gothic, sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 285,
+          "v": "61px"
+        },
+        {
+          "t": 1552,
+          "v": "64px"
+        }
+      ],
+      "testCondition1_rulerWChanged": true,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": true
+    },
+    {
+      "project": "mobile-chromium",
+      "mode": "noLocal",
+      "rewrittenAssets": [
+        "index-Dd9qgdRr.css",
+        "index-CLcyobkO.js"
+      ],
+      "before": {
+        "t": 1334,
+        "rulerW": "61px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 19.986328125,
+        "mapMetaX": 71,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 1735.5,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px \"Pretendard Variable\", __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Malgun Gothic\", sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 299,
+          "v": "61px"
+        },
+        {
+          "t": 1441,
+          "v": "64px"
+        },
+        {
+          "t": 1445,
+          "v": "64px"
+        }
+      ],
+      "testCondition1_rulerWChanged": true,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": true
+    },
+    {
+      "project": "mobile-webkit",
+      "mode": "noLocal",
+      "rewrittenAssets": [
+        "index-Dd9qgdRr.css",
+        "index-CLcyobkO.js"
+      ],
+      "before": {
+        "t": 1466,
+        "rulerW": "61px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px Pretendard Variable, __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, Segoe UI, Malgun Gothic, sans-serif",
+        "widestRightLabelWidth": 19.986328125,
+        "mapMetaX": 71,
+        "fontsStatus": "loading"
+      },
+      "after": {
+        "t": 1847,
+        "rulerW": "64px",
+        "rootFontSize": "16px",
+        "safeLeftRaw": "0px",
+        "rulerFont": "500 12px Pretendard Variable, __NoLocalPretendard__, -apple-system, BlinkMacSystemFont, Segoe UI, Malgun Gothic, sans-serif",
+        "widestRightLabelWidth": 22.60546875,
+        "mapMetaX": 74,
+        "fontsStatus": "loaded"
+      },
+      "rulerSets": [
+        {
+          "t": 273,
+          "v": "61px"
+        },
+        {
+          "t": 1563,
+          "v": "64px"
+        }
+      ],
+      "testCondition1_rulerWChanged": true,
+      "testCondition2_mapMetaRightOfRuler": true,
+      "wouldPass": true
+    }
+  ]
+}

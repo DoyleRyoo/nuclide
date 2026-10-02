@@ -1,0 +1,153 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도" [active]
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "11"
+    - text: Li
+    - heading "리튬-11" [level=2]
+    - paragraph:
+      - generic: Lithium-11
+      - generic: NUBASE2020
+    - generic: Z 3
+    - generic: N 8
+    - generic: A 11
+    - generic: β− 붕괴
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 8.75 ± 0.06 ms
+    - term: 자연 존재비
+    - definition: —
+    - term: 스핀·패리티
+    - definition:
+      - text: 3/2−
+      - generic: 측정
+    - term: 발견 연도
+    - definition: "1966"
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: β−
+      - generic: 100 %
+      - button "→ 11Be":
+        - text: →
+        - superscript: "11"
+        - text: Be
+      - generic: β−n
+      - generic: 86.3 ± 0.9 %
+      - button "→ 10Be":
+        - text: →
+        - superscript: "10"
+        - text: Be
+      - generic: β−2n
+      - generic: 4.1 ± 0.4 %
+      - button "→ 9Be":
+        - text: →
+        - superscript: "9"
+        - text: Be
+      - generic: β−3n
+      - generic: 1.9 ± 0.2 %
+      - button "→ 8Be":
+        - text: →
+        - superscript: "8"
+        - text: Be
+      - generic: β−α
+      - generic: 1.7 ± 0.3 %
+      - button "→ 7He":
+        - text: →
+        - superscript: "7"
+        - text: He
+      - generic: β−d
+      - generic: 0.0130 ± 0.0013 %
+      - button "→ 9Li":
+        - text: →
+        - superscript: "9"
+        - text: Li
+      - generic: β−t
+      - generic: 0.0093 ± 0.0008 %
+      - button "→ 8Li":
+        - text: →
+        - superscript: "8"
+        - text: Li
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: 40,728.3 ± 0.6
+    - term: 원자 질량 (u)
+    - definition: 11.043 723 58 ± 0.000 000 66
+    - term: 핵자당 결합에너지
+    - definition: 4,155.382 ± 0.056
+    - term: Qα
+    - definition: −10,800# ± 1,000
+    - term: Qβ−
+    - definition: 20,551.09 ± 0.66
+    - term: Sn
+    - definition: 396 ± 13
+    - term: Sp
+    - definition: 15,758 ± 93
+    - term: S2n
+    - definition: 369.28 ± 0.64
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - generic: Li-11 · Z 3, N 8 · 선택됨

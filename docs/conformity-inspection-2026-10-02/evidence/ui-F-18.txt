@@ -1,0 +1,128 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도" [active]
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "18"
+    - text: F
+    - heading "플루오린-18" [level=2]
+    - paragraph:
+      - generic: Fluorine-18
+      - generic: NUBASE2020
+    - generic: Z 9
+    - generic: N 9
+    - generic: A 18
+    - generic: β+ / 전자 포획
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 109.734 ± 0.008 min ≈ 1시간 50분
+    - term: 자연 존재비
+    - definition: —
+    - term: 스핀·패리티
+    - definition: 1+
+    - term: 발견 연도
+    - definition: "1937"
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: β+
+      - generic: 100 %
+      - button "→ 18O":
+        - text: →
+        - superscript: "18"
+        - text: O
+    - heading "들뜬 상태 1" [level=3]:
+      - text: 들뜬 상태
+      - generic: "1"
+    - button "18mF 1,121.36 ± 0.15 keV 162 ± 7 ns +":
+      - superscript: 18m
+      - text: F
+      - text: 1,121.36 ± 0.15 keV
+      - generic: 162 ± 7 ns
+      - generic: +
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: 873.1 ± 0.5
+    - term: 원자 질량 (u)
+    - definition: 18.000 937 32 ± 0.000 000 50
+    - term: 핵자당 결합에너지
+    - definition: 7,631.638 ± 0.026
+    - term: Qα
+    - definition: −4,415.22 ± 0.46
+    - term: Qβ−
+    - definition: −4,444.50 ± 0.59
+    - term: QEC
+    - definition: 1,655.93 ± 0.46
+    - term: Sn
+    - definition: 9,149.91 ± 0.53
+    - term: Sp
+    - definition: 5,607.09 ± 0.46
+    - term: S2n
+    - definition: 25,944.7 ± 5.4
+    - term: S2p
+    - definition: 19,388.7 ± 2.3
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - generic: F-18 · Z 9, N 9 · 선택됨

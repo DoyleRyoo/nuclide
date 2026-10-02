@@ -1,0 +1,62 @@
+{
+ "half_life_integer_unc_on_decimal_value": [
+  {
+   "state": "86Ge",
+   "T": "221.6",
+   "unit": "ms",
+   "dT": "11",
+   "abs_reading": "221.6 ± 11 ms",
+   "last_digit_reading": "221.6 ± 1.1 ms",
+   "abs_unc_over_value": 0.05
+  },
+  {
+   "state": "115Rh",
+   "T": "1.03",
+   "unit": "s",
+   "dT": "3",
+   "abs_reading": "1.03 ± 3 s",
+   "last_digit_reading": "1.03 ± 0.03 s",
+   "abs_unc_over_value": 2.913
+  },
+  {
+   "state": "121Inn",
+   "T": "7.3",
+   "unit": "us",
+   "dT": "2",
+   "abs_reading": "7.3 ± 2 us",
+   "last_digit_reading": "7.3 ± 0.2 us",
+   "abs_unc_over_value": 0.274
+  },
+  {
+   "state": "187Ta",
+   "T": "2.3",
+   "unit": "m",
+   "dT": "6",
+   "abs_reading": "2.3 ± 6 m",
+   "last_digit_reading": "2.3 ± 0.6 m",
+   "abs_unc_over_value": 2.609
+  }
+ ],
+ "branch_or_abundance_anomalies": [
+  {
+   "state": "28Si j",
+   "token": "p=10 11",
+   "issue": "불확도 11 > 값 10"
+  },
+  {
+   "state": "84Sr",
+   "token": "IS=00.56 2",
+   "issue": "선행 0"
+  },
+  {
+   "state": "211Hg",
+   "token": "B-n=6.3 63",
+   "issue": "불확도 6.3 > 값 6.3"
+  },
+  {
+   "state": "215Tl",
+   "token": "B-n=4.6 46",
+   "issue": "불확도 4.6 > 값 4.6"
+  }
+ ]
+}

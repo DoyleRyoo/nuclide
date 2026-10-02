@@ -1,0 +1,128 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도" [active]
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "208"
+    - text: Pb
+    - heading "납-208" [level=2]
+    - paragraph:
+      - generic: Lead-208
+      - generic: NUBASE2020
+    - generic: Z 82
+    - generic: N 126
+    - generic: A 208
+    - generic: 안정
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 안정 (> 2.6 Zy)
+    - term: 자연 존재비
+    - definition: 52.4 ± 7.0 %
+    - term: 스핀·패리티
+    - definition: 0+
+    - term: 발견 연도
+    - definition: "1927"
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: α
+      - generic: "?"
+      - button "→ 204Hg":
+        - text: →
+        - superscript: "204"
+        - text: Hg
+    - heading "들뜬 상태 1" [level=3]:
+      - text: 들뜬 상태
+      - generic: "1"
+    - button "208mPb 4,895.23 ± 0.05 keV 535 ± 35 ns +":
+      - superscript: 208m
+      - text: Pb
+      - text: 4,895.23 ± 0.05 keV
+      - generic: 535 ± 35 ns
+      - generic: +
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: −21,748.5 ± 1.1
+    - term: 원자 질량 (u)
+    - definition: 207.976 652 0 ± 0.000 001 2
+    - term: 핵자당 결합에너지
+    - definition: 7,867.4530 ± 0.0055
+    - term: Qα
+    - definition: 516.7 ± 1.2
+    - term: Qβ−
+    - definition: −2,878.4 ± 2.0
+    - term: QEC
+    - definition: −4,998.4 ± 1.7
+    - term: Sn
+    - definition: 7,367.869 ± 0.052
+    - term: Sp
+    - definition: 8,003.1 ± 5.4
+    - term: S2n
+    - definition: 14,105.65 ± 0.11
+    - term: S2p
+    - definition: 15,381 ± 20
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - generic: Pb-208 · Z 82, N 126 · 선택됨

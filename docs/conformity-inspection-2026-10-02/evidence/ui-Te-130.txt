@@ -1,0 +1,140 @@
+- main:
+  - heading "Nuclide Map" [level=1]
+  - paragraph: 핵종 지도 · NUBASE2020
+  - combobox "핵종 검색"
+  - generic: /
+  - navigation "설정":
+    - generic: 색상 모드
+    - combobox "색상 모드":
+      - option "붕괴 모드" [selected]
+      - option "반감기"
+      - option "핵자당 결합에너지"
+    - 'button "테마: 시스템"':
+    - button "언어": 한
+    - button "설정":
+    - button "도움말":
+  - application "핵종 지도" [active]
+  - paragraph: 방향키로 핵종 선택, Enter로 정보 열기, +와 −로 확대·축소, 0으로 전체 보기
+  - text: 3,558
+  - generic: 핵종 지도
+  - text: NUBASE2020 + AME2020
+  - generic: 가로축 N 중성자 수 · 세로축 Z 양성자 수
+  - button "확대 (+)":
+  - button "축소 (−)":
+  - button "전체 보기 (0)":
+  - region "범례":
+    - button "범례 · 붕괴 모드" [expanded]:
+      - text: 범례
+      - generic: · 붕괴 모드
+    - button "안정 253":
+      - generic: 안정
+      - generic: "253"
+    - button "β− 붕괴 1405":
+      - generic: β− 붕괴
+      - generic: "1405"
+    - button "β+ / 전자 포획 1131":
+      - generic: β+ / 전자 포획
+      - generic: "1131"
+    - button "α 붕괴 555":
+      - generic: α 붕괴
+      - generic: "555"
+    - button "자발 핵분열 60":
+      - generic: 자발 핵분열
+      - generic: "60"
+    - button "양성자 방출 122":
+      - generic: 양성자 방출
+      - generic: "122"
+    - button "중성자 방출 32":
+      - generic: 중성자 방출
+      - generic: "32"
+    - generic: ◩ 핵이성질체 보유
+    - generic: ▔ 자연에 존재하는 방사성 핵종
+    - generic: "┄ 예측 핵종 # 추정"
+  - img "미니맵"
+  - complementary "핵종 정보":
+    - button "닫기":
+    - superscript: "130"
+    - text: Te
+    - heading "텔루륨-130" [level=2]
+    - paragraph:
+      - generic: Tellurium-130
+      - generic: NUBASE2020
+    - generic: Z 52
+    - generic: N 78
+    - generic: A 130
+    - generic: β− 붕괴
+    - navigation "핵종 지도":
+      - button "N − 1":
+        - text: N−1
+      - button "N + 1":
+        - text: N+1
+      - button "Z + 1":
+        - text: Z+1
+      - button "Z − 1":
+        - text: Z−1
+    - heading "기본 정보" [level=3]
+    - term: 반감기
+    - definition: 791 ± 21 Ey ≈ 7.91 × 10²⁰ 년
+    - term: 자연 존재비
+    - definition: 34.08 ± 0.62 %
+    - term: 스핀·패리티
+    - definition: 0+
+    - term: 발견 연도
+    - definition: "1924"
+    - heading "붕괴" [level=3]
+    - list:
+      - generic: 2β−
+      - generic: 100 %
+      - button "→ 130Xe":
+        - text: →
+        - superscript: "130"
+        - text: Xe
+    - heading "들뜬 상태 3" [level=3]:
+      - text: 들뜬 상태
+      - generic: "3"
+    - button "130mTe 2,146.41 ± 0.04 keV 186 ± 11 ns +":
+      - superscript: 130m
+      - text: Te
+      - text: 2,146.41 ± 0.04 keV
+      - generic: 186 ± 11 ns
+      - generic: +
+    - button "130m2Te 2,667.2 ± 0.8 keV 1.90 ± 0.08 μs +":
+      - superscript: 130m2
+      - text: Te
+      - text: 2,667.2 ± 0.8 keV
+      - generic: 1.90 ± 0.08 μs
+      - generic: +
+    - button "130m3Te 4,373.9 ± 0.9 keV 53 ± 8 ns +":
+      - superscript: 130m3
+      - text: Te
+      - text: 4,373.9 ± 0.9 keV
+      - generic: 53 ± 8 ns
+      - generic: +
+    - heading "질량·에너지 keV" [level=3]:
+      - text: 질량·에너지
+      - generic: keV
+    - term: 질량 초과
+    - definition: −87,352.960 ± 0.011
+    - term: 원자 질량 (u)
+    - definition: 129.906 222 745 ± 0.000 000 011
+    - term: 핵자당 결합에너지
+    - definition: 8,430.3251 ± 0.0003
+    - term: Qα
+    - definition: −3,763 ± 11
+    - term: Qβ−
+    - definition: −416.8 ± 3.2
+    - term: QEC
+    - definition: −5,067 ± 14
+    - term: Sn
+    - definition: 8,419.39 ± 0.71
+    - term: Sp
+    - definition: 10,013 ± 21
+    - term: S2n
+    - definition: 14,501.80 ± 0.71
+    - term: S2p
+    - definition: 18,569 ± 18
+    - heading "데이터 출처" [level=3]
+    - paragraph: NUBASE2020 · AME2020
+    - button "링크 복사":
+      - text: 링크 복사
+  - generic: Te-130 · Z 52, N 78 · 선택됨

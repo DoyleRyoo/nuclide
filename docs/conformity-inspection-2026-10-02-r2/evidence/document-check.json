@@ -1,0 +1,86 @@
+{
+ "checked_at": "2026-10-02T13:00:53+09:00",
+ "documents": [
+  {
+   "file": "conformity-inspection-2026-10-02-r2/README.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 17,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02-r2/01-qa01-font-test.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 6,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02-r2/02-flag-classification.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 8,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02-r2/03-source-data-errors.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 18,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02-r2/04-golden-abundance.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 9,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02-r2/05-tool-tasks.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 7,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02-r2/METHODS.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 19,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02-r2/CONTINUE.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 8,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02/README.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 19,
+   "broken": []
+  },
+  {
+   "file": "conformity-inspection-2026-10-02/CONTINUE.md",
+   "utf8": true,
+   "bom": false,
+   "replacement_chars": 0,
+   "local_links": 9,
+   "broken": []
+  }
+ ],
+ "broken": []
+}

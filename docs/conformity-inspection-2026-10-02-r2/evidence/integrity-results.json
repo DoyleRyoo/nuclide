@@ -1,0 +1,14 @@
+{
+  "checked_at": "end-2026-10-02T13:00:53+09:00",
+  "baseline_head": "7280849527dbc5819b1eb8700f7f1738137ec78d",
+  "current_head": "7280849527dbc5819b1eb8700f7f1738137ec78d",
+  "head_same": true,
+  "files_checked": 107,
+  "mismatch": [],
+  "missing": [],
+  "tracked_not_in_baseline": [],
+  "git_status_porcelain": [
+    "?? docs/conformity-inspection-2026-10-02-r2/",
+    "?? docs/conformity-inspection-2026-10-02/"
+  ]
+}

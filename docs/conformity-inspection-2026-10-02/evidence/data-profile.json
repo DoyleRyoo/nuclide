@@ -1,0 +1,126 @@
+{
+  "counts": {
+    "nubaseRows": 5843,
+    "ground": 3558,
+    "observed": 3340,
+    "excited": 2099,
+    "iasExcluded": 186,
+    "primary.stable": 253,
+    "primary.beta-": 1405,
+    "primary.beta+": 1131,
+    "primary.alpha": 555,
+    "primary.sf": 60,
+    "primary.p": 122,
+    "primary.n": 32
+  },
+  "totalStates": 5657,
+  "duplicateIds": 0,
+  "invalidZA": 0,
+  "nonExistent": 16,
+  "halfLife": {
+    "estimated": 441,
+    "asymmetric": 0,
+    "relation": 122,
+    "embeddedLimit": 299,
+    "units": [
+      "Ey",
+      "Gy",
+      "My",
+      "Py",
+      "Ty",
+      "Yy",
+      "Zy",
+      "as",
+      "d",
+      "h",
+      "ky",
+      "m",
+      "ms",
+      "ns",
+      "ps",
+      "s",
+      "us",
+      "y",
+      "ys",
+      "zs"
+    ]
+  },
+  "jpiTentative": 1319,
+  "jpiEstimated": 958,
+  "observedUnknownIntensity": 155,
+  "observedUnknownExamples": [
+    {
+      "nuclide": "18Na",
+      "field": "p=?"
+    },
+    {
+      "nuclide": "26F  m",
+      "field": "B-=?"
+    },
+    {
+      "nuclide": "39Ti",
+      "field": "B+2p=?"
+    },
+    {
+      "nuclide": "44V",
+      "field": "B+A=?"
+    },
+    {
+      "nuclide": "46Fe",
+      "field": "B+2p=?"
+    },
+    {
+      "nuclide": "48Ca",
+      "field": "2B-=?"
+    },
+    {
+      "nuclide": "53Co m",
+      "field": "B+=?"
+    },
+    {
+      "nuclide": "55Cu",
+      "field": "B+p=?"
+    },
+    {
+      "nuclide": "60V  m",
+      "field": "B-=?"
+    },
+    {
+      "nuclide": "63Mn",
+      "field": "B-n= ?"
+    },
+    {
+      "nuclide": "68Kr",
+      "field": "B+= ?"
+    },
+    {
+      "nuclide": "83Zr",
+      "field": "B+p=?"
+    }
+  ],
+  "stableWithDecay": 68,
+  "ameAtomicMass": 3558,
+  "abundanceStates": 289,
+  "rawSources": [
+    {
+      "name": "NUBASE2020",
+      "file": "nubase_4.mas20.txt",
+      "sha256": "1585a5eea86c5e17e90307c7e6e786d060049c4039e392a261ff6db977df9859"
+    },
+    {
+      "name": "AME2020 mass",
+      "file": "mass_1.mas20.txt",
+      "sha256": "e8599c6d7f724fac91934e59f1b9de8fb8f63e820f4b39456b790665ed2a3307"
+    },
+    {
+      "name": "AME2020 rct1",
+      "file": "rct1.mas20.txt",
+      "sha256": "e6ba1d2256f90053464c48e24d44691828dc49820ce64054aa418d834cc18e90"
+    },
+    {
+      "name": "AME2020 rct2",
+      "file": "rct2_1.mas20.txt",
+      "sha256": "78765c7b3f3c991ce2b6ff3b5c086a135aad1807d07819f806ab9a9150a4c2c7"
+    }
+  ]
+}
