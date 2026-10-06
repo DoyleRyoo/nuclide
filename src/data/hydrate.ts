@@ -1,5 +1,6 @@
 import { DECAY_MODES, UNIT_SECONDS, primaryCategory } from './decay';
 import { elements } from './elements';
+import { levelKindOf, negate, stabilityOf } from './stability';
 import type {
   AmeDetailFile,
   DecayBranch,
@@ -53,13 +54,16 @@ function hydrateHalfLife(stored: StoredHalfLife): HalfLife {
 
 function hydrateState(stored: StoredState, symbol: string, a: number): NuclearState {
   const level = stored.level ?? 0;
-  return {
+  const state: NuclearState = {
     ...stored,
     id: stateId(symbol, a, level),
     level,
     halfLife: hydrateHalfLife(stored.halfLife),
     decays: stored.decays.map(hydrateBranch),
   };
+  if (!state.nonExistent) state.stability = stabilityOf(state);
+  if (level > 0) state.levelKind = levelKindOf(state);
+  return state;
 }
 
 /** 저장 형식 → 앱 모델 (04 §7). */
@@ -77,19 +81,15 @@ export function hydrate(stored: StoredDataset): NuclideDataset {
       symbol,
       primary: primaryCategory(stable, ground.decays),
       observed: ground.discovery !== undefined,
-      // 기저 또는 들뜬 상태에 자연 존재비가 있고 기저 상태가 안정이 아님 (03 §5.3)
-      naturalRadioactive: !stable && (!!ground.abundance || states.some((s) => !!s.abundance)),
+      // 기저 상태가 자연 존재 방사성 (03 §5.3). ¹⁸⁰Ta처럼 들뜬 상태만 자연에 있으면 띠 대신
+      // 이성질체 삼각형으로 알린다 (4차 검증 03).
+      naturalRadioactive: ground.stability === 'natural-radioactive',
       excited: states,
     };
     if (bindingPerA) nuclide.ame = { bindingPerA };
     return nuclide;
   });
   return { schemaVersion: stored.schemaVersion, meta: stored.meta, nuclides };
-}
-
-function negate(m: Measured): Measured {
-  const v = m.v.startsWith('-') ? m.v.slice(1) : /^[0.]+$/.test(m.v) ? m.v : `-${m.v}`;
-  return { ...m, v };
 }
 
 /** AME 상세 청크를 핵종에 붙이고 QEC(Z, A) = −Qβ−(Z−1, A)를 계산한다 (04 §6.3). */

@@ -63,7 +63,7 @@ export const ko = {
   noBranches: '붕괴 분기 없음',
   isotopeRow: '동위원소',
   isotoneColumn: '동중성자핵',
-  isomer: '핵이성질체 보유',
+  isomer: '이성질체 보유 (T½ ≥ {threshold})',
   natural: '자연에 존재하는 방사성 핵종',
   wheel: '휠 동작',
   scroll: '스크롤',
@@ -78,7 +78,7 @@ export const ko = {
   shortcutText:
     '휠: 세로 이동 · Shift+휠: 가로 이동\nCtrl/⌘+휠 또는 핀치: 확대·축소\n드래그: 이동 · 더블클릭: 확대\n방향키: 이웃 선택 · Shift+방향키: 화면 이동\nEnter: 정보 열기 · Esc: 닫기\n+ / −: 확대·축소 · 0: 전체 보기\n/ 또는 Ctrl/⌘+K: 검색 · C: 색상 변경 · ?: 도움말',
   notationText:
-    'N = 중성자 수 · Z = 양성자 수 · A = N + Z\n# = 계통성 추정값 · < / > = 한계값 · ~ = 근삿값\n괄호 불확도는 마지막 자릿수 기준입니다.\nEC+β+ = 전자 포획과 양전자 방출의 합 · β+ = 양전자 방출만\n미관측 = 에너지상 가능하지만 관측되지 않은 붕괴(점선 화살표) · 세기 미상 = 관측됐지만 분기비를 모름\n삼각형: 들뜬 상태 보유 · 위쪽 띠: 자연 존재 방사성 핵종\n점선 칸: 미관측 예측 핵종',
+    'N = 중성자 수 · Z = 양성자 수 · A = N + Z\n# = 계통성 추정값 · < / > = 한계값 · ~ = 근삿값\n괄호 불확도는 마지막 자릿수 기준입니다.\nEC+β+ = 전자 포획과 양전자 방출의 합 · β+ = 양전자 방출만\n미관측 = 에너지상 가능하지만 관측되지 않은 붕괴(점선 화살표) · 세기 미상 = 관측됐지만 분기비를 모름\n삼각형: 반감기가 기준(설정에서 변경) 이상인 이성질체 보유 · 검은 삼각형: 자연에 있는 안정 이성질체(¹⁸⁰ᵐTa)\n위쪽 띠: 자연 존재 방사성 핵종 · 안정 칸의 작은 점: 관측적 안정(붕괴가 관측되지 않았지만 일어날 수 있음)\n점선 칸: 미관측 예측 핵종',
   sourceText:
     '관측 기저 상태 3,340개 · 예측 기저 상태 218개. IAS 상태는 제외합니다. 표기 값은 원본의 유효숫자와 불확도를 보존합니다.',
   version: '앱 버전',
@@ -97,6 +97,22 @@ export const ko = {
   positronShare: 'β+ 행은 그중 양전자 방출만의 비율입니다.',
   positronMissing: '양전자 방출만의 비율은 NUBASE2020에 없습니다.',
   missingState: '요청한 상태 {state}는 데이터에 없습니다. 기저 상태를 보여 줍니다.',
+  stabilityClass: '안정성',
+  classStable: '안정',
+  classObservational: '관측적 안정',
+  classNatural: '자연 존재 방사성',
+  classRadioactive: '방사성',
+  observationalNote: '붕괴가 관측된 적은 없지만, 반감기 하한이나 미관측 붕괴가 평가되어 있습니다.',
+  replenishedNote:
+    '반감기가 지구 나이(약 45억 년)보다 훨씬 짧아 처음부터 남아 있던 것이 아닙니다. 우라늄·토륨 붕괴 계열 등에서 계속 생깁니다.',
+  allowedNote:
+    'AME2020 질량으로는 {decays} 붕괴가 에너지상 가능하지만, 관측된 적이 없어 NUBASE2020 붕괴 목록에 없습니다.',
+  otherLevels: '기타 준위',
+  otherLevelsNote:
+    'NUBASE2020은 반감기 100 ns 이상인 상태를 이성질체로 수록합니다. 아래 준위는 그보다 짧거나 반감기가 알려지지 않았거나, 존재하지 않는다고 평가된 상태입니다.',
+  levelShort: '100 ns 미만',
+  isomerThreshold: '이성질체 표식 기준',
+  isomerThresholdHint: '지도의 삼각형은 반감기가 이 값 이상인 이성질체가 있는 핵종에만 표시합니다.',
 } as const;
 export type Locale = 'ko' | 'en';
 export type MessageKey = keyof typeof ko;
@@ -163,7 +179,7 @@ const en: Record<MessageKey, string> = {
   noBranches: 'No decay branches',
   isotopeRow: 'Isotopes',
   isotoneColumn: 'Isotones',
-  isomer: 'Has excited states',
+  isomer: 'Has an isomer (T½ ≥ {threshold})',
   natural: 'Naturally occurring radioactive nuclide',
   wheel: 'Wheel behavior',
   scroll: 'Scroll',
@@ -178,7 +194,7 @@ const en: Record<MessageKey, string> = {
   shortcutText:
     'Wheel: scroll · Shift+wheel: horizontal scroll\nCtrl/⌘+wheel or pinch: zoom\nDrag: pan · Double-click: zoom\nArrows: select neighbor · Shift+arrows: pan\nEnter: information · Esc: close\n+ / −: zoom · 0: fit all\n/ or Ctrl/⌘+K: search · C: color mode · ?: help',
   notationText:
-    'N = neutrons · Z = protons · A = N + Z\n# = systematic estimate · < / > = limit · ~ = approximate\nParenthetical uncertainties refer to the last digits.\nEC+β+ = electron capture plus positron emission · β+ = positron emission only\nNot observed = energetically allowed but unobserved decay (dashed arrow) · Intensity unknown = observed, branching ratio unknown\nTriangle: excited states · Top band: natural radioactive nuclide\nDashed cell: unobserved predicted nuclide',
+    'N = neutrons · Z = protons · A = N + Z\n# = systematic estimate · < / > = limit · ~ = approximate\nParenthetical uncertainties refer to the last digits.\nEC+β+ = electron capture plus positron emission · β+ = positron emission only\nNot observed = energetically allowed but unobserved decay (dashed arrow) · Intensity unknown = observed, branching ratio unknown\nTriangle: has an isomer at or above the threshold (change it in settings) · Black triangle: naturally occurring stable isomer (¹⁸⁰ᵐTa)\nTop band: natural radioactive nuclide · Small dot in a stable cell: observationally stable (no decay observed, but decay may occur)\nDashed cell: unobserved predicted nuclide',
   sourceText:
     '3,340 observed and 218 predicted ground states. IAS states are excluded. Original significant figures and uncertainties are preserved.',
   version: 'App version',
@@ -198,6 +214,24 @@ const en: Record<MessageKey, string> = {
   positronShare: 'The β+ row gives the positron-emission share alone.',
   positronMissing: 'NUBASE2020 does not give the positron-emission share alone.',
   missingState: 'The requested state {state} is not in the data. Showing the ground state.',
+  stabilityClass: 'Stability',
+  classStable: 'Stable',
+  classObservational: 'Observationally stable',
+  classNatural: 'Naturally occurring radioactive',
+  classRadioactive: 'Radioactive',
+  observationalNote:
+    'No decay has been observed, but a half-life lower limit or unobserved decay modes are evaluated.',
+  replenishedNote:
+    'Its half-life is far shorter than the age of the Earth (about 4.5 billion years), so none is left from the start. It is continually produced, e.g. in the uranium and thorium decay series.',
+  allowedNote:
+    'AME2020 masses allow {decays} decay energetically, but it has never been observed and NUBASE2020 does not list it.',
+  otherLevels: 'Other levels',
+  otherLevelsNote:
+    'NUBASE2020 lists states with half-lives of 100 ns or more as isomers. The levels below are shorter-lived, have unknown half-lives, or were evaluated as non-existent.',
+  levelShort: 'under 100 ns',
+  isomerThreshold: 'Isomer marker threshold',
+  isomerThresholdHint:
+    'Map triangles mark nuclides with an isomer whose half-life is at least this long.',
 };
 export const translate = (locale: Locale, key: MessageKey): string =>
   (locale === 'ko' ? ko : en)[key];

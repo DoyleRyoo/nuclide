@@ -1,3 +1,5 @@
+import type { LevelKind, StabilityClass } from './stability';
+
 /** 원문 문자열을 보존하는 측정값. 계산용 값과 표시용 문자열을 분리한다. */
 export interface Measured {
   v: string;
@@ -59,6 +61,10 @@ export interface NuclearState {
   orderInverted?: true;
   /** 들뜬 에너지 칸이 `non-exist`: 보고됐지만 평가에서 존재하지 않는다고 본 상태 */
   nonExistent?: true;
+  /** 안정성 4단계 (stability.ts). 존재하지 않는 상태에는 없다. hydrate가 채운다. */
+  stability?: StabilityClass;
+  /** 들뜬 상태 종류 (stability.ts). 기저 상태에는 없다. hydrate가 채운다. */
+  levelKind?: LevelKind;
 }
 
 export interface Nuclide extends NuclearState {

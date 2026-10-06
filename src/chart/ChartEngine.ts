@@ -223,6 +223,10 @@ export class ChartEngine {
     this.invalidate(false);
   }
 
+  setIsomerThreshold(seconds: number): void {
+    if (this.cells.setIsomerThreshold(seconds)) this.invalidate();
+  }
+
   setShowPredicted(show: boolean): void {
     if (show === this.showPredicted) return;
     this.showPredicted = show;

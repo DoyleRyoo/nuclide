@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import type { Locale } from '../i18n';
 import type { NuclideIndex } from '../data/types';
+import { DEFAULT_ISOMER_MARKER_SECONDS, ISOMER_MARKER_THRESHOLDS } from '../data/stability';
 
 export type ColorMode = 'decay' | 'halflife' | 'binding';
 interface Settings {
@@ -11,6 +12,8 @@ interface Settings {
   wheelMode: 'scroll' | 'zoom';
   showPredicted: boolean;
   hintSeen: boolean;
+  /** 지도 이성질체 삼각형의 반감기 문턱(초) */
+  isomerThreshold: number;
 }
 interface AppState extends Settings {
   index: NuclideIndex | null;
@@ -61,6 +64,7 @@ export const useAppStore = create<AppState>()(
       wheelMode: 'scroll',
       showPredicted: true,
       hintSeen: false,
+      isomerThreshold: DEFAULT_ISOMER_MARKER_SECONDS,
       select: (id, open = true, stateId = null) =>
         set({ selectedId: id, panelOpen: !!id && open, expandedStateId: stateId }),
       setSettings: (values) => set(values),
@@ -69,13 +73,22 @@ export const useAppStore = create<AppState>()(
       name: 'nuclide-map:settings:v1',
       version: 1,
       storage: createJSONStorage(() => safeStorage),
-      partialize: ({ colorMode, theme, locale, wheelMode, showPredicted, hintSeen }) => ({
+      partialize: ({
         colorMode,
         theme,
         locale,
         wheelMode,
         showPredicted,
         hintSeen,
+        isomerThreshold,
+      }) => ({
+        colorMode,
+        theme,
+        locale,
+        wheelMode,
+        showPredicted,
+        hintSeen,
+        isomerThreshold,
       }),
       merge: (persisted, current) => {
         const saved = (persisted || {}) as Partial<Settings>;
@@ -91,6 +104,9 @@ export const useAppStore = create<AppState>()(
           wheelMode: saved.wheelMode === 'zoom' ? 'zoom' : 'scroll',
           showPredicted: typeof saved.showPredicted === 'boolean' ? saved.showPredicted : true,
           hintSeen: saved.hintSeen === true,
+          isomerThreshold: ISOMER_MARKER_THRESHOLDS.some((t) => t.seconds === saved.isomerThreshold)
+            ? saved.isomerThreshold!
+            : current.isomerThreshold,
         };
       },
     },

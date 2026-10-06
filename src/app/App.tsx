@@ -22,6 +22,7 @@ import { getTheme, applyTheme } from '../theme/applyTheme';
 import type { ThemeTokens } from '../theme/tokens';
 import type { SearchResult } from '../data/search';
 import { formatHalfLife } from '../data/format';
+import { ISOMER_MARKER_THRESHOLDS, isomerThresholdLabel } from '../data/stability';
 import InfoPanel from '../components/InfoPanel';
 import SearchBox from '../components/SearchBox';
 import HelpDialog from '../components/HelpDialog';
@@ -62,6 +63,7 @@ export default function App() {
     wheelMode,
     showPredicted,
     hintSeen,
+    isomerThreshold,
   } = state;
   const chart = useRef<HTMLDivElement>(null);
   const search = useRef<HTMLInputElement>(null);
@@ -216,8 +218,9 @@ export default function App() {
     engine.setColorMode(colorMode);
     engine.setWheelMode(wheelMode);
     engine.setShowPredicted(showPredicted);
+    engine.setIsomerThreshold(isomerThreshold);
     engine.setReducedMotion(reducedMotion);
-  }, [engine, tokens, colorMode, wheelMode, showPredicted, reducedMotion]);
+  }, [engine, tokens, colorMode, wheelMode, showPredicted, isomerThreshold, reducedMotion]);
   useEffect(() => {
     if (!engine) return;
     engine.setSelected(selectedId);
@@ -504,6 +507,19 @@ export default function App() {
             />
             {t('showPredicted')}
           </label>
+          <label title={t('isomerThresholdHint')}>
+            {t('isomerThreshold')}
+            <select
+              value={isomerThreshold}
+              onChange={(e) => state.setSettings({ isomerThreshold: Number(e.target.value) })}
+            >
+              {ISOMER_MARKER_THRESHOLDS.map(({ seconds, label }) => (
+                <option key={seconds} value={seconds}>
+                  T½ ≥ {label}
+                </option>
+              ))}
+            </select>
+          </label>
           <button
             onClick={() => {
               setHelp(true);
@@ -599,8 +615,11 @@ export default function App() {
               </div>
             )}
             <div className="legend-markers">
-              <span>◩ {t('isomer')}</span>
+              <span>
+                ◩ {t('isomer').replace('{threshold}', isomerThresholdLabel(isomerThreshold))}
+              </span>
               <span>▔ {t('natural')}</span>
+              <span>◘ {t('classObservational')}</span>
               <span>
                 ┄ {t('predicted')} <b>#</b> {t('estimated')}
               </span>

@@ -15,6 +15,15 @@ import {
   formatMeasured,
   hasBetaPlusTotal,
 } from '../data/format';
+import { allowedUnlistedDecays, isReplenished, type StabilityClass } from '../data/stability';
+import type { MessageKey } from '../i18n';
+
+const STABILITY_LABELS: Record<StabilityClass, MessageKey> = {
+  stable: 'classStable',
+  'observationally-stable': 'classObservational',
+  'natural-radioactive': 'classNatural',
+  radioactive: 'classRadioactive',
+};
 
 /** 질량·에너지 섹션의 AME 값 순서 (03 §7.6). 원자 질량은 u로 따로 표기한다. */
 const AME_ROWS = ['bindingPerA', 'qAlpha', 'qBetaMinus', 'qEC', 'sn', 'sp', 's2n', 's2p'] as const;
@@ -63,7 +72,9 @@ export default function InfoPanel({
   const swipeStart = useRef<number | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const [expanded, setExpanded] = useState<string | null>(expandedStateId);
+  const [othersOpen, setOthersOpen] = useState(false);
   useEffect(() => setExpanded(expandedStateId), [expandedStateId, selectedId]);
+  useEffect(() => setOthersOpen(false), [selectedId]);
   if (!nuclide || !index) return null;
   const element = elements[nuclide.z];
   const fullName = `${locale === 'ko' ? element?.nameKo : element?.nameEn}-${nuclide.a}`;
@@ -125,6 +136,68 @@ export default function InfoPanel({
       )}
     </>
   );
+  /** 안정성 4단계와 그 근거 (공통 B 안정 기준, 4차 검증 03) */
+  const stability = (state: NuclearState) =>
+    state.stability && (
+      <>
+        {t(STABILITY_LABELS[state.stability])}
+        {state.stability === 'observationally-stable' && (
+          <small className="stability-note">{t('observationalNote')}</small>
+        )}
+        {isReplenished(state) && <small className="stability-note">{t('replenishedNote')}</small>}
+      </>
+    );
+  // AME Q값으로는 가능하지만 NUBASE 목록에 없는 붕괴 (안정 계열 기저 상태, ¹⁹⁷Au α 등)
+  const allowed = ameReady ? allowedUnlistedDecays(index, nuclide) : [];
+  const excitedState = (state: NuclearState) => (
+    <div className="excited-state" key={state.id}>
+      <button
+        className="state-toggle"
+        aria-expanded={expanded === state.id}
+        onClick={() => {
+          const next = expanded === state.id ? null : state.id;
+          setExpanded(next);
+          useAppStore.setState({ expandedStateId: next });
+        }}
+      >
+        <NuclideSymbol nuclide={nuclide} level={state.level} />
+        <span>
+          {state.nonExistent ? (
+            <span className="badge badge-warn">{t('nonExistent')}</span>
+          ) : (
+            measured(state.exc, 'keV')
+          )}
+          <small>
+            {formatHalfLife(state.halfLife, locale)}
+            {state.levelKind === 'short' && ` · ${t('levelShort')}`}
+          </small>
+        </span>
+        <span>{expanded === state.id ? '−' : '+'}</span>
+      </button>
+      {expanded === state.id && (
+        <div className="state-detail">
+          {state.nonExistent && <p className="notice">{t('nonExistentNote')}</p>}
+          <dl>
+            {row(t('halflife'), formatHalfLife(state.halfLife, locale))}
+            {state.stability &&
+              state.stability !== 'radioactive' &&
+              row(t('stabilityClass'), stability(state))}
+            {row(t('spin'), spin(state))}
+            {state.abundance &&
+              row(t('abundance'), measured(state.abundance, '%', formatAbundance))}
+            {row(t('massExcess'), measured(state.massExcess, 'keV'))}
+          </dl>
+          {state.orderUncertain && <p className="badge">{t('uncertainOrder')}</p>}
+          {state.orderInverted && <p className="badge">{t('invertedOrder')}</p>}
+          {branches(state)}
+        </div>
+      )}
+    </div>
+  );
+  const isomers = nuclide.excited.filter((s) => s.levelKind === 'isomer');
+  const others = nuclide.excited.filter((s) => s.levelKind !== 'isomer');
+  // 검색이나 링크로 고른 상태가 접힌 묶음에 있으면 펼쳐 보인다.
+  const othersShown = othersOpen || others.some((s) => s.id === expanded);
   const spin = (state: NuclearState) => (
     <>
       {state.jpi?.replace(/[*#]/g, '').replace(/-/g, '−') || '—'}{' '}
@@ -238,10 +311,24 @@ export default function InfoPanel({
               )}
             </>,
           )}
+          {row(t('stabilityClass'), stability(nuclide))}
           {row(t('abundance'), measured(nuclide.abundance, '%', formatAbundance))}
           {row(t('spin'), spin(nuclide))}
           {row(t('discovery'), nuclide.discovery || t('unobserved'))}
         </dl>
+        {allowed.length > 0 && (
+          <p className="branch-definition">
+            {t('allowedNote').replace(
+              '{decays}',
+              allowed
+                .map(
+                  ({ mode, q }) =>
+                    `${decayModeLabel(mode)} (Q${decayModeLabel(mode)} = ${ameValue(q)} keV)`,
+                )
+                .join(', '),
+            )}
+          </p>
+        )}
         {nuclide.id === 'Ta-180' && <p className="notice">{t('taNote')}</p>}
       </section>
       <section className="panel-section">
@@ -253,45 +340,25 @@ export default function InfoPanel({
           <h3>
             {t('excited')} <span className="count">{nuclide.excited.length}</span>
           </h3>
-          {nuclide.excited.map((state) => (
-            <div className="excited-state" key={state.id}>
+          {isomers.map(excitedState)}
+          {others.length > 0 && (
+            <>
               <button
-                className="state-toggle"
-                aria-expanded={expanded === state.id}
-                onClick={() => {
-                  const next = expanded === state.id ? null : state.id;
-                  setExpanded(next);
-                  useAppStore.setState({ expandedStateId: next });
-                }}
+                className="others-toggle"
+                aria-expanded={othersShown}
+                onClick={() => setOthersOpen(!othersShown)}
               >
-                <NuclideSymbol nuclide={nuclide} level={state.level} />
-                <span>
-                  {state.nonExistent ? (
-                    <span className="badge badge-warn">{t('nonExistent')}</span>
-                  ) : (
-                    measured(state.exc, 'keV')
-                  )}
-                  <small>{formatHalfLife(state.halfLife, locale)}</small>
-                </span>
-                <span>{expanded === state.id ? '−' : '+'}</span>
+                {t('otherLevels')} <span className="count">{others.length}</span>
+                <span>{othersShown ? '−' : '+'}</span>
               </button>
-              {expanded === state.id && (
-                <div className="state-detail">
-                  {state.nonExistent && <p className="notice">{t('nonExistentNote')}</p>}
-                  <dl>
-                    {row(t('halflife'), formatHalfLife(state.halfLife, locale))}
-                    {row(t('spin'), spin(state))}
-                    {state.abundance &&
-                      row(t('abundance'), measured(state.abundance, '%', formatAbundance))}
-                    {row(t('massExcess'), measured(state.massExcess, 'keV'))}
-                  </dl>
-                  {state.orderUncertain && <p className="badge">{t('uncertainOrder')}</p>}
-                  {state.orderInverted && <p className="badge">{t('invertedOrder')}</p>}
-                  {branches(state)}
+              {othersShown && (
+                <div className="other-levels">
+                  <p className="branch-definition">{t('otherLevelsNote')}</p>
+                  {others.map(excitedState)}
                 </div>
               )}
-            </div>
-          ))}
+            </>
+          )}
         </section>
       )}
       <section className="panel-section">

@@ -1,3 +1,4 @@
+import type { LevelKind, StabilityClass } from '../../src/data/stability';
 import type { DecayCategory, NuclearState, Nuclide } from '../../src/data/types';
 import type { BuildResult } from './build';
 
@@ -16,7 +17,19 @@ export const SNAPSHOT = {
   maxExcitedPerNuclide: 6,
   stableGround: 253,
   groundWithAbundance: 288,
-  naturalRadioactive: 36,
+  naturalRadioactive: 35,
+  /** 모든 상태의 안정성 4단계 (존재하지 않는 16개 제외, 4차 검증 03과 같은 수) */
+  stability: {
+    stable: 182,
+    'observationally-stable': 72,
+    'natural-radioactive': 35,
+    radioactive: 5352,
+  } as Record<StabilityClass, number>,
+  /** 들뜬 상태 종류 (4차 검증 02: 100 ns 이상 1,960, 미만 25) */
+  levelKind: { isomer: 1960, short: 25, unknown: 98, 'non-existent': 16 } as Record<
+    LevelKind,
+    number
+  >,
   estimatedGroundHalfLife: 369,
   estimatedGroundMassExcess: 1008,
   ameRows: 3558,
@@ -49,8 +62,8 @@ function expectEqual(fail: (m: string) => void, label: string, actual: unknown, 
   if (a !== e) fail(`${label}: 기대 ${e}, 실제 ${a}`);
 }
 
-function countBy(nuclides: Nuclide[], pick: (n: Nuclide) => boolean) {
-  return nuclides.filter(pick).length;
+function countBy<T>(items: T[], pick: (item: T) => boolean) {
+  return items.filter(pick).length;
 }
 
 function categoryCounts(nuclides: Nuclide[]) {
@@ -137,6 +150,26 @@ const snapshotChecks = ({ dataset, stats }: BuildResult): Check[] => {
         countBy(all, (n) => n.naturalRadioactive),
         SNAPSHOT.naturalRadioactive,
       ),
+    (fail) => {
+      const states = all.flatMap((n) => [n, ...n.excited]);
+      for (const [cls, expected] of Object.entries(SNAPSHOT.stability)) {
+        expectEqual(
+          fail,
+          `안정성 ${cls}`,
+          countBy(states, (s) => s.stability === cls),
+          expected,
+        );
+      }
+      const excited = all.flatMap((n) => n.excited);
+      for (const [kind, expected] of Object.entries(SNAPSHOT.levelKind)) {
+        expectEqual(
+          fail,
+          `들뜬 상태 ${kind}`,
+          countBy(excited, (s) => s.levelKind === kind),
+          expected,
+        );
+      }
+    },
     (fail) =>
       expectEqual(
         fail,
@@ -273,10 +306,31 @@ const goldenChecks = ({ dataset }: BuildResult): Check[] => {
       const ta = get('Ta-180').nuclide;
       expectEqual(fail, 'Ta-180 반감기', [ta.halfLife.value, ta.halfLife.unit], ['8.154', 'h']);
       expectEqual(fail, 'Ta-180 붕괴', branchSummary(ta), 'EC=85;B-=15');
-      expectEqual(fail, 'Ta-180 자연 존재 표식', ta.naturalRadioactive, true);
+      // 기저 상태(8.15 h)는 방사성이고 자연에 있는 것은 ¹⁸⁰ᵐTa다 (4차 검증 03).
+      expectEqual(fail, 'Ta-180 자연 존재 표식', ta.naturalRadioactive, false);
+      expectEqual(fail, 'Ta-180 안정성', ta.stability, 'radioactive');
       const { state } = get('Ta-180m');
       expectEqual(fail, 'Ta-180m 반감기', state.halfLife.kind, 'stable');
       expectEqual(fail, 'Ta-180m 존재비', state.abundance, { v: '0.01201', u: '32' });
+      expectEqual(fail, 'Ta-180m 안정성', state.stability, 'observationally-stable');
+    },
+    (fail) => {
+      // 공통 B '안정 기준'의 예시 (docs/conformity_inspection.md)
+      const cases: [string, StabilityClass][] = [
+        ['C-12', 'stable'],
+        ['O-16', 'stable'],
+        ['Pb-204', 'observationally-stable'],
+        ['Pb-208', 'observationally-stable'],
+        ['K-40', 'natural-radioactive'],
+        ['Bi-209', 'natural-radioactive'],
+        ['Te-130', 'natural-radioactive'],
+        ['U-238', 'natural-radioactive'],
+        ['U-234', 'natural-radioactive'],
+        ['C-14', 'radioactive'],
+      ];
+      for (const [id, expected] of cases) {
+        expectEqual(fail, `${id} 안정성`, get(id).state.stability, expected);
+      }
     },
     (fail) => {
       const u = get('U-235').nuclide;

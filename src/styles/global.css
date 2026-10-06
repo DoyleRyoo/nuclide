@@ -827,6 +827,34 @@ select {
 .state-detail {
   padding: 6px 0 12px;
 }
+/* 이성질체가 아닌 준위 묶음 (100 ns 미만·반감기 미상·비존재) */
+.others-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  text-align: left;
+}
+.others-toggle > span:last-child {
+  margin-left: auto;
+}
+.other-levels {
+  padding-left: 8px;
+  border-left: 2px solid var(--border);
+}
+.other-levels > .branch-definition {
+  margin: 0 0 4px;
+}
+.stability-note {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
 .count {
   font-size: var(--fs-xs);
   display: inline-block;

@@ -1,3 +1,4 @@
+import { DEFAULT_ISOMER_MARKER_SECONDS, isomerMarker } from '../../data/stability';
 import type { NuclideIndex } from '../../data/types';
 import { decayFill } from '../colorModes';
 import { lodOpacity } from '../lod';
@@ -23,18 +24,28 @@ export class CellLayer {
   private readonly sorted: Int32Array;
   private readonly counts = new Int32Array(256);
   private readonly offsets = new Int32Array(257);
-  /** 들뜬 상태(존재하지 않는 상태 제외)가 있는 핵종 */
-  private readonly hasIsomer: Uint8Array;
+  /** 이성질체 표식: 0 없음, 1 문턱 이상 이성질체, 2 그 이성질체가 안정 계열(¹⁸⁰ᵐTa) */
+  private readonly isomer: Uint8Array;
+  private isomerThreshold = NaN;
+  private readonly index: NuclideIndex;
   private readonly rect: Rect = { x: 0, y: 0, w: 0, h: 0 };
 
-  constructor(index: NuclideIndex) {
+  constructor(index: NuclideIndex, isomerThreshold = DEFAULT_ISOMER_MARKER_SECONDS) {
+    this.index = index;
     const size = index.nuclides.length;
     this.visible = new Int32Array(size);
     this.predicted = new Int32Array(size);
     this.sorted = new Int32Array(size);
-    this.hasIsomer = Uint8Array.from(index.nuclides, (n) =>
-      n.excited.some((s) => !s.nonExistent) ? 1 : 0,
-    );
+    this.isomer = new Uint8Array(size);
+    this.setIsomerThreshold(isomerThreshold);
+  }
+
+  /** 삼각형을 그릴 이성질체의 반감기 문턱(초). 바뀌었으면 true */
+  setIsomerThreshold(seconds: number): boolean {
+    if (seconds === this.isomerThreshold) return false;
+    this.isomerThreshold = seconds;
+    this.index.nuclides.forEach((n, i) => (this.isomer[i] = isomerMarker(n, seconds)));
+    return true;
   }
 
   /** 범례 강조로 흐리게 그릴 핵종인지 */
@@ -154,9 +165,12 @@ export class CellLayer {
     ctx.setLineDash([]);
   }
 
-  /** 자연 존재 띠(s ≥ 8), 이성질체 삼각형(LOD ≥ 1) (03 §5.3) */
+  /**
+   * 자연 존재 띠·관측적 안정 점(s ≥ 8), 이성질체 삼각형(LOD ≥ 1) (03 §5.3).
+   * 관측적 안정은 안정과 같은 색으로 칠하고 왼쪽 위의 작은 점으로만 구별한다 (공통 B 안정 기준).
+   */
   private drawMarkers(f: Frame): void {
-    const { ctx, camera, index, theme } = f;
+    const { ctx, camera, index, theme, colors } = f;
     const s = camera.s;
     if (s < 8) return;
     const band = Math.max(1, 0.12 * s);
@@ -171,27 +185,49 @@ export class CellLayer {
     }
     ctx.fill();
 
-    const alpha = lodOpacity(s, 1);
-    if (alpha <= 0) return;
-    const leg = 0.2 * s;
-    ctx.globalAlpha = alpha;
-    ctx.fillStyle = '#FFFFFF';
-    ctx.strokeStyle = '#111827';
-    ctx.lineWidth = 0.5;
-    ctx.beginPath();
+    // 점 색은 칸 글자색과 같다 (색 모드·테마마다 칸 바탕과 대비가 보장된다).
+    const dot = Math.max(1.2, 0.06 * s);
     for (let k = 0; k < this.visibleCount; k++) {
       const i = this.visible[k]!;
-      if (!this.hasIsomer[i]) continue;
       const n = index.nuclides[i]!;
+      if (n.stability !== 'observationally-stable') continue;
       const r = cellRect(f, n.n, n.z, this.rect);
-      const right = r.x + r.w;
-      ctx.moveTo(right - leg, r.y);
-      ctx.lineTo(right, r.y);
-      ctx.lineTo(right, r.y + leg);
-      ctx.closePath();
+      ctx.fillStyle = colors.text[colors.index[i]!]!;
+      ctx.beginPath();
+      ctx.arc(r.x + 0.16 * s, r.y + 0.16 * s, dot, 0, Math.PI * 2);
+      ctx.fill();
     }
-    ctx.fill();
-    ctx.stroke();
+
+    const alpha = lodOpacity(s, 1);
+    if (alpha <= 0) return;
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = '#111827';
+    ctx.lineWidth = 0.5;
+    // 흰 삼각형: 이성질체 보유, 검은 삼각형: 자연에 있는 안정 이성질체(¹⁸⁰ᵐTa)
+    for (const [marker, fill] of [
+      [1, '#FFFFFF'],
+      [2, '#111827'],
+    ] as const) {
+      ctx.fillStyle = fill;
+      ctx.beginPath();
+      for (let k = 0; k < this.visibleCount; k++) {
+        const i = this.visible[k]!;
+        if (this.isomer[i] !== marker) continue;
+        const n = index.nuclides[i]!;
+        const r = cellRect(f, n.n, n.z, this.rect);
+        this.triangle(f, r, 0.2 * s);
+      }
+      ctx.fill();
+      ctx.stroke();
+    }
     ctx.globalAlpha = 1;
+  }
+
+  private triangle(f: Frame, r: Rect, leg: number): void {
+    const right = r.x + r.w;
+    f.ctx.moveTo(right - leg, r.y);
+    f.ctx.lineTo(right, r.y);
+    f.ctx.lineTo(right, r.y + leg);
+    f.ctx.closePath();
   }
 }
