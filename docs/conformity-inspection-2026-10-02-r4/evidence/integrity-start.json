@@ -1,0 +1,36 @@
+{
+  "label": "r3-end/r4-start 2026-10-02T15:30:58+09:00",
+  "baseline_commit": "7280849527dbc5819b1eb8700f7f1738137ec78d",
+  "current_head": "9a9bf5a1cac5d90ca9df360f95b7b4d547945b8b",
+  "commits_since_baseline": [
+    "9a9bf5a docs: add summary of decisions the owner must make before release",
+    "ba9310a docs: add nuclide map conformity inspection (rounds 1-3, verification only)"
+  ],
+  "baseline_files_checked": 107,
+  "baseline_files_changed": [
+    {
+      "file": "docs/conformity_inspection.md",
+      "baseline_sha256": "0414c86b4ec1e3d7089198857c81fc08450ae4af09f87a3f7cbff200f64d3206",
+      "current_sha256": "99d44edb239b13c988029507d227185ce796e81e941e24f74960083f7a7681da",
+      "changed_in_commits_after_baseline": false,
+      "uncommitted_working_tree_change": true
+    }
+  ],
+  "non_docs_changes_in_commits_since_baseline": [],
+  "non_docs_changes_in_working_tree": [],
+  "git_status_porcelain": [
+    " M docs/conformity-inspection-2026-10-02-r3/CONTINUE.md",
+    " M docs/conformity-inspection-2026-10-02-r3/README.md",
+    " M docs/conformity-inspection-2026-10-02-r3/evidence/isomer_compare.py",
+    " M docs/conformity-inspection-2026-10-02-r3/evidence/livechart-levels-manifest.tsv",
+    " M docs/conformity-inspection-2026-10-02-r3/evidence/nndc/manifest.tsv",
+    " M docs/conformity_inspection.md",
+    "?? docs/conformity-inspection-2026-10-02-r3/04-isomers.md",
+    "?? docs/conformity-inspection-2026-10-02-r3/evidence/integrity-results.json",
+    "?? docs/conformity-inspection-2026-10-02-r3/evidence/isomer-compare.json",
+    "?? docs/conformity-inspection-2026-10-02-r3/evidence/livechart-levels.zip",
+    "?? docs/conformity-inspection-2026-10-02-r3/evidence/nndc/180hf_adopted.html",
+    "?? docs/conformity-inspection-2026-10-02-r3/evidence/nndc/213pb_adopted.html",
+    "?? docs/conformity-inspection-2026-10-02-r4/"
+  ]
+}

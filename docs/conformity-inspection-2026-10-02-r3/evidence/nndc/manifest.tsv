@@ -40,3 +40,5 @@ nuclide	url	queried_at	http	sha256
 271SG	https://www.nndc.bnl.gov/nudat3/getdatasetClassic.jsp?nucleus=271SG&unc=NDS	2026-10-02T13:43:00+09:00	200	6e84e48bc856aeb60c3358f329e6d3f77be20b5f912b3d89bf1b1dd71eccc8b7
 281RG	https://www.nndc.bnl.gov/nudat3/getdatasetClassic.jsp?nucleus=281RG&unc=NDS	2026-10-02T13:43:02+09:00	200	8fefe7237cec9303be345e0a02bd0abeb80b075effec6f08902ee420825ad0aa
 64MN	https://www.nndc.bnl.gov/nudat3/getdatasetClassic.jsp?nucleus=64MN&unc=NDS	2026-10-02T13:57:41+09:00	200	2a1d8d62d64add5562b8112d7f13d2974ece2204a44da9bb50fb817a697aa521
+180HF	https://www.nndc.bnl.gov/nudat3/getdatasetClassic.jsp?nucleus=180HF&unc=NDS	2026-10-02T15:26:11+09:00	200	12fac2c25ae1d01408b013e34582bea4497e4e2b0e87d8351086c5d15fcc0f0c
+213PB	https://www.nndc.bnl.gov/nudat3/getdatasetClassic.jsp?nucleus=213PB&unc=NDS	2026-10-02T15:26:13+09:00	200	703d25c93c47c74e951e510e668f7422a0601fbb842067bf22f4acbb2a0e83ec

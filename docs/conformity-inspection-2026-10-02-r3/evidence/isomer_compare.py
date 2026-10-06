@@ -123,9 +123,11 @@ def load_levels(a, sym):
 
 
 def unit_flag(ratio):
+    """단위 환산 배수는 ±15 %, ln 2(τ↔T½)는 ±3 % 안일 때만 표시 (±15 %면 평가 차이까지 걸린다)"""
     for label, fac in UNIT_FACTORS.items():
+        tol = 0.03 if label == "1/ln2" else 0.15
         for v in (fac, 1 / fac):
-            if abs(ratio / v - 1) <= 0.15:
+            if abs(ratio / v - 1) <= tol:
                 return label
     return None
 
@@ -180,9 +182,9 @@ for r in app:
         best = min(win, key=lambda x: (logr(x), abs(x["E"] - ex))) if win else None
         rec["matched_by"] = "에너지"
         # 에너지로 짝지었는데 반감기가 100배 넘게 다르고, 같은 반감기 준위가 따로 있으면 그쪽이 같은 상태다
-        if best and logr(best) > 2 and any(t_close(ts_app, ut, x["Ts"], x["uTs"] or 0) for x in cand):
+        if best and ts_app is not None and logr(best) > 2 and any(t_close(ts_app, ut, x["Ts"], x["uTs"] or 0) for x in cand):
             best = None
-        elif best and logr(best) > 2:
+        elif best and ts_app is not None and logr(best) > 2:
             rec["pairing_doubtful"] = True
     if not best:
         same_T = [x for x in cand if ts_app and t_close(ts_app, ut, x["Ts"], x["uTs"] or 0) and abs(ts_app - x["Ts"]) <= 0.05 * ts_app + 2 * math.sqrt(ut ** 2 + (x["uTs"] or 0) ** 2)]
