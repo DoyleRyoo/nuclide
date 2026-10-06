@@ -332,6 +332,7 @@ export default function App() {
   function choose(result: SearchResult) {
     if (result.type === 'nuclide') {
       goTo(result.id, result.stateId);
+      if (result.missingState) setToast(t('missingState').replace('{state}', result.missingState));
       return;
     }
     if (result.type === 'row') {

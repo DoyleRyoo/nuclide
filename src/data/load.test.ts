@@ -91,8 +91,37 @@ describe('searchNuclides (FR-60, 02 §10)', () => {
     expect(first('Tc-99m')).toMatchObject({ label: '⁹⁹ᵐTc', category: 'it' });
   });
 
+  it.each(['178m2Hf', '¹⁷⁸ᵐ²Hf', 'hf178m2', '178m2 Hf'])(
+    '질량수 먼저 쓴 m2 표기도 같은 상태: %s (UX-02)',
+    (q) => {
+      expect(nuclide(q)).toEqual(['Hf-178', 'Hf-178m2']);
+    },
+  );
+
+  it('없는 이성질체는 기저 상태로 말없이 바꾸지 않는다 (UX-01)', () => {
+    const results = searchNuclides(index, 'Tc-99m2');
+    expect(results[0]).toMatchObject({
+      type: 'nuclide',
+      id: 'Tc-99',
+      missingState: '⁹⁹ᵐ²Tc',
+      label: '⁹⁹Tc',
+    });
+    expect(results[0]).not.toHaveProperty('stateId');
+    expect((results[0] as { descriptionKo: string }).descriptionKo).toMatch(/^⁹⁹ᵐ²Tc 상태 없음/);
+    // 실제로 있는 상태를 후보로 준다
+    expect(results.slice(1)).toEqual([
+      expect.objectContaining({ id: 'Tc-99', stateId: 'Tc-99m', label: '⁹⁹ᵐTc' }),
+    ]);
+    // 들뜬 상태가 없는 핵종: 기저 상태 제안만
+    expect(searchNuclides(index, '12mC')).toEqual([
+      expect.objectContaining({ id: 'C-12', missingState: '¹²ᵐC' }),
+    ]);
+  });
+
   it('유효한 원소 기호 해석을 먼저 쓴다: 24mg → Mg-24', () => {
     expect(nuclide('24mg')).toEqual(['Mg-24', undefined]);
+    expect(nuclide('258md')).toEqual(['Md-258', undefined]);
+    expect(nuclide('258mMd')).toEqual(['Md-258', 'Md-258m']);
   });
 
   it('원소 → 행, N= → 열', () => {

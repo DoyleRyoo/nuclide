@@ -26,8 +26,8 @@ function rgba(hex: string, alpha: number): string {
 }
 
 /**
- * 붕괴 화살표에 쓸 분기: 딸핵이 정해지고 IT가 아닌 것 중 첫 분기, 세기 미상(?),
- * 0.01 % 이상인 분기를 분기비가 큰 순서로 최대 5개 (03 §6.3)
+ * 붕괴 화살표에 쓸 분기: 딸핵이 정해지고 IT가 아닌 것 중 첫 분기, 값이 없는 분기
+ * (미관측 ` ?`·세기 미상 `=?`), 0.01 % 이상인 분기를 분기비가 큰 순서로 최대 5개 (03 §6.3)
  */
 export function arrowBranches(n: Nuclide): DecayBranch[] {
   return n.decays
@@ -35,7 +35,7 @@ export function arrowBranches(n: Nuclide): DecayBranch[] {
       (b, i) =>
         b.daughter &&
         (b.daughter.dz !== 0 || b.daughter.dn !== 0) &&
-        (i === 0 || b.rel === '?' || (b.pct ?? 0) >= MIN_ARROW_PERCENT),
+        (i === 0 || b.pct === undefined || b.pct >= MIN_ARROW_PERCENT),
     )
     .sort((a, b) => (b.pct ?? -1) - (a.pct ?? -1))
     .slice(0, MAX_ARROWS);
@@ -144,6 +144,7 @@ function drawArrows(f: Frame, n: Nuclide, text: TextCache) {
     const x1 = x1c - ux * tip;
     const y1 = y1c - uy * tip;
     const color = decayFill(branch.cat, theme);
+    // 점선은 미관측 붕괴(` ?`)만. 관측됐지만 세기 미상(`=?`)은 실선이다.
     const dashed = branch.rel === '?' || !inData;
 
     if (!inData) {

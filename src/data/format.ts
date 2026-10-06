@@ -43,7 +43,8 @@ export function formatNumber(raw: string): string {
   const match = /^([-+]?)(\d*)(?:\.(\d*))?$/.exec(raw);
   if (!match) return minus(raw);
   const [, sign = '', int = '', frac] = match;
-  const grouped = int.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  // 원문의 불필요한 앞자리 0은 뗀다 (⁸⁴Sr `IS=00.56`).
+  const grouped = int.replace(/^0+(?=\d)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   const fraction =
     frac === undefined
       ? ''
@@ -177,6 +178,9 @@ export function lastDigitUncertainty(value: string, unc: string): string {
   return `${int}.${padded.slice(-decimals)}`;
 }
 
+/** 칸 안의 짧은 자연 존재비: "0.7204 %". 원문의 앞자리 0은 뗀다 (⁸⁴Sr `00.56` → "0.56 %"). */
+export const formatAbundanceShort = (m: Measured) => `${m.v.replace(/^0+(?=\d)/, '')} %`;
+
 /** 자연 존재비: "0.7204 ± 0.0006" (불확도는 마지막 자릿수 기준) */
 export function formatAbundance(m: Measured): string {
   const value = `${m.rel ? REL[m.rel] : ''}${formatNumber(m.v)}${m.est ? '#' : ''}`;
@@ -193,9 +197,21 @@ function formatUncertainty(value: string, unc: string): string {
   return ` ± ${formatNumber(lastDigitUncertainty(value, unc))}`;
 }
 
-/** 분기비: "100 %", "85 ± 3 %", "(7 ± 2) × 10⁻⁹ %", "~8 × 10⁻¹⁰ %", "< 0.004 %", "?" */
-export function formatBranch(branch: DecayBranch): string {
-  if (branch.rel === '?' || branch.value === undefined) return '?';
+const BRANCH_WORDS: Record<Locale, { unobserved: string; intensityUnknown: string }> = {
+  ko: { unobserved: '미관측 (에너지상 가능)', intensityUnknown: '관측됨 · 세기 미상' },
+  en: {
+    unobserved: 'not observed (energetically allowed)',
+    intensityUnknown: 'observed · intensity unknown',
+  },
+};
+
+/**
+ * 분기비: "100 %", "85 ± 3 %", "(7 ± 2) × 10⁻⁹ %", "~8 × 10⁻¹⁰ %", "< 0.004 %".
+ * 값이 없으면 NUBASE2020 §2.5대로 미관측(` ?`)과 세기 미상(`=?`)을 구별해 쓴다.
+ */
+export function formatBranch(branch: DecayBranch, locale: Locale = 'ko'): string {
+  if (branch.rel === '?') return BRANCH_WORDS[locale].unobserved;
+  if (branch.value === undefined) return BRANCH_WORDS[locale].intensityUnknown;
   const rel = branch.rel === '=' ? '' : REL[branch.rel]!;
   const est = branch.est ? '#' : '';
   const [mantissa = '', exponent] = branch.value.split(/e/i);
@@ -206,17 +222,36 @@ export function formatBranch(branch: DecayBranch): string {
   return unc ? `${rel}(${body}) ${power} %` : `${rel}${body} ${power} %`;
 }
 
-/** 칸 안의 짧은 분기비: "100 %", "7e-9 %" (03 §5.2) */
+/** 칸 안의 짧은 분기비: "100 %", "7e-9 %", 미관측 "?", 세기 미상 "? %" (03 §5.2) */
 export function formatBranchShort(branch: DecayBranch): string {
-  if (branch.rel === '?' || branch.value === undefined) return '?';
+  if (branch.rel === '?') return '?';
+  if (branch.value === undefined) return '? %';
   const rel = branch.rel === '=' ? '' : branch.rel;
   return `${rel}${minus(branch.value)}${branch.est ? '#' : ''} %`;
 }
 
-/** 붕괴 토큰 표기: B- → β−, B+ → β+, A → α, B-A → β−α */
+/**
+ * NUBASE2020의 `B+`는 전자 포획과 양전자 방출의 합(EC+β+)이고, 원문에 내역이 있으면
+ * `EC`와 `e+`(양전자만)로 따로 준다. 합계를 양전자 비율로 읽지 않도록 이름을 바꿔 쓴다.
+ */
+const BETA_PLUS_LABELS: Record<string, string> = {
+  'B+': 'EC+β+',
+  'EC+B+': 'EC+β+',
+  'e+': 'β+',
+  '2B+': '2(EC+β+)',
+};
+
+/** 붕괴 토큰 표기: B- → β−, B+ → EC+β+, e+ → β+, A → α, B-A → β−α, B+p → (EC+β+)p */
 export function decayModeLabel(mode: string): string {
-  return mode.replace(/B-/g, `β${MINUS}`).replace(/B\+/g, 'β+').replace(/A$/, 'α');
+  return (
+    BETA_PLUS_LABELS[mode] ??
+    mode.replace(/B-/g, `β${MINUS}`).replace(/B\+/g, '(EC+β+)').replace(/A$/, 'α')
+  );
 }
+
+/** 분기 목록에 EC+β+ 합계가 있는지 (정의 안내를 붙일지 정할 때) */
+export const hasBetaPlusTotal = (branches: DecayBranch[]) =>
+  branches.some((b) => b.mode.includes('B+'));
 
 const CATEGORY_LABELS: Record<Locale, Record<DecayCategory, string>> = {
   ko: {

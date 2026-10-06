@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   decayModeLabel,
   formatAbundance,
+  formatAbundanceShort,
   formatAtomicMass,
   formatBranch,
   formatBranchShort,
@@ -10,6 +11,7 @@ import {
   formatHalfLifeShort,
   formatMeasured,
   formatNumber,
+  hasBetaPlusTotal,
   lastDigitUncertainty,
   nuclideLabel,
   roundAme,
@@ -37,6 +39,15 @@ describe('숫자 표시', () => {
     expect(formatNumber('-124.26')).toBe('−124.26');
     expect(formatNumber('235.0439281')).toBe('235.043 928 1');
     expect(formatNumber('0.000018')).toBe('0.000018');
+  });
+
+  it('원문의 불필요한 앞자리 0을 뗀다 (⁸⁴Sr `IS=00.56`)', () => {
+    expect(formatNumber('00.56')).toBe('0.56');
+    expect(formatNumber('007')).toBe('7');
+    expect(formatNumber('0')).toBe('0');
+    expect(formatAbundance({ v: '00.56', u: '2' })).toBe('0.56 ± 0.02');
+    expect(formatAbundanceShort({ v: '00.56', u: '2' })).toBe('0.56 %');
+    expect(formatAbundanceShort({ v: '0.0117', u: '1' })).toBe('0.0117 %');
   });
 
   it('십진 문자열 반올림은 부동소수 오차가 없다', () => {
@@ -96,19 +107,41 @@ describe('자연 존재비·분기비', () => {
     expect(formatBranch(branch({ value: '83.4', unc: '13.2' }))).toBe('83.4 ± 13.2 %');
     expect(formatBranch(branch({ value: '0.13', unc: '+18-8' }))).toBe('0.13 +0.18 −0.08 %');
     expect(formatBranch(branch({ value: '3.310e-5', est: true }))).toBe('3.310# × 10⁻⁵ %');
-    expect(formatBranch(branch({ rel: '?' }))).toBe('?');
     expect(formatBranchShort(branch({ value: '7e-9', unc: '2' }))).toBe('7e−9 %');
+  });
+
+  it('미관측(` ?`)과 관측·세기 미상(`=?`)을 구별한다 (NUBASE2020 §2.5)', () => {
+    expect(formatBranch(branch({ rel: '?' }))).toBe('미관측 (에너지상 가능)');
+    expect(formatBranch(branch({ rel: '=' }))).toBe('관측됨 · 세기 미상');
+    expect(formatBranch(branch({ rel: '?' }), 'en')).toBe('not observed (energetically allowed)');
+    expect(formatBranch(branch({ rel: '=' }), 'en')).toBe('observed · intensity unknown');
+    expect(formatBranchShort(branch({ rel: '?' }))).toBe('?');
+    expect(formatBranchShort(branch({ rel: '=' }))).toBe('? %');
   });
 
   it('붕괴 토큰과 핵종 표기', () => {
     expect(decayModeLabel('B-')).toBe('β−');
-    expect(decayModeLabel('B+p')).toBe('β+p');
     expect(decayModeLabel('B-A')).toBe('β−α');
     expect(decayModeLabel('A')).toBe('α');
     expect(decayModeLabel('14C')).toBe('14C');
     expect(nuclideLabel('U', 235)).toBe('²³⁵U');
     expect(nuclideLabel('Tc', 99, 1)).toBe('⁹⁹ᵐTc');
     expect(nuclideLabel('U', 235, 2)).toBe('²³⁵ᵐ²U');
+  });
+
+  it('NUBASE의 B+는 EC+β+ 합계, e+만 양전자 몫으로 쓴다 (SCI-02)', () => {
+    expect(decayModeLabel('B+')).toBe('EC+β+');
+    expect(decayModeLabel('EC+B+')).toBe('EC+β+');
+    expect(decayModeLabel('EC')).toBe('EC');
+    expect(decayModeLabel('e+')).toBe('β+');
+    expect(decayModeLabel('2B+')).toBe('2(EC+β+)');
+    expect(decayModeLabel('B+p')).toBe('(EC+β+)p');
+    expect(decayModeLabel('B+A')).toBe('(EC+β+)α');
+    expect(decayModeLabel('B+pA')).toBe('(EC+β+)pα');
+    expect(hasBetaPlusTotal([branch({ mode: 'B+', cat: 'beta+' })])).toBe(true);
+    expect(hasBetaPlusTotal([branch({ mode: 'B+p', cat: 'beta+' })])).toBe(true);
+    expect(hasBetaPlusTotal([branch({ mode: 'EC', cat: 'beta+' })])).toBe(false);
+    expect(hasBetaPlusTotal([branch({ mode: 'B-', cat: 'beta-' })])).toBe(false);
   });
 });
 

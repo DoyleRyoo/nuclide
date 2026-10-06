@@ -785,6 +785,20 @@ select {
   font-size: var(--fs-xs);
   color: var(--text-muted);
 }
+/* 미관측 붕괴: 지도의 점선 화살표와 같은 뜻 */
+.branch-unobserved .decay-badge {
+  background: transparent;
+  outline: 1px dashed currentColor;
+  outline-offset: -1px;
+}
+.branch-unobserved .branch-value {
+  color: var(--text-muted);
+}
+.branch-definition {
+  margin: 8px 0 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
 .excited-state + .excited-state {
   border-top: 1px solid var(--border);
 }

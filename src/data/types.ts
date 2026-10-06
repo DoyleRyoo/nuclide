@@ -22,6 +22,10 @@ export type DecayCategory =
 export interface DecayBranch {
   mode: string;
   cat: DecayCategory;
+  /**
+   * NUBASE2020 §2.5: '?' = 에너지상 가능하지만 미관측 (`B- ?`).
+   * '='에 value가 없으면 관측됐지만 세기 미상 (`B-=?`).
+   */
   rel: '=' | '~' | '<' | '>' | '?';
   value?: string;
   unc?: string;

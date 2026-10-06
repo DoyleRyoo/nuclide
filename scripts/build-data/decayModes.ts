@@ -23,7 +23,7 @@ export function parseDecayField(field: string, where: string): ParsedDecays {
     const match = ENTRY.exec(entry);
     if (!match) throw new Error(`${where}: 붕괴 항목을 해석할 수 없음 "${entry}"`);
     const mode = match[1]!.trim();
-    let rel = match[2] as StoredBranch['rel'];
+    const rel = match[2] as StoredBranch['rel'];
     let rest = match[3]!.trim();
     let note: string | undefined;
     const noteMatch = /\[[^\]]*\]/.exec(rest);
@@ -31,13 +31,12 @@ export function parseDecayField(field: string, where: string): ParsedDecays {
       note = noteMatch[0];
       rest = (rest.slice(0, noteMatch.index) + rest.slice(noteMatch.index + note.length)).trim();
     }
-    // `B-=?`, `B+= ?`: 관계가 '='이지만 값 대신 '?'가 온다.
-    if (rel === '=' && rest === '?') {
-      rel = '?';
-      rest = '';
-    }
+    // NUBASE2020 §2.5: `B-=?`는 관측됐지만 세기 미상, `B- ?`는 에너지상 가능하지만 미관측이다.
+    // 앞의 것은 rel '='에 값 없이 두어 둘을 구별한다.
+    const intensityUnknown = rel === '=' && rest === '?';
+    if (intensityUnknown) rest = '';
     const parts = rest ? rest.split(/\s+/) : [];
-    if (rel === '?' ? parts.length > 0 : parts.length < 1 || parts.length > 2) {
+    if (rel === '?' || intensityUnknown ? parts.length > 0 : parts.length < 1 || parts.length > 2) {
       throw new Error(`${where}: 붕괴 항목의 값 형식이 예상과 다름 "${entry}"`);
     }
     let value = parts[0];

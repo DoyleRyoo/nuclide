@@ -37,9 +37,18 @@ describe('parseDecayField', () => {
     });
   });
 
-  it('`=` 뒤에 값 대신 ?가 오면 세기 미상으로 본다', () => {
-    expect(parse('B-=?;IT ?;B-n ?').decays.map((d) => d.rel)).toEqual(['?', '?', '?']);
-    expect(parse('B+= ?; IT ?').decays.map((d) => d.rel)).toEqual(['?', '?']);
+  it('`=?`(관측, 세기 미상)와 ` ?`(미관측)를 구별한다', () => {
+    expect(parse('B-=?;IT ?;B-n ?').decays).toEqual([
+      { mode: 'B-', rel: '=' },
+      { mode: 'IT', rel: '?' },
+      { mode: 'B-n', rel: '?' },
+    ]);
+    expect(parse('B+= ?; IT ?').decays).toEqual([
+      { mode: 'B+', rel: '=' },
+      { mode: 'IT', rel: '?' },
+    ]);
+    expect(() => parse('B-=? 3')).toThrow();
+    expect(() => parse('IS=?')).toThrow(/IS 값 없음/);
   });
 
   it('값 끝의 #은 추정 표시로 뗀다', () => {

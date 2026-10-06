@@ -24,8 +24,17 @@ interface Described {
   descriptionEn: string;
 }
 
+type NuclideResult = {
+  type: 'nuclide';
+  id: string;
+  stateId?: string;
+  category: DecayCategory;
+  /** 요청한 이성질체가 데이터에 없어 기저 상태를 대신 제안할 때, 요청한 상태 표기 ("⁹⁹ᵐ²Tc") */
+  missingState?: string;
+} & Described;
+
 export type SearchResult =
-  | ({ type: 'nuclide'; id: string; stateId?: string; category: DecayCategory } & Described)
+  | NuclideResult
   | ({ type: 'row'; z: number; bounds: SearchBounds } & Described)
   | ({ type: 'column'; n: number; bounds: SearchBounds } & Described);
 
@@ -69,7 +78,7 @@ function stateName(n: Nuclide, level: number, locale: 'ko' | 'en'): string {
   return `${name}-${n.a}${level ? `m${level > 1 ? level : ''}` : ''}`;
 }
 
-function nuclideResult(n: Nuclide, level = 0): SearchResult {
+function nuclideResult(n: Nuclide, level = 0): NuclideResult {
   const state = level ? n.excited.find((s) => s.level === level) : undefined;
   const target = state ?? n;
   const halfLife = formatHalfLifeShort(target.halfLife);
@@ -80,7 +89,7 @@ function nuclideResult(n: Nuclide, level = 0): SearchResult {
     [stateName(n, state ? level : 0, locale), halfLife, categoryLabel(category, locale)]
       .filter(Boolean)
       .join(' · ');
-  const result: SearchResult = {
+  const result: NuclideResult = {
     type: 'nuclide',
     id: n.id,
     category,
@@ -90,6 +99,26 @@ function nuclideResult(n: Nuclide, level = 0): SearchResult {
   };
   if (state) result.stateId = state.id;
   return result;
+}
+
+/**
+ * 요청한 이성질체가 없을 때 (UX-01): 기저 상태로 말없이 바꾸지 않고, 없다는 것을 적은 기저 상태
+ * 제안과 실제로 있는 들뜬 상태를 후보로 준다.
+ */
+function missingStateResults(n: Nuclide, level: number): SearchResult[] {
+  const missing = nuclideLabel(n.symbol, n.a, level);
+  const ground = nuclideResult(n);
+  const notice: NuclideResult = {
+    ...ground,
+    missingState: missing,
+    descriptionKo: `${missing} 상태 없음 · 기저 상태 ${ground.descriptionKo}`,
+    descriptionEn: `No ${missing} state · ground state ${ground.descriptionEn}`,
+  };
+  const existing = n.excited
+    .filter((s) => !s.nonExistent)
+    .slice(0, MAX_RESULTS - 1)
+    .map((s) => nuclideResult(n, s.level));
+  return [notice, ...existing];
 }
 
 function rowResult(index: NuclideIndex, z: number): SearchResult | undefined {
@@ -121,27 +150,36 @@ function columnResult(index: NuclideIndex, n: number): SearchResult | undefined 
   };
 }
 
-/** 원소 + 질량수 (+ 이성질체) 해석. `24mg` → Mg-24처럼 유효한 원소 기호 해석을 먼저 쓴다. */
-function parseNuclide(q: string): { element: Element; a: number; level: number } | undefined {
-  const levelOf = (m?: string) => (m ? (m === 'm' ? 1 : Number(m.slice(1))) : 0);
+interface ParsedNuclide {
+  element: Element;
+  a: number;
+  level: number;
+}
+
+/**
+ * 원소 + 질량수 (+ 이성질체)로 읽을 수 있는 해석을 모두 돌려준다. 앞의 것이 우선이다.
+ * `24mg` → Mg-24, `12mc` → Mc-12 또는 C-12m (데이터에 있는 쪽을 searchNuclides가 고른다).
+ */
+function parseNuclide(q: string): ParsedNuclide[] {
+  const levelOf = (m: string) => (m ? (m === 'm' ? 1 : Number(m.slice(1))) : 0);
   // 원소 먼저: u235, tc99m, hf178m2, 우라늄235
   let match = /^([a-z]+|[가-힣]+)(\d+)(m[1-6]?)?$/.exec(q);
   if (match) {
     const element = elementNames.get(match[1]!);
-    if (element) return { element, a: Number(match[2]), level: levelOf(match[3]) };
+    return element ? [{ element, a: Number(match[2]), level: levelOf(match[3] ?? '') }] : [];
   }
-  // 질량수 먼저: 235u, 99mtc, 178m2hf, 24mg
-  match = /^(\d+)([a-z]+|[가-힣]+)$/.exec(q);
-  if (match) {
-    const a = Number(match[1]);
-    const rest = match[2]!;
-    const direct = elementNames.get(rest);
-    if (direct) return { element: direct, a, level: 0 };
-    const isomer = /^(m[1-6]?)(.+)$/.exec(rest);
-    const element = isomer && elementNames.get(isomer[2]!);
-    if (element) return { element, a, level: levelOf(isomer[1]) };
-  }
-  return undefined;
+  // 질량수 먼저: 235u, 99mtc, 178m2hf(¹⁷⁸ᵐ²Hf), 24mg
+  match = /^(\d+)(m[1-6]?)?([a-z]+|[가-힣]+)$/.exec(q);
+  if (!match) return [];
+  const a = Number(match[1]);
+  const [, , isomer = '', name = ''] = match;
+  const parsed: ParsedNuclide[] = [];
+  // m을 원소 기호의 첫 글자로 먼저 본다 (24mg → Mg-24). m2처럼 숫자가 붙으면 이성질체뿐이다.
+  const direct = !/\d/.test(isomer) && elementNames.get(isomer + name);
+  if (direct) parsed.push({ element: direct, a, level: 0 });
+  const element = isomer && elementNames.get(name);
+  if (element) parsed.push({ element, a, level: levelOf(isomer) });
+  return parsed;
 }
 
 function findNuclide(index: NuclideIndex, z: number, a: number): Nuclide | undefined {
@@ -178,13 +216,13 @@ export function searchNuclides(index: NuclideIndex, query: string): SearchResult
     return n ? [nuclideResult(n)] : [];
   }
 
-  const parsed = parseNuclide(q);
-  if (parsed) {
+  for (const parsed of parseNuclide(q)) {
     const n = findNuclide(index, parsed.element.z, parsed.a);
-    if (n) {
-      const hasLevel = parsed.level && n.excited.some((s) => s.level === parsed.level);
-      return [nuclideResult(n, hasLevel ? parsed.level : 0)];
+    if (!n) continue;
+    if (!parsed.level || n.excited.some((s) => s.level === parsed.level)) {
+      return [nuclideResult(n, parsed.level)];
     }
+    return missingStateResults(n, parsed.level);
   }
   if (column) return [column];
 

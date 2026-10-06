@@ -1,5 +1,5 @@
 import type { NuclideIndex } from '../../data/types';
-import { minus } from '../../data/format';
+import { formatAbundanceShort, minus } from '../../data/format';
 import { getLod, lodOpacity } from '../lod';
 import type { CellLayer } from './cells';
 import { cellRect, type Frame, type Rect } from './frame';
@@ -43,7 +43,8 @@ export class LabelLayer {
         decay2,
         jpi: cellJpi(n.jpi),
         // 안정 칸은 반감기 줄에 이미 존재비를 쓴다.
-        abundance: n.abundance && n.halfLife.kind !== 'stable' ? `${n.abundance.v} %` : '',
+        abundance:
+          n.abundance && n.halfLife.kind !== 'stable' ? formatAbundanceShort(n.abundance) : '',
       };
     });
   }

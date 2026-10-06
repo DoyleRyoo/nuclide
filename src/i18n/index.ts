@@ -78,7 +78,7 @@ export const ko = {
   shortcutText:
     '휠: 세로 이동 · Shift+휠: 가로 이동\nCtrl/⌘+휠 또는 핀치: 확대·축소\n드래그: 이동 · 더블클릭: 확대\n방향키: 이웃 선택 · Shift+방향키: 화면 이동\nEnter: 정보 열기 · Esc: 닫기\n+ / −: 확대·축소 · 0: 전체 보기\n/ 또는 Ctrl/⌘+K: 검색 · C: 색상 변경 · ?: 도움말',
   notationText:
-    'N = 중성자 수 · Z = 양성자 수 · A = N + Z\n# = 계통성 추정값 · < / > = 한계값 · ~ = 근삿값\n괄호 불확도는 마지막 자릿수 기준입니다.\n삼각형: 들뜬 상태 보유 · 위쪽 띠: 자연 존재 방사성 핵종\n점선 칸: 미관측 예측 핵종',
+    'N = 중성자 수 · Z = 양성자 수 · A = N + Z\n# = 계통성 추정값 · < / > = 한계값 · ~ = 근삿값\n괄호 불확도는 마지막 자릿수 기준입니다.\nEC+β+ = 전자 포획과 양전자 방출의 합 · β+ = 양전자 방출만\n미관측 = 에너지상 가능하지만 관측되지 않은 붕괴(점선 화살표) · 세기 미상 = 관측됐지만 분기비를 모름\n삼각형: 들뜬 상태 보유 · 위쪽 띠: 자연 존재 방사성 핵종\n점선 칸: 미관측 예측 핵종',
   sourceText:
     '관측 기저 상태 3,340개 · 예측 기저 상태 218개. IAS 상태는 제외합니다. 표기 값은 원본의 유효숫자와 불확도를 보존합니다.',
   version: '앱 버전',
@@ -93,6 +93,10 @@ export const ko = {
   nonExistent: '존재하지 않음',
   nonExistentNote: '보고된 적이 있지만 NUBASE2020 평가에서 존재하지 않는다고 본 상태입니다.',
   ameLoading: 'AME2020 값을 불러오는 중…',
+  betaPlusNote: 'EC+β+는 전자 포획(EC)과 양전자 방출(β+)을 합한 비율입니다(NUBASE2020 표기).',
+  positronShare: 'β+ 행은 그중 양전자 방출만의 비율입니다.',
+  positronMissing: '양전자 방출만의 비율은 NUBASE2020에 없습니다.',
+  missingState: '요청한 상태 {state}는 데이터에 없습니다. 기저 상태를 보여 줍니다.',
 } as const;
 export type Locale = 'ko' | 'en';
 export type MessageKey = keyof typeof ko;
@@ -174,7 +178,7 @@ const en: Record<MessageKey, string> = {
   shortcutText:
     'Wheel: scroll · Shift+wheel: horizontal scroll\nCtrl/⌘+wheel or pinch: zoom\nDrag: pan · Double-click: zoom\nArrows: select neighbor · Shift+arrows: pan\nEnter: information · Esc: close\n+ / −: zoom · 0: fit all\n/ or Ctrl/⌘+K: search · C: color mode · ?: help',
   notationText:
-    'N = neutrons · Z = protons · A = N + Z\n# = systematic estimate · < / > = limit · ~ = approximate\nParenthetical uncertainties refer to the last digits.\nTriangle: excited states · Top band: natural radioactive nuclide\nDashed cell: unobserved predicted nuclide',
+    'N = neutrons · Z = protons · A = N + Z\n# = systematic estimate · < / > = limit · ~ = approximate\nParenthetical uncertainties refer to the last digits.\nEC+β+ = electron capture plus positron emission · β+ = positron emission only\nNot observed = energetically allowed but unobserved decay (dashed arrow) · Intensity unknown = observed, branching ratio unknown\nTriangle: excited states · Top band: natural radioactive nuclide\nDashed cell: unobserved predicted nuclide',
   sourceText:
     '3,340 observed and 218 predicted ground states. IAS states are excluded. Original significant figures and uncertainties are preserved.',
   version: 'App version',
@@ -189,6 +193,11 @@ const en: Record<MessageKey, string> = {
   nonExistent: 'Non-existent',
   nonExistentNote: 'Reported in the past, but evaluated as non-existent in NUBASE2020.',
   ameLoading: 'Loading AME2020 values…',
+  betaPlusNote:
+    'EC+β+ is the combined electron-capture (EC) and positron-emission (β+) fraction (NUBASE2020 notation).',
+  positronShare: 'The β+ row gives the positron-emission share alone.',
+  positronMissing: 'NUBASE2020 does not give the positron-emission share alone.',
+  missingState: 'The requested state {state} is not in the data. Showing the ground state.',
 };
 export const translate = (locale: Locale, key: MessageKey): string =>
   (locale === 'ko' ? ko : en)[key];

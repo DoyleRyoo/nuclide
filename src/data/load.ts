@@ -3,7 +3,12 @@
  *   nuclides.json — 핵심 청크. 차트를 그리기 전에 필요하다.
  *   ame.json      — AME 상세 청크. 첫 차트 뒤에 불러와 패널의 질량·에너지 값을 채운다.
  */
-import { formatBranchShort, decayModeLabel, formatHalfLifeShort } from './format';
+import {
+  formatAbundanceShort,
+  formatBranchShort,
+  decayModeLabel,
+  formatHalfLifeShort,
+} from './format';
 import { applyAmeDetails, hydrate } from './hydrate';
 import { searchText } from './search';
 import type {
@@ -35,7 +40,7 @@ function cellLabels(n: Nuclide): { halfLife: string; decay: string } {
   const halfLife =
     n.halfLife.kind === 'stable'
       ? n.abundance
-        ? `${n.abundance.v} %`
+        ? formatAbundanceShort(n.abundance)
         : ''
       : formatHalfLifeShort(n.halfLife);
   const decay = n.decays

@@ -224,7 +224,7 @@ function find(
 }
 
 const branchSummary = (s: NuclearState) =>
-  s.decays.map((d) => `${d.mode}${d.rel === '?' ? ' ?' : `${d.rel}${d.value}`}`).join(';');
+  s.decays.map((d) => `${d.mode}${d.rel === '?' ? ' ?' : `${d.rel}${d.value ?? '?'}`}`).join(';');
 
 const goldenChecks = ({ dataset }: BuildResult): Check[] => {
   const get = (id: string) => find(dataset, id);
@@ -292,6 +292,11 @@ const goldenChecks = ({ dataset }: BuildResult): Check[] => {
       expectEqual(fail, 'U-235 들뜬 상태 수', u.excited.length, 2);
       expectEqual(fail, 'U-235 AME B/A', u.ame?.bindingPerA?.v, '7590.9151');
       expectEqual(fail, 'U-235 자연 존재 표식', u.naturalRadioactive, true);
+    },
+    (fail) => {
+      // `=?`(관측, 세기 미상)와 ` ?`(미관측)를 구별한다 (NUBASE2020 §2.5)
+      expectEqual(fail, 'Na-18 붕괴', branchSummary(get('Na-18').nuclide), 'p=?');
+      expectEqual(fail, 'Pb-206 붕괴', branchSummary(get('Pb-206').nuclide), 'A ?');
     },
     (fail) => {
       // 첫 항목 규칙만 쓰면 틀리는 사례 (04 §5.3)

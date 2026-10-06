@@ -13,6 +13,7 @@ import {
   formatHalfLife,
   formatHalfLifeHuman,
   formatMeasured,
+  hasBetaPlusTotal,
 } from '../data/format';
 
 /** 질량·에너지 섹션의 AME 값 순서 (03 §7.6). 원자 질량은 u로 따로 표기한다. */
@@ -75,7 +76,7 @@ export default function InfoPanel({
       <dd>{value}</dd>
     </div>
   );
-  const branches = (state: NuclearState) =>
+  const branchRows = (state: NuclearState) =>
     state.decays.length ? (
       state.decays.map((branch: DecayBranch, i: number) => {
         const dz = nuclide.z + (branch.daughter?.dz ?? 0);
@@ -86,13 +87,16 @@ export default function InfoPanel({
             : -1;
         const target = cell >= 0 ? index.nuclides[cell] : undefined;
         return (
-          <li key={`${branch.mode}-${i}`} className="branch-row">
+          <li
+            key={`${branch.mode}-${i}`}
+            className={`branch-row${branch.rel === '?' ? ' branch-unobserved' : ''}`}
+          >
             <span
               className={`decay-badge decay-${branch.cat.replace('+', 'plus').replace('-', 'minus')}`}
             >
               {decayModeLabel(branch.mode)}
             </span>
-            <span className="branch-value">{formatBranch(branch)}</span>
+            <span className="branch-value">{formatBranch(branch, locale)}</span>
             {target ? (
               <button className="daughter" onClick={() => goTo(target.id)} title={target.id}>
                 → <NuclideSymbol nuclide={target} />
@@ -109,6 +113,18 @@ export default function InfoPanel({
     ) : (
       <li className="muted">{t('noBranches')}</li>
     );
+  /** 분기 목록. EC+β+ 합계가 있으면 정의와 양전자 몫의 유무를 함께 적는다 (SCI-02). */
+  const branches = (state: NuclearState) => (
+    <>
+      <ul className="branch-list">{branchRows(state)}</ul>
+      {hasBetaPlusTotal(state.decays) && (
+        <p className="branch-definition">
+          {t('betaPlusNote')}{' '}
+          {state.decays.some((b) => b.mode === 'e+') ? t('positronShare') : t('positronMissing')}
+        </p>
+      )}
+    </>
+  );
   const spin = (state: NuclearState) => (
     <>
       {state.jpi?.replace(/[*#]/g, '').replace(/-/g, '−') || '—'}{' '}
@@ -230,7 +246,7 @@ export default function InfoPanel({
       </section>
       <section className="panel-section">
         <h3>{t('branches')}</h3>
-        <ul className="branch-list">{branches(nuclide)}</ul>
+        {branches(nuclide)}
       </section>
       {nuclide.excited.length > 0 && (
         <section className="panel-section">
@@ -271,7 +287,7 @@ export default function InfoPanel({
                   </dl>
                   {state.orderUncertain && <p className="badge">{t('uncertainOrder')}</p>}
                   {state.orderInverted && <p className="badge">{t('invertedOrder')}</p>}
-                  <ul className="branch-list">{branches(state)}</ul>
+                  {branches(state)}
                 </div>
               )}
             </div>
